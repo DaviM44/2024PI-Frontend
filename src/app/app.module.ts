@@ -14,6 +14,8 @@ import { AuthpService } from './authp.service';
 import { TelaInicialAdmComponent } from './tela-inicial-adm/tela-inicial-adm.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { TelaLoginAdmComponent } from './tela-login-adm/tela-login-adm.component';
+import { CadastrarProfComponent } from './cadastrar-prof/cadastrar-prof.component';
+import { CadastrarSalaComponent } from './admin/cadastrar-sala/cadastrar-sala.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { TelaLoginAdmComponent } from './tela-login-adm/tela-login-adm.component
     NavbarComponent,
     TelaInicialProfComponent,
     TelaInicialAdmComponent,
-    TelaLoginAdmComponent
+    TelaLoginAdmComponent,
+    CadastrarProfComponent,
+    CadastrarSalaComponent
   ],
   imports: [
     BrowserModule,

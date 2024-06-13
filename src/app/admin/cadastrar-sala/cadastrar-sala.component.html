@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card register">
+        <div class="card-body">
+          <h5 class="card-title text-center">Registro de Sala</h5>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3 mt-3">
+              <label for="tipoSala" class="form-label">Tipo de Sala</label>
+              <select class="form-control" id="tipoSala" formControlName="tipoSala" required>
+                <option value="" disabled selected>Selecione o tipo de sala</option>
+                <option value="reuniao">Sala</option>
+                <option value="reuniao">Laboratório</option>
+              </select>
+            </div>
+            <div class="mb-3 mt-3">
+              <label for="capacidade" class="form-label">Capacidade</label>
+              <input type="number" class="form-control" id="capacidade" formControlName="capacidade" placeholder="Capacidade" required>
+            </div>
+            <div class="mb-3 mt-3">
+              <label for="andar" class="form-label">Andar</label>
+              <input type="number" class="form-control" id="andar" formControlName="andar" placeholder="Andar" required>
+            </div>
+            <div class="mb-3 mt-3">
+              <label for="recursos" class="form-label">Recursos</label>
+              <input type="text" class="form-control" id="recursos" formControlName="recursos" placeholder="Recursos disponíveis" required>
+            </div>
+            <div class="mb-3 mt-3">
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="disponibilidade" formControlName="disponibilidade">
+                <label class="form-check-label" for="disponibilidade">Disponibilidade</label>
+              </div>
+            </div>
+            <div *ngIf="registerError" class="alert alert-danger mt-3" role="alert">
+              Erro ao registrar a sala!
+            </div>
+            <div class="d-grid gap-2 mt-4 mb-3">
+              <button type="submit" class="btn btn-verde texto-branco">Registrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
