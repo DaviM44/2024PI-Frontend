@@ -18,6 +18,7 @@ import { CadastrarProfComponent } from './cadastrar-prof/cadastrar-prof.componen
 import { CadastrarSalaComponent } from './admin/cadastrar-sala/cadastrar-sala.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CadastrarDisciplinasComponent } from './admin/cadastrar-disciplinas/cadastrar-disciplinas.component';
+import { CadastrarCursoComponent } from './admin/cadastrar-curso/cadastrar-curso.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CadastrarDisciplinasComponent } from './admin/cadastrar-disciplinas/cad
     TelaLoginAdmComponent,
     CadastrarProfComponent,
     CadastrarSalaComponent,
-    CadastrarDisciplinasComponent
+    CadastrarDisciplinasComponent,
+    CadastrarCursoComponent
   ],
   imports: [
     BrowserModule,

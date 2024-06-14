@@ -21,7 +21,6 @@
                 <div class="mb-3 mt-3">
                   <label for="endTime" class="form-label">Horário de Término</label>
                   <input type="time" class="form-control" id="endTime" formControlName="endTime" required>
-                  <!-- Seção de erro para exibir mensagem de validação -->
                   <div *ngIf="registerForm.hasError('endTimeBeforeStartTime')" class="invalid-feedback">
                     O horário de término não pode ser antes do horário de início.
                   </div>
@@ -36,8 +35,8 @@
               <label for="professor" class="form-label">Professor Responsável</label>
               <select class="form-control" id="professor" formControlName="professor" required>
                 <option value="" disabled selected>Selecione o professor responsável</option>
-                <option value="negro"> Negro</option>
-                <option value="branco"> Branco</option>
+                <option value="negro"> Professor 1 </option>
+                <option value="branco"> Professor 2</option>
               </select>
             </div>
             <div class="mb-3 mt-3">

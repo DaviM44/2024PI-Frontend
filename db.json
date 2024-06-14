@@ -42,9 +42,20 @@
       "startTime": "11:11",
       "endTime": "22:22",
       "description": "FODA",
-      "professor": "negro",
+      "professor": "isso",
       "objective": "PEWTO",
       "syllabus": "MENTA"
+    }
+  ],
+  "cursos": [
+    {
+      "id": "fd56"
+    },
+    {
+      "id": "5393",
+      "nomeCurso": "dada",
+      "semestre": "dada",
+      "periodo": "dada"
     }
   ]
 }

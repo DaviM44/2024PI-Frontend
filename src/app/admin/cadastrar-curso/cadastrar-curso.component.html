@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card register">
+        <div class="card-body">
+          <h5 class="card-title text-center">Registro de Curso</h5>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3 mt-3">
+              <label for="nomeCurso" class="form-label">Nome do Curso</label>
+              <input type="text" class="form-control" id="nomeCurso" formControlName="nomeCurso" placeholder="Nome do Curso" required>
+            </div>
+            <div class="mb-3 mt-3">
+              <label for="semestre" class="form-label">Semestre</label>
+              <input type="text" class="form-control" id="semestre" formControlName="semestre" placeholder="Semestre" required>
+            </div>
+            <div class="mb-3 mt-3">
+              <label for="periodo" class="form-label">Período</label>
+              <input type="text" class="form-control" id="periodo" formControlName="periodo" placeholder="Período" required>
+            </div>
+            <div *ngIf="registerError" class="alert alert-danger mt-3" role="alert">
+              Erro ao registrar o curso!
+            </div>
+            <div *ngIf="registerSuccess" class="alert alert-success mt-3" role="alert">
+              Curso registrado com sucesso!
+            </div>
+            <div class="d-grid gap-2 mt-4 mb-3">
+              <button type="submit" class="btn btn-verde texto-branco">Registrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
