@@ -21,5 +21,30 @@
       "recursos": "pau",
       "disponibilidade": null
     }
+  ],
+  "disciplinas": [
+    {
+      "id": "32e3"
+    },
+    {
+      "id": "8e79",
+      "disciplineName": "dadad",
+      "startTime": "11:01",
+      "endTime": "22:02",
+      "description": "dawad",
+      "professor": "branco",
+      "objective": "adwad",
+      "syllabus": "dad"
+    },
+    {
+      "id": "2d3a",
+      "disciplineName": "Renato",
+      "startTime": "11:11",
+      "endTime": "22:22",
+      "description": "FODA",
+      "professor": "negro",
+      "objective": "PEWTO",
+      "syllabus": "MENTA"
+    }
   ]
 }

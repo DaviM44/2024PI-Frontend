@@ -17,6 +17,7 @@ import { TelaLoginAdmComponent } from './tela-login-adm/tela-login-adm.component
 import { CadastrarProfComponent } from './cadastrar-prof/cadastrar-prof.component';
 import { CadastrarSalaComponent } from './admin/cadastrar-sala/cadastrar-sala.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CadastrarDisciplinasComponent } from './admin/cadastrar-disciplinas/cadastrar-disciplinas.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     TelaInicialAdmComponent,
     TelaLoginAdmComponent,
     CadastrarProfComponent,
-    CadastrarSalaComponent
+    CadastrarSalaComponent,
+    CadastrarDisciplinasComponent
   ],
   imports: [
     BrowserModule,
