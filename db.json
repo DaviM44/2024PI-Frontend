@@ -1,0 +1,28 @@
+{
+  "professores": [
+    {
+      "id": "4716",
+      "nome": "pinto",
+      "emailI": "pinto@com.com",
+      "senha": "1234567",
+      "emailP": "ci@com.com",
+      "telefone": "123456789"
+    },
+    {
+      "id": "24a2",
+      "nome": "cadada",
+      "emailI": "dadadada@com.com",
+      "senha": "dadadada@com.com",
+      "emailP": "dadadada@com.com",
+      "telefone": "11111111111111111111111111111"
+    },
+    {
+      "id": "5266",
+      "nome": "ADS",
+      "emailI": "da@com.com",
+      "senha": "2132435465786",
+      "emailP": "da@com.com",
+      "telefone": "123456789"
+    }
+  ]
+}

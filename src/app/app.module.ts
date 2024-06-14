@@ -16,6 +16,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { TelaLoginAdmComponent } from './tela-login-adm/tela-login-adm.component';
 import { CadastrarProfComponent } from './cadastrar-prof/cadastrar-prof.component';
 import { CadastrarSalaComponent } from './admin/cadastrar-sala/cadastrar-sala.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,8 +34,9 @@ import { CadastrarSalaComponent } from './admin/cadastrar-sala/cadastrar-sala.co
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
-    MatCardModule
-    
+    MatCardModule,
+    HttpClientModule
+
   ],
   providers: [AuthpService, provideAnimationsAsync()],
   bootstrap: [AppComponent]

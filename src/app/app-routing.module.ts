@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'login', component: TelaLoginComponent},
   {path: 'login-adm', component: TelaLoginAdmComponent},
   {path: 'tela-inicial-prof', component: TelaInicialProfComponent},
-  {path: 'tela-inicial-adm', component: TelaInicialAdmComponent},
+  {path: 'admin', component: TelaInicialAdmComponent},
   {path: 'admin/cadastrar_professor', component: CadastrarProfComponent},
   {path: 'admin/cadastrar_sala', component: CadastrarSalaComponent}
 

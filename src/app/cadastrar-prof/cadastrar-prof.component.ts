@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ProfessoresService } from './../serv/admin/professores.service'; // Importar o serviço correto
 
 @Component({
   selector: 'app-cadastrar-prof',
@@ -7,19 +8,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./cadastrar-prof.component.css']
 })
 export class CadastrarProfComponent implements OnInit {
-  registerForm!: FormGroup; // Usando o operador de afirmação não nulo
+  registerForm!: FormGroup;
   registerError: boolean = false;
+  registerSuccess: boolean = false; // Nova variável para controlar a mensagem de sucesso
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private professoresService: ProfessoresService) {} // Injeção do serviço
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      id: ['', Validators.required],
-      emailP: ['', [Validators.required, Validators.email]],
-      emailI: ['', [Validators.required, Validators.email]],
-      nome: ['', Validators.required],
-      senha: ['', [Validators.required, Validators.minLength(6)]],
-      telefone: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
+      nome: [''],
+      emailI: [''],
+      senha: [''],
+      emailP: [''],
+      telefone: [''],
     });
   }
 
@@ -31,17 +32,25 @@ export class CadastrarProfComponent implements OnInit {
       return;
     }
 
-    // Handle the form submission logic here
-    console.log('Form submitted successfully', this.registerForm.value);
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
-
-    // Reset the form
-    this.registerForm.reset();
-    this.registerError = false;
+    // Usar o serviço para enviar os dados para o JSON server
+    this.professoresService.registerProfessor(this.registerForm.value).subscribe(
+      response => {
+        console.log('Form submitted successfully', response);
+        this.registerSuccess = true; // Exibir mensagem de sucesso
+        this.registerForm.reset();
+        this.registerError = false;
+        setTimeout(() => this.registerSuccess = false, 5000); // Ocultar a mensagem após 5 segundos
+      },
+      error => {
+        console.error('Erro ao enviar o formulário', error);
+        this.registerError = true;
+      }
+    );
   }
 
   onReset(): void {
     this.registerForm.reset();
     this.registerError = false;
+    this.registerSuccess = false;
   }
 }
