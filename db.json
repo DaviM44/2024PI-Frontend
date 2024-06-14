@@ -7,22 +7,19 @@
       "senha": "1234567",
       "emailP": "ci@com.com",
       "telefone": "123456789"
+    }
+  ],
+  "salas": [
+    {
+      "id": "0161"
     },
     {
-      "id": "24a2",
-      "nome": "cadada",
-      "emailI": "dadadada@com.com",
-      "senha": "dadadada@com.com",
-      "emailP": "dadadada@com.com",
-      "telefone": "11111111111111111111111111111"
-    },
-    {
-      "id": "5266",
-      "nome": "ADS",
-      "emailI": "da@com.com",
-      "senha": "2132435465786",
-      "emailP": "da@com.com",
-      "telefone": "123456789"
+      "id": "de2c",
+      "tipoSala": "Sala",
+      "capacidade": 21,
+      "andar": 1,
+      "recursos": "pau",
+      "disponibilidade": null
     }
   ]
 }
