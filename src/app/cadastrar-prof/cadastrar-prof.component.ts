@@ -16,11 +16,11 @@ export class CadastrarProfComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      nome: [''],
+      name: [''],
       emailI: [''],
       senha: [''],
       emailP: [''],
-      telefone: [''],
+      tel: [''],
     });
   }
 

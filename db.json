@@ -1,61 +1,46 @@
 {
   "professores": [
+    {},
     {
-      "id": "4716",
-      "nome": "pinto",
-      "emailI": "pinto@com.com",
-      "senha": "1234567",
-      "emailP": "ci@com.com",
-      "telefone": "123456789"
+      "id": "56b1",
+      "name": "Gorila de Costa-Prateada",
+      "emailI": "gorila@guerrila.com",
+      "senha": "c_jF_3tC8!}vR4)",
+      "emailP": "",
+      "tel": "118855779944"
     }
   ],
   "salas": [
+    {},
     {
-      "id": "0161"
-    },
-    {
-      "id": "de2c",
-      "tipoSala": "Sala",
-      "capacidade": 21,
-      "andar": 1,
-      "recursos": "pau",
-      "disponibilidade": null
+      "id": "1379",
+      "type": null,
+      "capacity": 13,
+      "floor": 13,
+      "resources": "13",
+      "availability": true
     }
   ],
   "disciplinas": [
+    {},
     {
-      "id": "32e3"
-    },
-    {
-      "id": "8e79",
-      "disciplineName": "dadad",
-      "startTime": "11:01",
-      "endTime": "22:02",
-      "description": "dawad",
-      "professor": "branco",
-      "objective": "adwad",
-      "syllabus": "dad"
-    },
-    {
-      "id": "2d3a",
-      "disciplineName": "Renato",
-      "startTime": "11:11",
-      "endTime": "22:22",
-      "description": "FODA",
-      "professor": "isso",
-      "objective": "PEWTO",
-      "syllabus": "MENTA"
+      "id": "cb32",
+      "disciplineName": "Macaco",
+      "startTime": "11:22",
+      "endTime": "22:33",
+      "description": "Banana",
+      "professor": "negro",
+      "objective": "Macaco Banana",
+      "syllabus": "Banana"
     }
   ],
   "cursos": [
+    {},
     {
-      "id": "fd56"
-    },
-    {
-      "id": "5393",
-      "nomeCurso": "dada",
-      "semestre": "dada",
-      "periodo": "dada"
+      "id": "f5aa",
+      "nameCourse": "Macacagem",
+      "semester": "sim",
+      "period": "manha"
     }
   ]
 }

@@ -1,7 +1,7 @@
 
 export interface Cursos {
   id: number;
-  nomeCurso: string;
-  semestre: string;
-  periodo: string;
+  nameCourse: string;
+  semester: string;
+  period: string;
 }

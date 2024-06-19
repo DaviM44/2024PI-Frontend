@@ -16,9 +16,9 @@ export class CadastrarCursoComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      nomeCurso: ['', Validators.required],
-      semestre: ['', Validators.required],
-      periodo: ['', Validators.required]
+      nameCourse: ['', Validators.required],
+      semester: ['', Validators.required],
+      period: ['', Validators.required]
     });
   }
 

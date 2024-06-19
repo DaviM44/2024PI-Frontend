@@ -16,11 +16,11 @@ export class CadastrarSalaComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      tipoSala: [],
-      capacidade:[],
-      andar: [],
-      recursos: [],
-      disponibilidade: [],
+      type: [],
+      capacity:[],
+      floor: [],
+      resources: [],
+      availability: [],
     });
   }
 

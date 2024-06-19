@@ -7,17 +7,23 @@
           <h5 class="card-title text-center">Registro de Curso</h5>
           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="mb-3 mt-3">
-              <label for="nomeCurso" class="form-label">Nome do Curso</label>
-              <input type="text" class="form-control" id="nomeCurso" formControlName="nomeCurso" placeholder="Nome do Curso" required>
+              <label for="nameCourse" class="form-label">Nome do Curso</label>
+              <input type="text" class="form-control" id="nameCourse" formControlName="nameCourse" placeholder="Nome do Curso" required>
             </div>
             <div class="mb-3 mt-3">
-              <label for="semestre" class="form-label">Semestre</label>
-              <input type="text" class="form-control" id="semestre" formControlName="semestre" placeholder="Semestre" required>
+              <label for="semester" class="form-label">Semestre</label>
+              <input type="text" class="form-control" id="semester" formControlName="semester" placeholder="Semestre" required>
             </div>
             <div class="mb-3 mt-3">
-              <label for="periodo" class="form-label">Período</label>
-              <input type="text" class="form-control" id="periodo" formControlName="periodo" placeholder="Período" required>
-            </div>
+              <label for="period" class="form-label">Período</label>
+              <select class="form-control" id="period" formControlName="period" required>
+                  <option value="" disabled selected>Selecione o período</option>
+                  <option value="manha">Manhã</option>
+                  <option value="tarde">Tarde</option>
+                  <option value="noite">Noite</option>
+              </select>
+          </div>
+          
             <div *ngIf="registerError" class="alert alert-danger mt-3" role="alert">
               Erro ao registrar o curso!
             </div>

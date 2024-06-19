@@ -15,21 +15,21 @@
               </select>
             </div>
             <div class="mb-3 mt-3">
-              <label for="capacidade" class="form-label">Capacidade</label>
-              <input type="number" class="form-control" id="capacidade" formControlName="capacidade" placeholder="Capacidade" required>
+              <label for="capacity" class="form-label">Capacidade</label>
+              <input type="number" class="form-control" id="capacity" formControlName="capacity" placeholder="Capacidade..." required>
             </div>
             <div class="mb-3 mt-3">
-              <label for="andar" class="form-label">Andar</label>
-              <input type="number" class="form-control" id="andar" formControlName="andar" placeholder="Andar" required>
+              <label for="floor" class="form-label">Andar</label>
+              <input type="number" class="form-control" id="floor" formControlName="floor" placeholder="Andar..." required>
             </div>
             <div class="mb-3 mt-3">
-              <label for="recursos" class="form-label">Recursos</label>
-              <input type="text" class="form-control" id="recursos" formControlName="recursos" placeholder="Recursos disponíveis" required>
+              <label for="resources" class="form-label">Recursos</label>
+              <input type="text" class="form-control" id="resources" formControlName="resources" placeholder="Recursos disponíveis" required>
             </div>
             <div class="mb-3 mt-3">
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="disponibilidade" formControlName="disponibilidade">
-                <label class="form-check-label" for="disponibilidade">Disponibilidade</label>
+                <input type="checkbox" class="form-check-input" id="availability" formControlName="availability">
+                <label class="form-check-label" for="availability">Disponível?</label>
               </div>
             </div>
             <div *ngIf="registerError" class="alert alert-danger mt-3" role="alert">
