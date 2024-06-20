@@ -14,4 +14,8 @@ export class CsalasService {
   registerSala(salaData: any): Observable<any> {
     return this.http.post(this.apiUrl, salaData);
   }
+
+  getSalas(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
 }

@@ -10,6 +10,8 @@ import { CadastrarSalaComponent } from './admin/cadastrar-sala/cadastrar-sala.co
 import { CadastrarDisciplinasComponent } from './admin/cadastrar-disciplinas/cadastrar-disciplinas.component';
 import { CadastrarCursoComponent } from './admin/cadastrar-curso/cadastrar-curso.component';
 import { GerenciarProfessorComponent } from './admin/gerenciar-professor/gerenciar-professor.component';
+import { GerenciarCursosComponent } from './admin/gerenciar-cursos/gerenciar-cursos.component';
+import { GerenciarSalasComponent } from './admin/gerenciar-salas/gerenciar-salas.component';
 
 const routes: Routes = [
   {path: 'login', component: TelaLoginComponent},
@@ -21,6 +23,8 @@ const routes: Routes = [
   {path: 'admin/cadastrar_disc', component: CadastrarDisciplinasComponent},
   {path: 'admin/cadastrar_curso', component: CadastrarCursoComponent},
   {path: 'admin/gerenciar_professor', component: GerenciarProfessorComponent},
+  {path: 'admin/gerenciar_cursos', component: GerenciarCursosComponent},
+  {path: 'admin/gerenciar_salas', component: GerenciarSalasComponent},
 
 
 

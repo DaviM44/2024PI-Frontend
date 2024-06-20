@@ -7,24 +7,27 @@
           <h5 class="card-title text-center">Registro de Sala</h5>
           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="mb-3 mt-3">
-              <label for="tipoSala" class="form-label">Tipo de Sala</label>
-              <select class="form-control" id="tipoSala" formControlName="tipoSala" required>
+              <label for="type" class="form-label">Tipo de Sala</label>
+              <select class="form-control" id="type" formControlName="type" required>
                 <option value="" disabled selected>Selecione o tipo de sala</option>
-                <option value="Sala">Sala</option>
-                <option value="Lab">Laboratório</option>
+                <option value="sala">Sala</option>
+                <option value="lab">Laboratório</option>
               </select>
             </div>
             <div class="mb-3 mt-3">
               <label for="capacity" class="form-label">Capacidade</label>
-              <input type="number" class="form-control" id="capacity" formControlName="capacity" placeholder="Capacidade..." required>
+              <input type="number" class="form-control" id="capacity" formControlName="capacity"
+                placeholder="Capacidade..." required>
             </div>
             <div class="mb-3 mt-3">
               <label for="floor" class="form-label">Andar</label>
-              <input type="number" class="form-control" id="floor" formControlName="floor" placeholder="Andar..." required>
+              <input type="number" class="form-control" id="floor" formControlName="floor" placeholder="Andar..."
+                required>
             </div>
             <div class="mb-3 mt-3">
               <label for="resources" class="form-label">Recursos</label>
-              <input type="text" class="form-control" id="resources" formControlName="resources" placeholder="Recursos disponíveis" required>
+              <input type="text" class="form-control" id="resources" formControlName="resources"
+                placeholder="Recursos disponíveis" required>
             </div>
             <div class="mb-3 mt-3">
               <div class="form-check">

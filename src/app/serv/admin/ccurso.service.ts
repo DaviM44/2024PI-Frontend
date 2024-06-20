@@ -16,4 +16,11 @@ export class CcursoService {
   registerCurso(cursoData: any): Observable<any> {
     return this.http.post(this.apiUrl, cursoData);
   }
-}
+
+    // Método para obter a lista de professores
+    getCursos(): Observable<any[]> {
+      return this.http.get<any[]>(this.apiUrl);
+    }
+  }
+
+

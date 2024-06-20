@@ -25,6 +25,22 @@
       "floor": 13,
       "resources": "13",
       "availability": true
+    },
+    {
+      "id": "48c9",
+      "type": "sala",
+      "capacity": 12312,
+      "floor": 213,
+      "resources": "3",
+      "availability": true
+    },
+    {
+      "id": "852b",
+      "type": "sala",
+      "capacity": 231,
+      "floor": 2,
+      "resources": "123312",
+      "availability": true
     }
   ],
   "disciplinas": [
