@@ -19,6 +19,7 @@ import { CadastrarSalaComponent } from './admin/cadastrar-sala/cadastrar-sala.co
 import { HttpClientModule } from '@angular/common/http';
 import { CadastrarDisciplinasComponent } from './admin/cadastrar-disciplinas/cadastrar-disciplinas.component';
 import { CadastrarCursoComponent } from './admin/cadastrar-curso/cadastrar-curso.component';
+import { GerenciarProfessorComponent } from './admin/gerenciar-professor/gerenciar-professor.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CadastrarCursoComponent } from './admin/cadastrar-curso/cadastrar-curso
     CadastrarProfComponent,
     CadastrarSalaComponent,
     CadastrarDisciplinasComponent,
-    CadastrarCursoComponent
+    CadastrarCursoComponent,
+    GerenciarProfessorComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-10 crud">
+      <h3>Lista de Professores</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email Institucional</th>
+            <th>Email Pessoal</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let professor of professores">
+            <td>{{ professor.id }}</td>
+            <td>{{ professor.name }}</td>
+            <td>{{ professor.emailI }}</td>
+            <td>{{ professor.emailP }}</td>
+            <td>{{ professor.tel }}</td>
+            <td>
+              <button class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></button>
+              <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center"> <!-- Div para centralizar o botão -->
+        <button class="btn btn-success col-md-12" routerLink="/admin/cadastrar_professor">Cadastrar Novo Professor</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,4 +14,9 @@ export class ProfessoresService {
   registerProfessor(professorData: any): Observable<any> {
     return this.http.post(this.apiUrl, professorData);
   }
+
+  // Método para obter a lista de professores
+  getProfessores(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
 }
