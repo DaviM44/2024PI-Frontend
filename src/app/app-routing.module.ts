@@ -5,7 +5,7 @@ import { TelaInicialProfComponent } from './tela-inicial-prof/tela-inicial-prof.
 import { authpGuard } from './guards/authp.guard';
 import { TelaInicialAdmComponent } from './tela-inicial-adm/tela-inicial-adm.component';
 import { TelaLoginAdmComponent } from './tela-login-adm/tela-login-adm.component';
-import { CadastrarProfComponent } from './cadastrar-prof/cadastrar-prof.component';
+import { CadastrarProfComponent } from './admin/cadastrar-prof/cadastrar-prof.component';
 import { CadastrarSalaComponent } from './admin/cadastrar-sala/cadastrar-sala.component';
 import { CadastrarDisciplinasComponent } from './admin/cadastrar-disciplinas/cadastrar-disciplinas.component';
 import { CadastrarCursoComponent } from './admin/cadastrar-curso/cadastrar-curso.component';

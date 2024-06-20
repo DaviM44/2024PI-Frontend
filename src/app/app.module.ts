@@ -14,7 +14,7 @@ import { AuthpService } from './authp.service';
 import { TelaInicialAdmComponent } from './tela-inicial-adm/tela-inicial-adm.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { TelaLoginAdmComponent } from './tela-login-adm/tela-login-adm.component';
-import { CadastrarProfComponent } from './cadastrar-prof/cadastrar-prof.component';
+import { CadastrarProfComponent } from './admin/cadastrar-prof/cadastrar-prof.component';
 import { CadastrarSalaComponent } from './admin/cadastrar-sala/cadastrar-sala.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CadastrarDisciplinasComponent } from './admin/cadastrar-disciplinas/cadastrar-disciplinas.component';

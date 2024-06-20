@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ProfessoresService } from './../serv/admin/professores.service'; // Importar o serviço correto
+import { ProfessoresService } from '../../serv/admin/professores.service'; // Importar o serviço correto
 
 @Component({
   selector: 'app-cadastrar-prof',
