@@ -10,6 +10,7 @@ import { CadastrarSalaComponent } from './admin/cadastrar-sala/cadastrar-sala.co
 import { CadastrarDisciplinasComponent } from './admin/cadastrar-disciplinas/cadastrar-disciplinas.component';
 import { CadastrarCursoComponent } from './admin/cadastrar-curso/cadastrar-curso.component';
 import { GerenciarProfessorComponent } from './admin/gerenciar-professor/gerenciar-professor.component';
+import { GerenciarDisciplinaComponent } from './admin/gerenciar-disciplina/gerenciar-disciplina.component';
 import { GerenciarCursosComponent } from './admin/gerenciar-cursos/gerenciar-cursos.component';
 import { GerenciarSalasComponent } from './admin/gerenciar-salas/gerenciar-salas.component';
 
@@ -17,16 +18,15 @@ const routes: Routes = [
   {path: 'login', component: TelaLoginComponent},
   {path: 'login-adm', component: TelaLoginAdmComponent},
   {path: 'tela-inicial-prof', component: TelaInicialProfComponent},
-  {path: 'admin', component: TelaInicialAdmComponent},
+  {path: '', component: TelaInicialAdmComponent},
   {path: 'admin/cadastrar_professor', component: CadastrarProfComponent},
   {path: 'admin/cadastrar_sala', component: CadastrarSalaComponent},
   {path: 'admin/cadastrar_disc', component: CadastrarDisciplinasComponent},
+  {path: 'admin/gerenciar_disc', component: GerenciarDisciplinaComponent},
   {path: 'admin/cadastrar_curso', component: CadastrarCursoComponent},
   {path: 'admin/gerenciar_professor', component: GerenciarProfessorComponent},
-  {path: 'admin/gerenciar_cursos', component: GerenciarCursosComponent},
-  {path: 'admin/gerenciar_salas', component: GerenciarSalasComponent},
-
-
+  {path: 'admin/gerenciar_curso', component: GerenciarCursosComponent},
+  {path: 'admin/gerenciar_sala', component: GerenciarSalasComponent},
 
 
 ];

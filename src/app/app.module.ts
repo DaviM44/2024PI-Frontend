@@ -20,8 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CadastrarDisciplinasComponent } from './admin/cadastrar-disciplinas/cadastrar-disciplinas.component';
 import { CadastrarCursoComponent } from './admin/cadastrar-curso/cadastrar-curso.component';
 import { GerenciarProfessorComponent } from './admin/gerenciar-professor/gerenciar-professor.component';
-import { GerenciarCursosComponent } from './admin/gerenciar-cursos/gerenciar-cursos.component';
-import { GerenciarSalasComponent } from './admin/gerenciar-salas/gerenciar-salas.component';
+import { GerenciarDisciplinaComponent } from './admin/gerenciar-disciplina/gerenciar-disciplina.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +35,7 @@ import { GerenciarSalasComponent } from './admin/gerenciar-salas/gerenciar-salas
     CadastrarDisciplinasComponent,
     CadastrarCursoComponent,
     GerenciarProfessorComponent,
-    GerenciarCursosComponent,
-    GerenciarSalasComponent
+    GerenciarDisciplinaComponent
   ],
   imports: [
     BrowserModule,

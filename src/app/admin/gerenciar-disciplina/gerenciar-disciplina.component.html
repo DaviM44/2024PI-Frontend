@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+  <div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-10 crud">
+      <h3 class="text-center">Gerenciar Disciplinas</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Horário de Início</th>
+            <th>Horário de Término</th>
+            <th>Professor Responsável</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let disciplina of disciplinas">
+            <td>{{ disciplina.id }}</td>
+            <td>{{ disciplina.disciplineName }}</td>
+            <td>{{ disciplina.startTime }}</td>
+            <td>{{ disciplina.endTime }}</td>
+            <td>{{ disciplina.professor }}</td>
+            <td>
+              <button class="btn btn-primary"><i class="fas fa-pen"></i></button>
+              <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <button class="btn btn-success col-md-12" routerLink="/admin/cadastrar_disc">Cadastrar Nova Disciplina</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">

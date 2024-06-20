@@ -21,5 +21,7 @@ export class CdisciplinaService {
   getProfessores(): Observable<any> {
     return this.http.get<any[]>(this.professoresUrl);
   }
-
+  getDisciplinas(): Observable<any> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
 }
