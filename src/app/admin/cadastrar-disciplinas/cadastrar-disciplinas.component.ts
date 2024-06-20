@@ -1,5 +1,6 @@
+// cadastrar-disciplinas.component.ts
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CdisciplinaService } from '../../serv/admin/cdisciplina.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class CadastrarDisciplinasComponent implements OnInit {
   registerForm!: FormGroup;
   registerError: boolean = false;
   registerSuccess: boolean = false;
+  professores: any[] = [];
 
   constructor(private formBuilder: FormBuilder, private cdisciplinaService: CdisciplinaService) {}
 
@@ -23,7 +25,20 @@ export class CadastrarDisciplinasComponent implements OnInit {
       professor: ['', Validators.required],
       objective: ['', Validators.required],
       syllabus: ['', Validators.required]
-    })
+    });
+
+    this.loadProfessores();
+  }
+
+  private loadProfessores(): void {
+    this.cdisciplinaService.getProfessores().subscribe(
+      data => {
+        this.professores = data || []; // Verifique se a estrutura do JSON está correta
+      },
+      error => {
+        console.error('Erro ao buscar professores', error);
+      }
+    );
   }
 
   get f() { return this.registerForm.controls; }
@@ -36,7 +51,7 @@ export class CadastrarDisciplinasComponent implements OnInit {
 
     this.cdisciplinaService.registerDisciplina(this.registerForm.value).subscribe(
       response => {
-        console.log('Form submitted successfully', response);
+        console.log('Formulário enviado com sucesso', response);
         this.registerSuccess = true;
         this.registerForm.reset();
         this.registerError = false;
@@ -53,15 +68,5 @@ export class CadastrarDisciplinasComponent implements OnInit {
     this.registerForm.reset();
     this.registerError = false;
     this.registerSuccess = false;
-  }
-
-  private endTimeBeforeStartTimeValidator(control: AbstractControl): ValidationErrors | null {
-    const startTime = control.get('startTime')?.value;
-    const endTime = control.get('endTime')?.value;
-
-    if (startTime && endTime && startTime >= endTime) {
-      return { endTimeBeforeStartTime: true };
-    }
-    return null;
   }
 }

@@ -8,7 +8,8 @@
           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="mb-3 mt-3">
               <label for="disciplineName" class="form-label">Nome da Disciplina</label>
-              <input type="text" class="form-control" id="disciplineName" formControlName="disciplineName" placeholder="Insira o nome da disciplina" required>
+              <input type="text" class="form-control" id="disciplineName" formControlName="disciplineName"
+                placeholder="Insira o nome da disciplina" required>
             </div>
             <div class="row">
               <div class="col">
@@ -29,23 +30,27 @@
             </div>
             <div class="mb-3 mt-3">
               <label for="description" class="form-label">Descrição</label>
-              <input type="text" class="form-control" id="description" formControlName="description" placeholder="Insira a descrição" required>
+              <input type="text" class="form-control" id="description" formControlName="description"
+                placeholder="Insira a descrição" required>
             </div>
             <div class="mb-3 mt-3">
               <label for="professor" class="form-label">Professor Responsável</label>
               <select class="form-control" id="professor" formControlName="professor" required>
                 <option value="" disabled selected>Selecione o professor responsável</option>
-                <option value="negro"> Professor 1 </option>
-                <option value="branco"> Professor 2</option>
+                <option *ngFor="let professor of professores" [value]="professor.name">
+                  {{ professor.name }}
+                </option>
               </select>
             </div>
             <div class="mb-3 mt-3">
               <label for="objective" class="form-label">Objetivo</label>
-              <input type="text" class="form-control" id="objective" formControlName="objective" placeholder="Insira o objetivo" required>
+              <input type="text" class="form-control" id="objective" formControlName="objective"
+                placeholder="Insira o objetivo" required>
             </div>
             <div class="mb-3 mt-3">
               <label for="syllabus" class="form-label">Ementa</label>
-              <input type="text" class="form-control" id="syllabus" formControlName="syllabus" placeholder="Insira a ementa" required>
+              <input type="text" class="form-control" id="syllabus" formControlName="syllabus"
+                placeholder="Insira a ementa" required>
             </div>
             <div *ngIf="registerError" class="alert alert-danger mt-3" role="alert">
               Erro ao registrar a disciplina!
