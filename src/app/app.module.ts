@@ -21,6 +21,9 @@ import { CadastrarDisciplinasComponent } from './admin/cadastrar-disciplinas/cad
 import { CadastrarCursoComponent } from './admin/cadastrar-curso/cadastrar-curso.component';
 import { GerenciarProfessorComponent } from './admin/gerenciar-professor/gerenciar-professor.component';
 import { GerenciarDisciplinaComponent } from './admin/gerenciar-disciplina/gerenciar-disciplina.component';
+import { GerenciarSalasComponent } from './admin/gerenciar-salas/gerenciar-salas.component';
+import { GerenciarCursosComponent } from './admin/gerenciar-cursos/gerenciar-cursos.component';
+import { EditarDisciplinasComponent } from './admin/editar-disciplinas/editar-disciplinas.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { GerenciarDisciplinaComponent } from './admin/gerenciar-disciplina/geren
     CadastrarDisciplinasComponent,
     CadastrarCursoComponent,
     GerenciarProfessorComponent,
-    GerenciarDisciplinaComponent
+    GerenciarDisciplinaComponent,
+    GerenciarSalasComponent,
+    GerenciarCursosComponent,
+    EditarDisciplinasComponent
   ],
   imports: [
     BrowserModule,

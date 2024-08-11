@@ -24,4 +24,12 @@ export class CdisciplinaService {
   getDisciplinas(): Observable<any> {
     return this.http.get<any[]>(this.apiUrl);
   }
+
+  getDisciplinaById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  updateDisciplina(disciplina: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${disciplina.id}`, disciplina);
+  }
 }

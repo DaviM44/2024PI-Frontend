@@ -1,18 +1,19 @@
 <app-navbar></app-navbar>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <div class="container">
   <div class="row justify-content-center mt-5">
     <div class="col-lg-10 crud">
-      <h3>Lista de Salas</h3>
+      <h3 class="text-center">Lista de Salas</h3>
       <table class="table table-striped">
         <thead>
           <tr>
             <th>ID</th>
             <th>Tipo</th>
-            <th>Período</th>
-            <th>Semestre</th>
-            <th>Semestre</th>
+            <th>Capacidade Maxima</th>
+            <th>Andar</th>
+            <th>Disponibilidade</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -24,14 +25,14 @@
             <td>{{ sala.floor }}</td>
             <td>{{ sala.availability }}</td>
             <td>
-              <button class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></button>
+              <button class="btn btn-primary"><i class="fas fa-pen"></i></button>
               <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
             </td>
           </tr>
         </tbody>
       </table>
       <div class="text-center"> <!-- Div para centralizar o botão -->
-        <button class="btn btn-success col-md-12" routerLink="/admin/cadastrar_professor">Cadastrar Nova Sala</button>
+        <button class="btn btn-success col-md-12" routerLink="/admin/cadastrar_sala">Cadastrar Nova Sala</button>
       </div>
     </div>
   </div>

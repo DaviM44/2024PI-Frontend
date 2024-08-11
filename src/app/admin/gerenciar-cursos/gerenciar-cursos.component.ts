@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CcursoService } from '../../serv/admin/ccurso.service';
 
+
 @Component({
   selector: 'app-gerenciar-cursos',
   templateUrl: './gerenciar-cursos.component.html',

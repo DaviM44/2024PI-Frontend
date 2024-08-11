@@ -8,7 +8,7 @@
           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="mb-3 mt-3">
               <label for="type" class="form-label">Tipo de Sala</label>
-              <select class="form-control" id="type" formControlName="type" required>
+              <select class="form-control" id="type" formControlName="type" placeholder="Tipo de Sala" required>
                 <option value="" disabled selected>Selecione o tipo de sala</option>
                 <option value="sala">Sala</option>
                 <option value="lab">Laboratório</option>
@@ -17,7 +17,7 @@
             <div class="mb-3 mt-3">
               <label for="capacity" class="form-label">Capacidade</label>
               <input type="number" class="form-control" id="capacity" formControlName="capacity"
-                placeholder="Capacidade..." required>
+                placeholder="Capacidade de Alunos" required>
             </div>
             <div class="mb-3 mt-3">
               <label for="floor" class="form-label">Andar</label>
@@ -30,11 +30,14 @@
                 placeholder="Recursos disponíveis" required>
             </div>
             <div class="mb-3 mt-3">
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="availability" formControlName="availability">
-                <label class="form-check-label" for="availability">Disponível?</label>
-              </div>
+             <label for="type" class="form-label">Disponibilidade Da Sala</label>
+              <select class="form-control" id="availability" formControlName="availability" placeholder="Disponibilidade Da Sala" required>
+                <option value="" disabled selected>Selecione a disponibilidade da sala</option>
+                <option value="Disponível">Disponível</option>
+                <option value="Indisponivel">Indisponivel</option>
+              </select>
             </div>
+
             <div *ngIf="registerError" class="alert alert-danger mt-3" role="alert">
               Erro ao registrar a sala!
             </div>
