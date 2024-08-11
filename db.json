@@ -69,28 +69,10 @@
   ],
   "disciplinas": [
     {
-      "id": "cb32",
-      "disciplineName": "Macaco",
-      "startTime": "11:22",
-      "endTime": "22:33",
-      "professor": "uepa"
-    },
-    {
-      "id": "99d0",
-      "disciplineName": "WQD",
-      "startTime": "12:04",
-      "endTime": "05:25",
-      "professor": "adada"
-    },
-    {
-      "id": "e40d",
-      "disciplineName": "ddsf",
-      "startTime": "11:11",
-      "endTime": "22:22",
-      "description": "ewfwef",
-      "professor": "Gorila de Costa-Prateada",
-      "objective": "ffw",
-      "syllabus": "ff"
+      "id": "51a2",
+      "disciplineName": "Engenharia 2",
+      "hour": "1234",
+      "professor": "Gorila de Costa-Prateada"
     }
   ],
   "cursos": [

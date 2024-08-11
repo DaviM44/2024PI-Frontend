@@ -19,9 +19,8 @@ export class CadastrarDisciplinasComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       disciplineName: ['', Validators.required],
-      startTime: ['', Validators.required],
-      endTime: ['', Validators.required],
       description: ['', Validators.required],
+      hour: ['', Validators.required],
       professor: ['', Validators.required],
       objective: ['', Validators.required],
       syllabus: ['', Validators.required]

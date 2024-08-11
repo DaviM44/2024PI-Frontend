@@ -11,22 +11,10 @@
               <input type="text" class="form-control" id="disciplineName" formControlName="disciplineName"
                 placeholder="Insira o nome da disciplina" required>
             </div>
-            <div class="row">
-              <div class="col">
-                <div class="mb-3 mt-3">
-                  <label for="startTime" class="form-label">Horário de Início</label>
-                  <input type="time" class="form-control" id="startTime" formControlName="startTime" required>
-                </div>
-              </div>
-              <div class="col">
-                <div class="mb-3 mt-3">
-                  <label for="endTime" class="form-label">Horário de Término</label>
-                  <input type="time" class="form-control" id="endTime" formControlName="endTime" required>
-                  <div *ngIf="registerForm.hasError('endTimeBeforeStartTime')" class="invalid-feedback">
-                    O horário de término não pode ser antes do horário de início.
-                  </div>
-                </div>
-              </div>
+            <div class="mb-3 mt-3">
+              <label for="hour" class="form-label">Carga Horária</label>
+              <input type="text" class="form-control" id="hour" formControlName="hour"
+                placeholder="Insira a carga horária em aulas" required>
             </div>
             <div class="mb-3 mt-3">
               <label for="description" class="form-label">Descrição</label>

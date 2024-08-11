@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-  <div class="container">
+<div class="container">
   <div class="row justify-content-center mt-5">
     <div class="col-lg-10 crud">
       <h3 class="text-center">Lista de Disciplinas</h3>
@@ -8,8 +8,7 @@
           <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Horário de Início</th>
-            <th>Horário de Término</th>
+            <th>Carga horária</th>
             <th>Professor Responsável</th>
             <th>Ações</th>
           </tr>
@@ -18,14 +17,16 @@
           <tr *ngFor="let disciplina of disciplinas">
             <td>{{ disciplina.id }}</td>
             <td>{{ disciplina.disciplineName }}</td>
-            <td>{{ disciplina.startTime }}</td>
-            <td>{{ disciplina.endTime }}</td>
+            <td>{{ disciplina.hour }}</td>
             <td>{{ disciplina.professor }}</td>
             <td>
-              <button class="btn btn-primary" [routerLink]="['/admin/editar_disc', disciplina.id]" aria-label="Editar Disciplina">
+              <button class="btn btn-primary" [routerLink]="['/admin/editar_disc', disciplina.id]"
+                aria-label="Editar Disciplina">
                 <i class="fas fa-pen"></i>
               </button>
-              <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+              <button class="btn btn-danger" [disabled]="loading" (click)="excluirDisciplina(disciplina.id)">
+                <i class="fas fa-trash"></i>
+              </button>
             </td>
           </tr>
         </tbody>

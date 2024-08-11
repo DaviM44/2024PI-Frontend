@@ -32,4 +32,10 @@ export class CdisciplinaService {
   updateDisciplina(disciplina: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${disciplina.id}`, disciplina);
   }
+
+  // cdisciplina.service.ts
+  deleteDisciplina(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';  // Importa o Router
 import { CdisciplinaService } from '../../serv/admin/cdisciplina.service';
 
 @Component({
@@ -9,19 +9,18 @@ import { CdisciplinaService } from '../../serv/admin/cdisciplina.service';
   styleUrl: './editar-disciplinas.component.css'
 })
 export class EditarDisciplinasComponent implements OnInit {
-  professores: any[] = [];
   disciplinaForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
+    private router: Router,  // Injeta o Router
     private cdisciplinaService: CdisciplinaService
   ) {
     this.disciplinaForm = this.fb.group({
       id: [{ value: '', disabled: true }],
       disciplineName: [''],
-      startTime: [''],
-      endTime: [''],
+      hour: [''],
       professor: ['']
     });
   }
@@ -50,8 +49,7 @@ export class EditarDisciplinasComponent implements OnInit {
       this.cdisciplinaService.updateDisciplina(disciplinaAtualizada).subscribe(
         () => {
           alert('Disciplina atualizada com sucesso!');
-          // Exemplo de redirecionamento
-          
+          this.router.navigate(['/admin/gerenciar_disc']);  // Redireciona após salvar
         },
         error => {
           console.error('Erro ao atualizar disciplina: ', error);
@@ -59,4 +57,5 @@ export class EditarDisciplinasComponent implements OnInit {
       );
     }
   }
+  
 }
