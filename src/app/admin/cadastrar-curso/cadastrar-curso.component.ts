@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CcursoService } from '../../serv/admin/ccurso.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-curso',
@@ -11,14 +12,17 @@ export class CadastrarCursoComponent implements OnInit {
   registerForm!: FormGroup;
   registerError: boolean = false;
   registerSuccess: boolean = false;
-  router: any;
 
-  constructor(private formBuilder: FormBuilder, private ccursoService: CcursoService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private ccursoService: CcursoService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      nameCourse: ['', Validators.required],
-      semester: ['', Validators.required],
+      nameCourse: ['', [Validators.required, Validators.pattern('^[A-Za-zÀ-ÿ\\s]+$')]], // Letras e espaços
+      semester: ['', [Validators.required, Validators.pattern('^[0-9]+$')]], // Números apenas
       period: ['', Validators.required]
     });
   }
@@ -33,12 +37,12 @@ export class CadastrarCursoComponent implements OnInit {
 
     this.ccursoService.registerCurso(this.registerForm.value).subscribe(
       response => {
-        console.log('Form submitted successfully', response);
+        console.log('Formulário enviado com sucesso', response);
         this.registerSuccess = true;
-        this.router.navigate(['/admin/gerenciar_curso']);
         this.registerForm.reset();
         this.registerError = false;
         setTimeout(() => this.registerSuccess = false, 5000);
+        this.router.navigate(['/admin/gerenciar_curso']);
       },
       error => {
         console.error('Erro ao enviar o formulário', error);

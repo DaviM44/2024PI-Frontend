@@ -1,4 +1,3 @@
-// cadastrar-disciplinas.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CdisciplinaService } from '../../serv/admin/cdisciplina.service';
@@ -18,12 +17,12 @@ export class CadastrarDisciplinasComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      disciplineName: ['', Validators.required],
-      description: ['', Validators.required],
-      hour: ['', Validators.required],
+      disciplineName: ['', [Validators.required, Validators.pattern('^[A-Za-zÀ-ÿ\\s]+$')]], // Letras e espaços
+      description: ['', [Validators.required, Validators.pattern('^[A-Za-zÀ-ÿ\\s]+$')]], // Letras e espaços
+      hour: ['', [Validators.required, Validators.pattern('^[0-9]+$')]], // Números apenas
       professor: ['', Validators.required],
-      objective: ['', Validators.required],
-      syllabus: ['', Validators.required]
+      objective: ['', [Validators.required, Validators.pattern('^[A-Za-zÀ-ÿ\\s]+$')]], // Letras e espaços
+      syllabus: ['', [Validators.required, Validators.pattern('^[A-Za-zÀ-ÿ\\s]+$')]] // Letras e espaços
     });
 
     this.loadProfessores();
@@ -45,6 +44,7 @@ export class CadastrarDisciplinasComponent implements OnInit {
   onSubmit(): void {
     if (this.registerForm.invalid) {
       this.registerError = true;
+      this.registerForm.markAllAsTouched(); // Marca todos os campos como tocados para exibir os erros
       return;
     }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CsalasService } from '../../serv/admin/csalas.service';
 
 @Component({
@@ -10,17 +10,20 @@ import { CsalasService } from '../../serv/admin/csalas.service';
 export class CadastrarSalaComponent implements OnInit {
   registerForm!: FormGroup;
   registerError: boolean = false;
-  registerSuccess: boolean = false; // Nova variável para controlar a mensagem de sucesso
+  registerSuccess: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private csalasService: CsalasService) {} // Injeção do serviço
+  constructor(
+    private formBuilder: FormBuilder,
+    private csalasService: CsalasService
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      type: [],
-      capacity:[],
-      floor: [],
-      resources: [],
-      availability: [],
+      type: ['', Validators.required],
+      capacity: ['', [Validators.required, Validators.min(1)]], // Capacidade deve ser um número positivo
+      floor: ['', [Validators.required, Validators.min(0)]], // Andar deve ser um número não-negativo
+      resources: ['', Validators.required],
+      availability: ['', Validators.required]
     });
   }
 
@@ -32,14 +35,13 @@ export class CadastrarSalaComponent implements OnInit {
       return;
     }
 
-    // Usar o serviço para enviar os dados para o JSON server
     this.csalasService.registerSala(this.registerForm.value).subscribe(
       response => {
-        console.log('Form submitted successfully', response);
-        this.registerSuccess = true; // Exibir mensagem de sucesso
+        console.log('Formulário enviado com sucesso', response);
+        this.registerSuccess = true;
         this.registerForm.reset();
         this.registerError = false;
-        setTimeout(() => this.registerSuccess = false, 5000); // Ocultar a mensagem após 5 segundos
+        setTimeout(() => this.registerSuccess = false, 5000);
       },
       error => {
         console.error('Erro ao enviar o formulário', error);
