@@ -15,6 +15,8 @@ import { GerenciarCursosComponent } from './admin/gerenciar-cursos/gerenciar-cur
 import { GerenciarSalasComponent } from './admin/gerenciar-salas/gerenciar-salas.component';
 import { EditarDisciplinasComponent } from './admin/editar-disciplinas/editar-disciplinas.component';
 import { EditarProfessorComponent } from './admin/editar-professor/editar-professor.component';
+import { EditarCursoComponent } from './admin/editar-curso/editar-curso.component';
+import { EditarSalasComponent } from './admin/editar-salas/editar-salas.component';
 
 const routes: Routes = [
   {path: 'login', component: TelaLoginComponent},
@@ -31,6 +33,8 @@ const routes: Routes = [
   {path: 'admin/gerenciar_sala', component: GerenciarSalasComponent},
   {path: 'admin/editar_disc/:id', component: EditarDisciplinasComponent},
   {path: 'admin/editar_professores/:id', component: EditarProfessorComponent},
+  {path: 'admin/editar_curso/:id', component: EditarCursoComponent},
+  {path: 'admin/editar_sala/:id', component: EditarSalasComponent},
 
 
 ];

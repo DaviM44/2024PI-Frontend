@@ -2,91 +2,69 @@
   "professores": [
     {
       "id": "56b1",
-      "name": "Gorila de Costa-Prateada 2",
+      "name": "Gorila de Costa-Prateada",
       "emailI": "gorila@guerrila.com",
       "senha": "c_jF_3tC8!}vR4)",
-      "emailP": "da",
-      "tel": "118855779944"
-    },
-    {
-      "id": "cc53",
-      "name": "Mico-Leão Dourado",
-      "emailI": "mico@liao.com",
-      "senha": "qwerty",
       "emailP": "",
-      "tel": "1222222222222222222222"
-    },
-    {
-      "id": "8f77",
-      "name": "Camarão Pipi",
-      "emailI": "leandra.lima@fatec.sp.gov.br",
-      "senha": "123478",
-      "emailP": "leandra.lima@fatec.sp.gov.br",
-      "tel": "123456789"
+      "tel": "118855779944"
     }
   ],
   "salas": [
     {
       "id": "1379",
-      "type": null,
+      "type": "lab",
       "capacity": 13,
       "floor": 13,
       "resources": "13",
-      "availability": true
-    },
-    {
-      "id": "48c9",
-      "type": "sala",
-      "capacity": 12312,
-      "floor": 213,
-      "resources": "3",
-      "availability": true
-    },
-    {
-      "id": "852b",
-      "type": "sala",
-      "capacity": 231,
-      "floor": 2,
-      "resources": "123312",
-      "availability": true
-    },
-    {
-      "id": "248f",
-      "type": "lab",
-      "capacity": 15,
-      "floor": 2,
-      "resources": "ergfd",
-      "availability": "Disp"
-    },
-    {
-      "id": "fd66",
-      "type": "lab",
-      "capacity": 23,
-      "floor": 33,
-      "resources": "ee",
-      "availability": "Indisponivel"
+      "availability": "Disponível"
     }
   ],
   "disciplinas": [
     {
-      "id": "51a2",
-      "disciplineName": "Engenharia 2",
-      "hour": "1234",
-      "professor": "Gorila de Costa-Prateada"
+      "id": "99d0",
+      "disciplineName": "WQD",
+      "startTime": "12:04",
+      "endTime": "05:25",
+      "description": "3FS",
+      "professor": "56b1",
+      "objective": "FS",
+      "syllabus": "FFF"
+    },
+    {
+      "id": "e40d",
+      "disciplineName": "ddsf",
+      "startTime": "11:11",
+      "endTime": "22:22",
+      "description": "ewfwef",
+      "professor": "Gorila de Costa-Prateada",
+      "objective": "ffw",
+      "syllabus": "ff"
     }
   ],
   "cursos": [
     {
       "id": "f5aa",
       "nameCourse": "Macacagem",
-      "semester": "sim",
+      "semester": "5",
       "period": "manha"
     },
     {
-      "id": "2367",
-      "nameCourse": "2345",
-      "semester": "234",
-      "period": "tarde"
+      "nameCourse": "Técnicas de Empilhadeira",
+      "semester": "6",
+      "period": "tarde",
+      "id": "vYrSQbl"
+    },
+    {
+      "nameCourse": "Macacagem",
+      "semester": "2",
+      "period": "tarde",
+      "id": "nOl0h3h"
+    },
+    {
+      "nameCourse": "pilotagem",
+      "semester": "2",
+      "period": "tarde",
+      "id": "cDrMcoO"
     }
   ]
 }

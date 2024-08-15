@@ -21,6 +21,19 @@ export class CcursoService {
     getCursos(): Observable<any[]> {
       return this.http.get<any[]>(this.apiUrl);
     }
+
+    getCursoById(id: string): Observable<any> {
+      return this.http.get<any>(`${this.apiUrl}/${id}`);
+    }
+  
+    updateCurso(curso: any): Observable<any> {
+      return this.http.put<any>(`${this.apiUrl}/${curso.id}`, curso);
+    }
+  
+  
+    deleteCurso(id: number): Observable<any> {
+      return this.http.delete(`${this.apiUrl}/${id}`);
+    }
   }
 
 

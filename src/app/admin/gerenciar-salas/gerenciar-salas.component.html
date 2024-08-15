@@ -18,15 +18,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let sala of salas">
+          <tr *ngFor="let sala of sala">
             <td>{{ sala.id }}</td>
             <td>{{ sala.type }}</td>
             <td>{{ sala.capacity }}</td>
             <td>{{ sala.floor }}</td>
             <td>{{ sala.availability }}</td>
             <td>
-              <button class="btn btn-primary"><i class="fas fa-pen"></i></button>
-              <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+              <button class="btn btn-primary" [routerLink]="['/admin/editar_sala', sala.id]"
+                aria-label="Editar Salas">
+                <i class="fas fa-pen"></i>
+              </button>
+              <button class="btn btn-danger" [disabled]="loading" (click)="excluirSalas(sala.id)">
+                <i class="fas fa-trash"></i>
+              </button>
             </td>
           </tr>
         </tbody>

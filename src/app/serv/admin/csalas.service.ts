@@ -18,4 +18,16 @@ export class CsalasService {
   getSalas(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+
+  getSalaById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  updateSala(sala: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${sala.id}`, sala);
+  }
+
+  deleteSala(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
 }

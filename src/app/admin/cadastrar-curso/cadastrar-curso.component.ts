@@ -11,6 +11,7 @@ export class CadastrarCursoComponent implements OnInit {
   registerForm!: FormGroup;
   registerError: boolean = false;
   registerSuccess: boolean = false;
+  router: any;
 
   constructor(private formBuilder: FormBuilder, private ccursoService: CcursoService) {}
 
@@ -34,6 +35,7 @@ export class CadastrarCursoComponent implements OnInit {
       response => {
         console.log('Form submitted successfully', response);
         this.registerSuccess = true;
+        this.router.navigate(['/admin/gerenciar_curso']);
         this.registerForm.reset();
         this.registerError = false;
         setTimeout(() => this.registerSuccess = false, 5000);
