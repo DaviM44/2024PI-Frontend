@@ -1,0 +1,54 @@
+<div class="container mt-4">
+    <h2>Cadastrar Horários</h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="curso">Curso</label>
+            <select id="curso" formControlName="curso" (change)="onCursoChange($event)">
+                <option *ngFor="let curso of cursos" [value]="curso.id">{{ curso.nameCourse }}</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="cursoId">ID do Curso</label>
+            <input id="cursoId" formControlName="cursoId" readonly />
+        </div>
+
+        <div>
+            <label for="dia">Dia</label>
+            <select id="dia" formControlName="dia">
+                <option *ngFor="let dia of diasSemana" [value]="dia">{{ dia }}</option>
+            </select>
+        </div>
+
+        <div formArrayName="aulas">
+            <div *ngFor="let aula of aulas.controls; let i = index" [formGroupName]="i">
+                <div class="row">
+                    <div class="col">
+                        <hr>
+                    </div>
+                    <div class="col-auto">==</div>
+                    <div class="col">
+                        <hr>
+                    </div>
+                </div>
+                <label for="materia-{{i}}">Matéria:</label>
+                <select id="materia-{{i}}" formControlName="materia">
+                    <option *ngFor="let disciplina of disciplinas" [value]="disciplina.disciplineName">{{
+                        disciplina.disciplineName }}</option>
+                </select>
+
+                <label for="professor">Professor da {{ i + 1 }}° Aula</label>
+                <select id="professor" formControlName="professor">
+                    <option *ngFor="let professor of professores" [value]="professor.id">{{ professor.name }}</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+
+
+
+</div>

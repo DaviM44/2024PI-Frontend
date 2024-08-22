@@ -27,6 +27,7 @@ import { GerenciarCursosComponent } from './admin/gerenciar-cursos/gerenciar-cur
 import { EditarDisciplinasComponent } from './admin/editar-disciplinas/editar-disciplinas.component';
 import { EditarProfessorComponent } from './admin/editar-professor/editar-professor.component';
 import { VisualizacaoHorariosComponent } from './admin/visualizacao-horarios/visualizacao-horarios.component';
+import { CriarGradeComponent } from './admin/criar-grade/criar-grade.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { VisualizacaoHorariosComponent } from './admin/visualizacao-horarios/vis
     GerenciarCursosComponent,
     EditarDisciplinasComponent,
     EditarProfessorComponent,
-    VisualizacaoHorariosComponent
+    VisualizacaoHorariosComponent,
+    CriarGradeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,59 +1,40 @@
 <div class="container mt-4">
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link" [ngClass]="{'active': selectedAndar === 'terreo'}" (click)="selectAndar('terreo')" href="#">Térreo</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [ngClass]="{'active': selectedAndar === 'primeiro'}" (click)="selectAndar('primeiro')" href="#">1° Andar</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [ngClass]="{'active': selectedAndar === 'segundo'}" (click)="selectAndar('segundo')" href="#">2° Andar</a>
-    </li>
-  </ul>
-
-  <div class="btn-group dropright mt-3 mr-2">
+  <!-- Dropdown para selecionar turma -->
+  <div class="btn-group mt-3">
     <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      Salas de Aula
+      Selecione a Turma
     </button>
     <ul class="dropdown-menu">
-      <li *ngFor="let sala of salasAula">
-        <a class="dropdown-item" (click)="selectedSala = sala">{{ sala }}</a>
+      <li>
+        <a class="dropdown-item" (click)="selectTurma('turma1')">Turma 1</a>
       </li>
+      <li>
+        <a class="dropdown-item" (click)="selectTurma('turma2')">Turma 2</a>
+      </li>
+      <!-- Adicione mais turmas conforme necessário -->
     </ul>
   </div>
 
-  <div class="btn-group dropright mt-3 mr-3">
-    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      Laboratórios de Informática
-    </button>
-    <ul class="dropdown-menu">
-      <li *ngFor="let laboratorio of laboratorios">
-        <a class="dropdown-item" (click)="selectedLaboratorio = laboratorio">{{ laboratorio }}</a>
-      </li>
-    </ul>
-  </div>
-
+  <!-- Tabela da Grade de Horários -->
   <table class="table table-bordered mt-4">
     <thead>
       <tr>
-        <th></th>
+        <th>Aula</th>
         <th *ngFor="let dia of diasSemana">{{ dia }}</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let slot of getSlots()">
-        <ng-container *ngIf="!slot.isInterval">
-          <td>{{ slot.aula }}</td>
-          <td *ngFor="let dia of diasSemana">
-            <div [ngClass]="getSlotClass(dia, slot.aula)" class="slot">
-              <span class="disciplina">{{ data[dia]?.find(s => s.aula === slot.aula)?.disciplina || '' }}</span>
-              <span class="professor">{{ data[dia]?.find(s => s.aula === slot.aula)?.professor || '' }}</span>
-            </div>
-          </td>
-        </ng-container>
-        <ng-container *ngIf="slot.isInterval">
-          <td colspan="7" class="interval"></td>
-        </ng-container>
+      <tr *ngFor="let aula of [1, 2, 3, 4, 5, 6]">
+        <td>{{ aula }}ª Aula</td>
+        <td *ngFor="let dia of diasSemana">
+          <div *ngIf="getAulas(dia)?.[aula - 1]; else emptySlot">
+            <strong>{{ getAulas(dia)?.[aula - 1].materia }}</strong><br>
+            <small>{{ getAulas(dia)?.[aula - 1].professor }}</small>
+          </div>
+          <ng-template #emptySlot>
+            <div class="slot-empty">-</div>
+          </ng-template>
+        </td>
       </tr>
     </tbody>
   </table>

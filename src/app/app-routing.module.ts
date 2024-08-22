@@ -11,6 +11,7 @@ import { CadastrarDisciplinasComponent } from './admin/cadastrar-disciplinas/cad
 import { CadastrarCursoComponent } from './admin/cadastrar-curso/cadastrar-curso.component';
 import { GerenciarProfessorComponent } from './admin/gerenciar-professor/gerenciar-professor.component';
 import { VisualizacaoHorariosComponent } from './admin/visualizacao-horarios/visualizacao-horarios.component';
+import { CriarGradeComponent } from './admin/criar-grade/criar-grade.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path: 'admin/cadastrar_disc', component: CadastrarDisciplinasComponent},
   {path: 'admin/cadastrar_curso', component: CadastrarCursoComponent},
   {path: 'admin/gerenciar_professor', component: GerenciarProfessorComponent},
-  {path: 'admin/visualizacao-horarios', component: VisualizacaoHorariosComponent},
+  {path: '', component: VisualizacaoHorariosComponent},
+  {path: 'd', component: CriarGradeComponent}
   
 
 ];

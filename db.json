@@ -23,6 +23,38 @@
       "senha": "123478",
       "emailP": "leandra.lima@fatec.sp.gov.br",
       "tel": "123456789"
+    },
+    {
+      "id": "9a1b",
+      "name": "Onça-Pintada",
+      "emailI": "onca@wildcats.com",
+      "senha": "wild1234",
+      "emailP": "onca@wildcats.com",
+      "tel": "987654321"
+    },
+    {
+      "id": "2b4d",
+      "name": "Arara Azul",
+      "emailI": "arara@exoticbirds.com",
+      "senha": "bluebird1!",
+      "emailP": "arara@exoticbirds.com",
+      "tel": "1122334455"
+    },
+    {
+      "id": "4e6f",
+      "name": "Tigre Branco",
+      "emailI": "tigre@bigcats.org",
+      "senha": "stripes_2024",
+      "emailP": "tigre@bigcats.org",
+      "tel": "5566778899"
+    },
+    {
+      "id": "7c8d",
+      "name": "Pinguim Imperador",
+      "emailI": "pinguim@antarctica.edu",
+      "senha": "coldwater!2024",
+      "emailP": "pinguim@antarctica.edu",
+      "tel": "4433221100"
     }
   ],
   "salas": [
@@ -72,7 +104,49 @@
       "id": "51a2",
       "disciplineName": "Engenharia 2",
       "hour": "1234",
-      "professor": "Gorila de Costa-Prateada"
+      "professor": "Gorila de Costa-Prateada 2"
+    },
+    {
+      "id": "62b3",
+      "disciplineName": "Biologia Evolutiva",
+      "hour": "0912",
+      "professor": "Mico-Leão Dourado"
+    },
+    {
+      "id": "73c4",
+      "disciplineName": "Matemática Avançada",
+      "hour": "1415",
+      "professor": "Camarão Pipi"
+    },
+    {
+      "id": "84d5",
+      "disciplineName": "Ecologia Tropical",
+      "hour": "1617",
+      "professor": "Onça-Pintada"
+    },
+    {
+      "id": "95e6",
+      "disciplineName": "Anatomia Comparada",
+      "hour": "1820",
+      "professor": "Arara Azul"
+    },
+    {
+      "id": "a6f7",
+      "disciplineName": "Genética de Populações",
+      "hour": "2021",
+      "professor": "Tigre Branco"
+    },
+    {
+      "id": "b8g8",
+      "disciplineName": "Comportamento Animal",
+      "hour": "2223",
+      "professor": "Pinguim Imperador"
+    },
+    {
+      "id": "c9h9",
+      "disciplineName": "Microbiologia Ambiental",
+      "hour": "2425",
+      "professor": "Gorila de Costa-Prateada 2"
     }
   ],
   "cursos": [
@@ -87,21 +161,72 @@
       "nameCourse": "2345",
       "semester": "234",
       "period": "tarde"
-    }
-  ],
-
-  "horarios": [
-    {
-      "dia": "Segunda",
-      "aula": "1ª Aula",
-      "disciplina": "Intelig.Corp.e modelos de Neg.na era digital",
-      "professor": "Ana Claudia"
     },
     {
-      "dia": "Terça",
-      "aula": "1ª Aula",
-      "disciplina": "Engenharia 2",
-      "professor": "Gorila de Costa-Prateada"
+      "id": "a1b2",
+      "nameCourse": "Engenharia Ambiental",
+      "semester": "2024-1",
+      "period": "manha"
+    },
+    {
+      "id": "c3d4",
+      "nameCourse": "Biologia Marinha",
+      "semester": "2024-2",
+      "period": "tarde"
+    },
+    {
+      "id": "e5f6",
+      "nameCourse": "Tecnologia da Informação",
+      "semester": "2024-1",
+      "period": "noite"
+    },
+    {
+      "id": "g7h8",
+      "nameCourse": "Ecologia e Conservação",
+      "semester": "2024-2",
+      "period": "manha"
+    },
+    {
+      "id": "i9j0",
+      "nameCourse": "Matemática Aplicada",
+      "semester": "2024-1",
+      "period": "tarde"
+    },
+    {
+      "id": "k1l2",
+      "nameCourse": "Sistemas de Informação",
+      "semester": "2024-2",
+      "period": "noite"
     }
-  ]
+  ],
+  "turmas": {
+    "curso": "i9j0",
+    "dia": "Segunda-feira",
+    "aulas": [
+      {
+        "materia": "Comportamento Animal",
+        "professor": "cc53"
+      },
+      {
+        "materia": "Anatomia Comparada",
+        "professor": "8f77"
+      },
+      {
+        "materia": "Comportamento Animal",
+        "professor": "56b1"
+      },
+      {
+        "materia": "",
+        "professor": ""
+      },
+      {
+        "materia": "",
+        "professor": ""
+      },
+      {
+        "materia": "",
+        "professor": ""
+      }
+    ]
+  }
 }
