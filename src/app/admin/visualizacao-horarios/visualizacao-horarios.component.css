@@ -1,0 +1,69 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  border: 1px solid #000000;
+  padding: 8px;
+  text-align: center;
+}
+
+.table th {
+  background-color: rgb(138, 6, 6);
+  color: white;
+}
+
+.slot {
+  height: 74px;
+  background-color: white; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.interval-row {
+  height: 10px; 
+}
+
+.interval {
+  height: 100%;
+  background-color: rgb(138, 6, 6); 
+  border: none;
+}
+
+.nav-tabs .nav-link {
+  color: #000000; /* Define a cor das letras do nav-bar como preto */
+}
+
+.nav-tabs .nav-link.active {
+  border-color: #00D8E8;
+  color: #000000;
+  background-color: #00D8E8;
+  box-shadow: 0px 4px 2px -2px rgba(0, 0, 0, 0.5); /* Adiciona sombra na parte inferior */
+}
+
+.nav-tabs {
+  font-family: "Roboto";
+  font-style: normal;
+}
+
+/* Estilo para o nome da disciplina */
+.slot .disciplina {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+/* Estilo para o nome do professor */
+.slot .professor {
+  font-family: "Roboto", sans-serif;
+  font-weight: 600; /* Semi-bold */
+  font-size: 15px;
+}

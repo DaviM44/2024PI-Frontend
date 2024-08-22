@@ -1,0 +1,60 @@
+<div class="container mt-4">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active': selectedAndar === 'terreo'}" (click)="selectAndar('terreo')" href="#">Térreo</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active': selectedAndar === 'primeiro'}" (click)="selectAndar('primeiro')" href="#">1° Andar</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active': selectedAndar === 'segundo'}" (click)="selectAndar('segundo')" href="#">2° Andar</a>
+    </li>
+  </ul>
+
+  <div class="btn-group dropright mt-3 mr-2">
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Salas de Aula
+    </button>
+    <ul class="dropdown-menu">
+      <li *ngFor="let sala of salasAula">
+        <a class="dropdown-item" (click)="selectedSala = sala">{{ sala }}</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="btn-group dropright mt-3 mr-3">
+    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Laboratórios de Informática
+    </button>
+    <ul class="dropdown-menu">
+      <li *ngFor="let laboratorio of laboratorios">
+        <a class="dropdown-item" (click)="selectedLaboratorio = laboratorio">{{ laboratorio }}</a>
+      </li>
+    </ul>
+  </div>
+
+  <table class="table table-bordered mt-4">
+    <thead>
+      <tr>
+        <th></th>
+        <th *ngFor="let dia of diasSemana">{{ dia }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let slot of getSlots()">
+        <ng-container *ngIf="!slot.isInterval">
+          <td>{{ slot.aula }}</td>
+          <td *ngFor="let dia of diasSemana">
+            <div [ngClass]="getSlotClass(dia, slot.aula)" class="slot">
+              <span class="disciplina">{{ data[dia]?.find(s => s.aula === slot.aula)?.disciplina || '' }}</span>
+              <span class="professor">{{ data[dia]?.find(s => s.aula === slot.aula)?.professor || '' }}</span>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container *ngIf="slot.isInterval">
+          <td colspan="7" class="interval"></td>
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+</div>

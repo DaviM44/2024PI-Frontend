@@ -88,5 +88,20 @@
       "semester": "234",
       "period": "tarde"
     }
+  ],
+
+  "horarios": [
+    {
+      "dia": "Segunda",
+      "aula": "1ª Aula",
+      "disciplina": "Intelig.Corp.e modelos de Neg.na era digital",
+      "professor": "Ana Claudia"
+    },
+    {
+      "dia": "Terça",
+      "aula": "1ª Aula",
+      "disciplina": "Engenharia 2",
+      "professor": "Gorila de Costa-Prateada"
+    }
   ]
 }

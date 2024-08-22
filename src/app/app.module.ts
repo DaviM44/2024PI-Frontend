@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +26,7 @@ import { GerenciarSalasComponent } from './admin/gerenciar-salas/gerenciar-salas
 import { GerenciarCursosComponent } from './admin/gerenciar-cursos/gerenciar-cursos.component';
 import { EditarDisciplinasComponent } from './admin/editar-disciplinas/editar-disciplinas.component';
 import { EditarProfessorComponent } from './admin/editar-professor/editar-professor.component';
+import { VisualizacaoHorariosComponent } from './admin/visualizacao-horarios/visualizacao-horarios.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { EditarProfessorComponent } from './admin/editar-professor/editar-profes
     GerenciarSalasComponent,
     GerenciarCursosComponent,
     EditarDisciplinasComponent,
-    EditarProfessorComponent
+    EditarProfessorComponent,
+    VisualizacaoHorariosComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { EditarProfessorComponent } from './admin/editar-professor/editar-profes
     NgbModule,
     ReactiveFormsModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [AuthpService, provideAnimationsAsync()],

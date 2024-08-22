@@ -10,28 +10,21 @@ import { CadastrarSalaComponent } from './admin/cadastrar-sala/cadastrar-sala.co
 import { CadastrarDisciplinasComponent } from './admin/cadastrar-disciplinas/cadastrar-disciplinas.component';
 import { CadastrarCursoComponent } from './admin/cadastrar-curso/cadastrar-curso.component';
 import { GerenciarProfessorComponent } from './admin/gerenciar-professor/gerenciar-professor.component';
-import { GerenciarDisciplinaComponent } from './admin/gerenciar-disciplina/gerenciar-disciplina.component';
-import { GerenciarCursosComponent } from './admin/gerenciar-cursos/gerenciar-cursos.component';
-import { GerenciarSalasComponent } from './admin/gerenciar-salas/gerenciar-salas.component';
-import { EditarDisciplinasComponent } from './admin/editar-disciplinas/editar-disciplinas.component';
-import { EditarProfessorComponent } from './admin/editar-professor/editar-professor.component';
+import { VisualizacaoHorariosComponent } from './admin/visualizacao-horarios/visualizacao-horarios.component';
+
 
 const routes: Routes = [
   {path: 'login', component: TelaLoginComponent},
   {path: 'login-adm', component: TelaLoginAdmComponent},
   {path: 'tela-inicial-prof', component: TelaInicialProfComponent},
-  {path: '', component: TelaInicialAdmComponent},
+  {path: 'admin', component: TelaInicialAdmComponent},
   {path: 'admin/cadastrar_professor', component: CadastrarProfComponent},
   {path: 'admin/cadastrar_sala', component: CadastrarSalaComponent},
   {path: 'admin/cadastrar_disc', component: CadastrarDisciplinasComponent},
-  {path: 'admin/gerenciar_disc', component: GerenciarDisciplinaComponent},
   {path: 'admin/cadastrar_curso', component: CadastrarCursoComponent},
   {path: 'admin/gerenciar_professor', component: GerenciarProfessorComponent},
-  {path: 'admin/gerenciar_curso', component: GerenciarCursosComponent},
-  {path: 'admin/gerenciar_sala', component: GerenciarSalasComponent},
-  {path: 'admin/editar_disc/:id', component: EditarDisciplinasComponent},
-  {path: 'admin/editar_professores/:id', component: EditarProfessorComponent},
-
+  {path: 'admin/visualizacao-horarios', component: VisualizacaoHorariosComponent},
+  
 
 ];
 
