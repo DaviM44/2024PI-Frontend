@@ -34,12 +34,32 @@
               </div>
             </div>
             <div class="mb-3 mt-3">
-              <label for="resources" class="form-label">Recursos</label>
-              <input type="text" class="form-control" id="resources" formControlName="resources" placeholder="Recursos disponíveis">
+              <label class="form-label">Recursos</label>
+              <div class="d-flex flex-wrap">
+                <div class="form-check me-3">
+                  <input class="form-check-input" type="checkbox" (change)="onResourceChange($event, 'TV')">
+                  <label class="form-check-label">
+                    TV
+                  </label>
+                </div>
+                <div class="form-check me-3">
+                  <input class="form-check-input" type="checkbox" (change)="onResourceChange($event, 'Projetor')">
+                  <label class="form-check-label">
+                    Projetor
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" (change)="onResourceChange($event, 'Ventilador')">
+                  <label class="form-check-label">
+                    Ventilador
+                  </label>
+                </div>
+              </div>
               <div *ngIf="f['resources'].touched && f['resources'].invalid" class="text-danger">
-                <small *ngIf="f['resources'].errors?.['required']">Recursos são obrigatórios.</small>
+                <small *ngIf="f['resources'].errors?.['required']">Pelo menos um recurso deve ser selecionado.</small>
               </div>
             </div>
+
             <div class="mb-3 mt-3">
               <label for="availability" class="form-label">Disponibilidade Da Sala</label>
               <select class="form-control" id="availability" formControlName="availability">

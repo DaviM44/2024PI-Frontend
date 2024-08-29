@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { CsalasService } from '../../serv/admin/csalas.service';
 
 @Component({
@@ -22,12 +22,28 @@ export class CadastrarSalaComponent implements OnInit {
       type: ['', Validators.required],
       capacity: ['', [Validators.required, Validators.min(1)]], // Capacidade deve ser um número positivo
       floor: ['', [Validators.required, Validators.min(0)]], // Andar deve ser um número não-negativo
-      resources: ['', Validators.required],
+      resources: this.formBuilder.array([]),
       availability: ['', Validators.required]
     });
   }
 
   get f() { return this.registerForm.controls; }
+
+  get resources(): FormArray {
+    return this.registerForm.get('resources') as FormArray;
+  }
+
+  onResourceChange(event: any, resource: string): void {
+    const checked = event.target.checked;
+    if (checked) {
+      this.resources.push(this.formBuilder.control(resource));
+    } else {
+      const index = this.resources.controls.findIndex(x => x.value === resource);
+      if (index !== -1) {
+        this.resources.removeAt(index);
+      }
+    }
+  }
 
   onSubmit(): void {
     if (this.registerForm.invalid) {

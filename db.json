@@ -2,85 +2,207 @@
   "professores": [
     {
       "id": "56b1",
-      "name": "Gorilá de Costa Prateada",
-      "emailI": "gorila@guerrila.com",
+      "name": "Carlos Mendes",
+      "emailI": "carlos.mendes@escola.com",
       "senha": "c_jF_3tC8!}vR4)",
-      "emailP": "w23@com.com",
+      "emailP": "carlos.mendes@escola.com",
       "tel": "118855779944"
     },
     {
-      "id": "NpgZ-Dq",
-      "name": "Macaco doido",
-      "emailI": "ponto@com.com",
-      "senha": "k4V?C}BgyU6kM_2",
+      "id": "cc53",
+      "name": "Ana Silva",
+      "emailI": "ana.silva@escola.com",
+      "senha": "qwerty",
       "emailP": "",
-      "tel": "1111111111111111111111"
+      "tel": "1222222"
     },
     {
-      "name": "wwwwwww",
-      "emailI": "2ww@com.com",
-      "senha": "k4V?C}BgyU6kM_2",
+      "id": "8f77",
+      "name": "Leandro Lima",
+      "emailI": "leandro.lima@fatec.sp.gov.br",
+      "senha": "123478",
+      "emailP": "leandro.lima@fatec.sp.gov.br",
+      "tel": "123456789"
+    },
+    {
+      "id": "9a1b",
+      "name": "Juliana Santos",
+      "emailI": "juliana.santos@wildcats.com",
+      "senha": "wild1234",
+      "emailP": "juliana.santos@wildcats.com",
+      "tel": "987654321"
+    },
+    {
+      "id": "2b4d",
+      "name": "Ricardo Pereira",
+      "emailI": "ricardo.pereira@exoticbirds.com",
+      "senha": "bluebird1!",
+      "emailP": "ricardo.pereira@exoticbirds.com",
+      "tel": "1122334455"
+    },
+    {
+      "id": "4e6f",
+      "name": "Fernanda Costa",
+      "emailI": "fernanda.costa@bigcats.org",
+      "senha": "stripes_2024",
+      "emailP": "fernanda.costa@bigcats.org",
+      "tel": "5566778899"
+    },
+    {
+      "id": "7c8d",
+      "name": "Rodrigo Almeida",
+      "emailI": "rodrigo.almeida@antarctica.edu",
+      "senha": "coldwater!2024",
+      "emailP": "rodrigo.almeida@antarctica.edu",
+      "tel": "4433221100"
+    },
+    {
+      "name": "Glauco Todesco",
+      "emailI": "glauco@abutua.com",
+      "senha": "2werfghnm5tyujk,",
       "emailP": "",
-      "tel": "11111111111111",
-      "id": "6eIw9ja"
+      "tel": "5678987654567",
+      "id": "a38NE_d"
     }
   ],
   "salas": [
     {
       "id": "1379",
-      "type": "lab",
-      "capacity": "23",
-      "floor": 13,
-      "resources": "13",
+      "type": "sala",
+      "capacity": "30",
+      "floor": "1",
+      "resources": "Projetor, TV",
       "availability": "Disponível"
     },
     {
-      "id": "-fMvzHZ",
+      "id": "852b",
       "type": "sala",
-      "capacity": "13",
-      "floor": "12",
-      "resources": "fdada",
+      "capacity": "60",
+      "floor": 2,
+      "resources": "Lousa, Cadeiras",
+      "availability": "Indisponível"
+    },
+    {
+      "id": "248f",
+      "type": "lab",
+      "capacity": "20",
+      "floor": 2,
+      "resources": "Computadores, Equipamentos de laboratório",
       "availability": "Disponível"
+    },
+    {
+      "id": "fd66",
+      "type": "lab",
+      "capacity": "50",
+      "floor": "0",
+      "resources": "Microscópios, Bancadas",
+      "availability": "Indisponível"
     }
   ],
   "disciplinas": [
     {
-      "id": "e40d",
-      "disciplineName": "212313",
-      "hour": "22",
-      "professor": "Gorila de Costa-Prateada"
+      "disciplineName": "Engenharia de Software",
+      "description": "Texto",
+      "hour": "140",
+      "professor": "Carlos Mendes",
+      "objective": "Texto",
+      "syllabus": "Texto",
+      "id": 1
     },
     {
-      "id": "YzRyhR2",
-      "disciplineName": "Elemento 2",
-      "hour": "21",
-      "professor": "Macaco doido"
+      "disciplineName": "Matemática",
+      "description": "Texto",
+      "hour": "20",
+      "professor": "Rodrigo Almeida",
+      "objective": "Texto",
+      "syllabus": "Texto",
+      "id": 2
     },
     {
-      "id": "35wECe1",
-      "disciplineName": "Som automotivo",
-      "hour": "24",
-      "professor": "Macaco doido"
+      "disciplineName": "Inteligência Artificial",
+      "description": "Texto",
+      "hour": "90",
+      "professor": "Ricardo Pereira",
+      "objective": "Texto",
+      "syllabus": "Texto",
+      "id": 3
+    },
+    {
+      "disciplineName": "Cloud Computing",
+      "description": "Texto",
+      "hour": "120",
+      "professor": "Glauco Todesco",
+      "objective": "Texto",
+      "syllabus": "Texto",
+      "id": 4
     }
   ],
   "cursos": [
     {
-      "id": "f5aa",
-      "nameCourse": "Macacagem",
-      "semester": "223",
+      "id": "a1b2",
+      "nameCourse": "Engenharia Ambiental",
+      "semester": "3",
       "period": "manha"
     },
     {
-      "nameCourse": "Técnicas de Empilhadeira",
-      "semester": "6",
-      "period": "tarde",
-      "id": "vYrSQbl"
+      "id": "c3d4",
+      "nameCourse": "Biologia Marinha",
+      "semester": "2",
+      "period": "tarde"
     },
     {
-      "nameCourse": "Macacagem",
+      "id": "e5f6",
+      "nameCourse": "Tecnologia da Informação",
+      "semester": "6",
+      "period": "noite"
+    },
+    {
+      "id": "g7h8",
+      "nameCourse": "Ecologia e Conservação",
+      "semester": "6",
+      "period": "manha"
+    },
+    {
+      "id": "i9j0",
+      "nameCourse": "Matemática Aplicada",
       "semester": "2",
-      "period": "tarde",
-      "id": "nOl0h3h"
+      "period": "tarde"
+    },
+    {
+      "id": "k1l2",
+      "nameCourse": "Sistemas de Informação",
+      "semester": "6",
+      "period": "noite"
     }
-  ]
+  ],
+  "turmas": {
+    "curso": "i9j0",
+    "dia": "Segunda-feira",
+    "aulas": [
+      {
+        "materia": "Comportamento Animal",
+        "professor": "cc53"
+      },
+      {
+        "materia": "Anatomia Comparada",
+        "professor": "8f77"
+      },
+      {
+        "materia": "Comportamento Animal",
+        "professor": "56b1"
+      },
+      {
+        "materia": "",
+        "professor": ""
+      },
+      {
+        "materia": "",
+        "professor": ""
+      },
+      {
+        "materia": "",
+        "professor": ""
+      }
+    ]
+  }
 }
