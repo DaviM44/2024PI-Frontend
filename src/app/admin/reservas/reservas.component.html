@@ -50,12 +50,19 @@
     <p><strong>Turno:</strong> {{ selectedReservation.shift }}</p>
     <p><strong>Professor responsável:</strong> {{ selectedReservation.professor }}</p>
 
+    <!-- Exibe "Sala" se não for null -->
+    <p *ngIf="selectedReservation.sala !== null"><strong>Sala:</strong> {{ selectedReservation.sala }}</p>
+
+    <!-- Exibe "Lab" se não for null -->
+    <p *ngIf="selectedReservation.lab !== null"><strong>Lab:</strong> {{ selectedReservation.lab }}</p>
+
     <!-- Botões de ação -->
     <div class="action-buttons mt-4">
       <button class="btn btn-primary" (click)="editReservation()">Editar</button>
       <button class="btn btn-danger" (click)="confirmDelete()">Excluir</button>
     </div>
   </div>
+
 
 </div>
   </div>

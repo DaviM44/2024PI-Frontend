@@ -6,7 +6,9 @@
       "date": "15-06",
       "time": "14:00 - 14:50",
       "shift": "Tarde",
-      "professor": "Ana Paula Silva"
+      "professor": "Ana Paula Silva",
+      "sala": 101,
+      "lab": null
     },
     {
       "id": 2,
@@ -14,7 +16,9 @@
       "date": "16-08",
       "time": "15:00 - 15:50",
       "shift": "Tarde",
-      "professor": "Carlos Almeida"
+      "professor": "Carlos Almeida",
+      "sala": null,
+      "lab": 2
     },
     {
       "id": 3,
@@ -22,7 +26,9 @@
       "date": "17-08",
       "time": "16:00 - 16:50",
       "shift": "Tarde",
-      "professor": "Fernanda Lima"
+      "professor": "Fernanda Lima",
+      "sala": 202,
+      "lab": null
     },
     {
       "id": 4,
@@ -30,7 +36,9 @@
       "date": "18-06",
       "time": "17:00 - 17:50",
       "shift": "Tarde",
-      "professor": "João Pereira"
+      "professor": "João Pereira",
+      "sala": null,
+      "lab": 3
     },
     {
       "id": 5,
@@ -38,7 +46,9 @@
       "date": "16-08",
       "time": "18:00 - 18:50",
       "shift": "Tarde",
-      "professor": "Mariana Costa"
+      "professor": "Mariana Costa",
+      "sala": 303,
+      "lab": null
     },
     {
       "id": 6,
@@ -46,7 +56,9 @@
       "date": "19-06",
       "time": "12:00 - 12:50",
       "shift": "Manhã",
-      "professor": "Roberto Santos"
+      "professor": "Roberto Santos",
+      "sala": null,
+      "lab": 1
     },
     {
       "id": 7,
@@ -54,7 +66,9 @@
       "date": "20-08",
       "time": "13:00 - 13:50",
       "shift": "Manhã",
-      "professor": "Tatiane Oliveira"
+      "professor": "Tatiane Oliveira",
+      "sala": 404,
+      "lab": null
     },
     {
       "id": 8,
@@ -62,7 +76,9 @@
       "date": "21-08",
       "time": "14:00 - 14:50",
       "shift": "Tarde",
-      "professor": "Gustavo Martins"
+      "professor": "Gustavo Martins",
+      "sala": null,
+      "lab": 4
     },
     {
       "id": 9,
@@ -70,7 +86,9 @@
       "date": "22-06",
       "time": "15:00 - 15:50",
       "shift": "Tarde",
-      "professor": "Juliana Rocha"
+      "professor": "Juliana Rocha",
+      "sala": 505,
+      "lab": null
     },
     {
       "id": 10,
@@ -78,7 +96,9 @@
       "date": "23-08",
       "time": "16:00 - 16:50",
       "shift": "Tarde",
-      "professor": "André Souza"
+      "professor": "André Souza",
+      "sala": null,
+      "lab": 5
     }
   ]
 }
