@@ -11,6 +11,7 @@ export class CadastrarProfComponent implements OnInit {
   registerForm!: FormGroup;
   registerError: boolean = false;
   registerSuccess: boolean = false;
+  passwdGerada!: string; // Variável para armazenar a passwd gerada
 
   constructor(private formBuilder: FormBuilder, private professoresService: ProfessoresService) {}
 
@@ -18,13 +19,24 @@ export class CadastrarProfComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.pattern('^[A-Za-zÀ-ÿ\\s]+$')]], // Nome: letras e espaços apenas
       emailI: ['', [Validators.required, Validators.email]], // Email institucional: obrigatório e formato válido
-      senha: ['', [Validators.required, Validators.minLength(6)]], // Senha: mínimo 6 caracteres
+      passwd: [''],
       emailP: ['', [Validators.email]], // Email pessoal: formato válido (opcional)
       tel: ['', [Validators.required, Validators.pattern('^[0-9]+$')]], // Telefone: números apenas
     });
   }
 
   get f() { return this.registerForm.controls; }
+
+  // Função para gerar a passwd aleatória
+  gerarpasswdAleatoria(length: number = 8): string {
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?';
+    let passwd = '';
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * caracteres.length);
+      passwd += caracteres[randomIndex];
+    }
+    return passwd;
+  }
 
   onSubmit(): void {
     if (this.registerForm.invalid) {
@@ -33,7 +45,18 @@ export class CadastrarProfComponent implements OnInit {
       return;
     }
 
-    this.professoresService.registerProfessor(this.registerForm.value).subscribe(
+    // Gerar passwd aleatória
+    const passwdAleatoria = this.gerarpasswdAleatoria();
+    this.passwdGerada = passwdAleatoria; // Armazena a passwd gerada (opcional, para exibição)
+
+    // Atualizar o campo de passwd no formulário com a passwd gerada
+    this.registerForm.patchValue({ passwd: passwdAleatoria });
+
+    // Obter os dados do formulário, incluindo a passwd gerada
+    const dadosFormulario = this.registerForm.value;
+
+    // Enviar o JSON com os dados, incluindo a passwd gerada
+    this.professoresService.registerProfessor(dadosFormulario).subscribe(
       response => {
         console.log('Form submitted successfully', response);
         this.registerSuccess = true;

@@ -36,9 +36,10 @@ export class ReservasComponent implements OnInit {
   get filteredReservations() {
     return this.reservations.filter(reservation =>
       reservation.name.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
-      (this.selectedShift ? reservation.shift === this.selectedShift : true)
+      (this.selectedShift ? reservation.shift.toLowerCase() === this.selectedShift.toLowerCase() : true)
     );
   }
+
 
   moveReservationToRight(reservation: any): void {
     this.selectedReservation = reservation;

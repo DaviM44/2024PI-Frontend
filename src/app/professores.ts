@@ -5,4 +5,5 @@ export interface Professores {
   emailp: string;
   name: string;
   tel: number;
+  passwd: string;
 }

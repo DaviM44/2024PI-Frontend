@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ReservationService {
-  private jsonUrl = 'http://localhost:3001/reservas'; // Ajuste para corresponder ao local correto
+  private jsonUrl = 'http://localhost:3000/reservas'; // Ajuste para corresponder ao local correto
 
   constructor(private http: HttpClient) { }
 
