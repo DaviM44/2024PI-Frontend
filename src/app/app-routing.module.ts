@@ -19,6 +19,7 @@ import { ReservasComponent } from './admin/reservas/reservas.component';
 import { CadastrarCursoComponent } from './admin/cursos/cadastrar-curso/cadastrar-curso.component';
 import { EditarCursoComponent } from './admin/cursos/editar-curso/editar-curso.component';
 import { PerfilComponent } from './prof/perfil/perfil.component';
+import { VisualizarDisciplinaComponent } from './prof/visualizar-disciplina/visualizar-disciplina.component';
 
 const routes: Routes = [
   {path: 'login', component: TelaLoginComponent},
@@ -38,7 +39,8 @@ const routes: Routes = [
   {path: 'admin/editar_sala/:id', component: EditarSalasComponent},
   {path: 'admin/gerenciar_reservas', component: ReservasComponent},
   {path: 'home', component: TelaInicialProfComponent},
-  {path: 'perfil', component: PerfilComponent}
+  {path: 'perfil', component: PerfilComponent},
+  {path:'prof/visualizar-Disc', component: VisualizarDisciplinaComponent}
 
 
 ];

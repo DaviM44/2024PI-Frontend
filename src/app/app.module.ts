@@ -31,6 +31,7 @@ import { EditarCursoComponent } from './admin/cursos/editar-curso/editar-curso.c
 import { PerfilComponent } from './prof/perfil/perfil.component';
 import { NavbarProfComponent } from './navbar-prof/navbar-prof.component';
 import { TelaPerfilProfessorComponent } from './prof/tela-perfil-professor/tela-perfil-professor.component';
+import { VisualizarDisciplinaComponent } from './visualizar-disciplina/visualizar-disciplina.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { TelaPerfilProfessorComponent } from './prof/tela-perfil-professor/tela-
     ReservasComponent,
     PerfilComponent,
     NavbarProfComponent,
-    TelaPerfilProfessorComponent
+    TelaPerfilProfessorComponent,
+    VisualizarDisciplinaComponent
   ],
   imports: [
     BrowserModule,
