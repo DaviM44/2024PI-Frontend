@@ -30,6 +30,7 @@ import { CadastrarCursoComponent } from './admin/cursos/cadastrar-curso/cadastra
 import { EditarCursoComponent } from './admin/cursos/editar-curso/editar-curso.component';
 import { PerfilComponent } from './prof/perfil/perfil.component';
 import { NavbarProfComponent } from './navbar-prof/navbar-prof.component';
+import { TelaPerfilProfessorComponent } from './prof/tela-perfil-professor/tela-perfil-professor.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { NavbarProfComponent } from './navbar-prof/navbar-prof.component';
     EditarSalasComponent,
     ReservasComponent,
     PerfilComponent,
-    NavbarProfComponent
+    NavbarProfComponent,
+    TelaPerfilProfessorComponent
   ],
   imports: [
     BrowserModule,
