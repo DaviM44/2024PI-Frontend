@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProfessoresService {
   private apiUrl = 'http://localhost:3000/professores';
+  private cursosUrl = 'http://localhost:3000/cursos'; 
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +19,9 @@ export class ProfessoresService {
   // Método para obter a lista de professores
   getProfessores(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
+  }
+  getCursos(): Observable<any> {
+    return this.http.get<any[]>(this.cursosUrl);
   }
 
   getProfessorById(id: string): Observable<any> {
@@ -31,5 +35,10 @@ export class ProfessoresService {
 
   deleteProfessor(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+
+  loginProfessor(loginData: { emailI: string, senha: string }): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, loginData); // Certifique-se de que o endpoint de login seja correto
   }
 }

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class CdisciplinaService {
   private apiUrl = 'http://localhost:3000/disciplinas';
-  private professoresUrl = 'http://localhost:3000/professores'; // Endpoint para buscar professores
+
 
   constructor(private http: HttpClient) { }
 
@@ -17,10 +17,7 @@ export class CdisciplinaService {
     return this.http.post(this.apiUrl, disciplinaData);
   }
 
-  // Método para buscar professores
-  getProfessores(): Observable<any> {
-    return this.http.get<any[]>(this.professoresUrl);
-  }
+
   getDisciplinas(): Observable<any> {
     return this.http.get<any[]>(this.apiUrl);
   }

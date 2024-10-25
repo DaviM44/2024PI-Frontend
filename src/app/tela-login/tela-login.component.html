@@ -7,12 +7,12 @@
           <h5 class="card-title text-center">Login do Professor</h5>
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="mb-3 mt-3">
-              <label for="username" class="form-label">Usuário</label>
-              <input type="text" class="form-control" id="username" formControlName="username" required>
+              <label for="emaili" class="form-label">emaili</label>
+              <input type="text" class="form-control" id="emaili" formControlName="emaili" required>
             </div>
             <div class="mb-3 mt-4">
-              <label for="password" class="form-label">Senha</label>
-              <input type="password" class="form-control" id="password" formControlName="password" required>
+              <label for="passwd" class="form-label">Senha</label>
+              <input type="passwd" class="form-control" id="passwd" formControlName="passwd" required>
             </div>
             <div *ngIf="loginError" class="alert alert-danger mt-3" role="alert">
               Usuário ou senha incorretos!

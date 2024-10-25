@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class CcursoService {
   private apiUrl = 'http://localhost:3000/cursos';
+  private disciplinasUrl = 'http://localhost:3000/disciplinas'; 
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +21,9 @@ export class CcursoService {
     // Método para obter a lista de professores
     getCursos(): Observable<any[]> {
       return this.http.get<any[]>(this.apiUrl);
+    }
+    getDisciplinas(): Observable<any> {
+      return this.http.get<any[]>(this.disciplinasUrl);
     }
 
     getCursoById(id: string): Observable<any> {
