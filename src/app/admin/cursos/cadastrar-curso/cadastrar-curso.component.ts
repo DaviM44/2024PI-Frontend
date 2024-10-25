@@ -12,19 +12,34 @@ export class CadastrarCursoComponent implements OnInit {
   registerForm!: FormGroup;
   registerError: boolean = false;
   registerSuccess: boolean = false;
+  disciplinas: any[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private ccursoService: CcursoService,
     private router: Router
+   
+
   ) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       nameCourse: ['', [Validators.required, Validators.pattern('^[A-Za-zÀ-ÿ\\s]+$')]], // Letras e espaços
       semester: ['', [Validators.required, Validators.pattern('^[0-9]+$')]], // Números apenas
-      period: ['', Validators.required]
+      period: ['', Validators.required],
+      disciplina: ['', [Validators.required, Validators.pattern('^[A-Za-zÀ-ÿ\\s]+$')]], // Letras e espaços
     });
+    this.loadDisplinas()
+  }
+  private loadDisplinas(): void {
+    this.ccursoService.getDisciplinas().subscribe(
+      data => {
+        this.disciplinas = data || []; // Verifique se a estrutura do JSON está correta
+      },
+      error => {
+        console.error('Erro ao buscar professores', error);
+      }
+    );
   }
 
   get f() { return this.registerForm.controls; }

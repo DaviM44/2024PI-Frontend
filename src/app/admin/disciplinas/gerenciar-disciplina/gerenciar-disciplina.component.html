@@ -15,7 +15,6 @@
             <th>ID</th>
             <th>Nome</th>
             <th>Carga horária</th>
-            <th>Professor Responsável</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -24,7 +23,7 @@
             <td>{{ disciplina.id }}</td>
             <td>{{ disciplina.disciplineName }}</td>
             <td>{{ disciplina.hour }}</td>
-            <td>{{ disciplina.professor }}</td>
+      
             <td>
               <button class="btn btn-primary" [routerLink]="['/admin/editar_disc', disciplina.id]"
                 aria-label="Editar Disciplina">

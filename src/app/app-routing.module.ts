@@ -23,8 +23,8 @@ import { VisualizarDisciplinaComponent } from './prof/visualizar-disciplina/visu
 
 const routes: Routes = [
   {path: 'login', component: TelaLoginComponent},
-  {path: 'login-adm', component: TelaLoginAdmComponent},
-  {path: '', component: TelaInicialAdmComponent},
+  {path: 'login_adm', component: TelaLoginAdmComponent},
+  {path: 'admin', component: TelaInicialAdmComponent},
   {path: 'admin/cadastrar_professor', component: CadastrarProfComponent},
   {path: 'admin/cadastrar_sala', component: CadastrarSalaComponent},
   {path: 'admin/cadastrar_disc', component: CadastrarDisciplinasComponent},
@@ -38,7 +38,7 @@ const routes: Routes = [
   {path: 'admin/editar_curso/:id', component: EditarCursoComponent},
   {path: 'admin/editar_sala/:id', component: EditarSalasComponent},
   {path: 'admin/gerenciar_reservas', component: ReservasComponent},
-  {path: 'home', component: TelaInicialProfComponent},
+  {path: '', component: TelaInicialProfComponent},
   {path: 'perfil', component: PerfilComponent},
   {path:'prof/visualizar-Disc', component: VisualizarDisciplinaComponent}
 
