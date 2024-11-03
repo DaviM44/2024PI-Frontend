@@ -38,7 +38,7 @@ export class CadastrarDisciplinasComponent implements OnInit {
       return;
     }
 
-    this.cdisciplinaService.registerDisciplina(this.registerForm.value).subscribe(
+    this.cdisciplinaService.registerDisciplines(this.registerForm.value).subscribe(
       response => {
         console.log('Formulário enviado com sucesso', response);
         this.registerSuccess = true;

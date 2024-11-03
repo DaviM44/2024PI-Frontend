@@ -15,15 +15,15 @@
               </div>
             </div>
             <div class="mb-3 mt-3">
-              <label for="disciplina" class="form-label">Disciplina Responsável</label>
-              <select class="form-control" id="disciplina" formControlName="disciplina" required>
-                <option value="" disabled selected>Selecione a disciplinas responsável</option>
-                <option *ngFor="let disciplina of disciplinas" [value]="disciplina.disciplineName">
-                  {{ disciplina.disciplineName }}
+              <label for="discipline" class="form-label">discipline Responsável</label>
+              <select class="form-control" id="discipline" formControlName="discipline" required>
+                <option value="" disabled selected>Selecione a disciplines responsável</option>
+                <option *ngFor="let discipline of disciplines" [value]="discipline.disciplineName">
+                  {{ discipline.disciplineName }}
                 </option>
               </select>
-              <div *ngIf="f['disciplina'].touched && f['disciplina'].invalid" class="text-danger">
-                <small *ngIf="f['disciplina'].errors?.['required']">Selecione um professor.</small>
+              <div *ngIf="f['discipline'].touched && f['discipline'].invalid" class="text-danger">
+                <small *ngIf="f['discipline'].errors?.['required']">Selecione um professor.</small>
               </div>
             </div>
             <div class="mb-3 mt-3">

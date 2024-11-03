@@ -1,30 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthaService {
-  private isAuthenticated = false;
-  private readonly validUsername = 'admin';
-  private readonly validPassword = 'admin';
+  private apiUrl = 'https://projeto-integrador-1v4i.onrender.com/auth/admin';
 
-  constructor(private router: Router) {}
+  constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): boolean {
-    if (username === this.validUsername && password === this.validPassword) {
-      this.isAuthenticated = true;
-      return true;
-    }
-    return false;
-  }
-
-  logout(): void {
-    this.isAuthenticated = false;
-    this.router.navigate(['/login']);
-  }
-
-  getAuthStatus(): boolean {
-    return this.isAuthenticated;
+  login(adminEmail: string, adminPassword: string): Observable<any> {
+    const payload = {
+      adminEmail,
+      adminPassword
+    };
+    return this.http.post<any>(this.apiUrl, payload);
   }
 }

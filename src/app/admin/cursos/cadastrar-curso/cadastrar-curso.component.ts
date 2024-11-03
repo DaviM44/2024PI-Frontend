@@ -12,7 +12,7 @@ export class CadastrarCursoComponent implements OnInit {
   registerForm!: FormGroup;
   registerError: boolean = false;
   registerSuccess: boolean = false;
-  disciplinas: any[] = [];
+  disciplines: any[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,14 +27,14 @@ export class CadastrarCursoComponent implements OnInit {
       nameCourse: ['', [Validators.required, Validators.pattern('^[A-Za-zÀ-ÿ\\s]+$')]], // Letras e espaços
       semester: ['', [Validators.required, Validators.pattern('^[0-9]+$')]], // Números apenas
       period: ['', Validators.required],
-      disciplina: ['', [Validators.required, Validators.pattern('^[A-Za-zÀ-ÿ\\s]+$')]], // Letras e espaços
+      discipline: ['', [Validators.required, Validators.pattern('^[A-Za-zÀ-ÿ\\s]+$')]], // Letras e espaços
     });
-    this.loadDisplinas()
+    this.loadDisciplines()
   }
-  private loadDisplinas(): void {
-    this.ccursoService.getDisciplinas().subscribe(
+  private loadDisciplines(): void {
+    this.ccursoService.getDisciplines().subscribe(
       data => {
-        this.disciplinas = data || []; // Verifique se a estrutura do JSON está correta
+        this.disciplines = data || []; // Verifique se a estrutura do JSON está correta
       },
       error => {
         console.error('Erro ao buscar professores', error);

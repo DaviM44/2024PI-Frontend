@@ -34,6 +34,7 @@ import { TelaPerfilProfessorComponent } from './prof/tela-perfil-professor/tela-
 import { VisualizarDisciplinaComponent } from './prof/visualizar-disciplina/visualizar-disciplina.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CadastrarProfComponent } from './admin/professor/cadastrar-prof/cadastrar-prof.component';
+import { GradeHorarioComponent } from './admin/grade-horario/grade-horario.component';
 
 
 
@@ -63,6 +64,7 @@ import { CadastrarProfComponent } from './admin/professor/cadastrar-prof/cadastr
     NavbarProfComponent,
     TelaPerfilProfessorComponent,
     VisualizarDisciplinaComponent,
+    GradeHorarioComponent,
   ],
   imports: [
     BrowserModule,

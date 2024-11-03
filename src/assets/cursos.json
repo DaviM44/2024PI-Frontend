@@ -1,0 +1,53 @@
+[
+    {
+      "curso": "Desenvolvimento Web",
+      "semestre": "1º Semestre",
+      "dias": {
+        "segunda": [
+          { "materia": "HTML e CSS", "aula": "Aula 1", "horario": "13:20 - 14:10" },
+          { "materia": "HTML e CSS", "aula": "Aula 2", "horario": "14:10 - 15:00" },
+          { "materia": "JavaScript", "aula": "Aula 1", "horario": "15:00 - 15:50" },
+          { "materia": "JavaScript", "aula": "Aula 2", "horario": "15:50 - 16:40" },
+          { "materia": "Angular", "aula": "Aula 1", "horario": "16:40 - 17:30" },
+          { "materia": "Angular", "aula": "Aula 2", "horario": "17:30 - 18:20" }
+        ]
+      }
+    },
+    {
+      "curso": "Data Science",
+      "semestre": "1º Semestre",
+      "dias": {
+        "segunda": [
+          { "materia": "Python", "aula": "Aula 1", "horario": "13:20 - 14:10" },
+          { "materia": "Python", "aula": "Aula 2", "horario": "14:10 - 15:00" },
+          { "materia": "Machine Learning", "aula": "Aula 1", "horario": "15:00 - 15:50" },
+          { "materia": "Machine Learning", "aula": "Aula 2", "horario": "15:50 - 16:40" },
+          { "materia": "Statistics", "aula": "Aula 1", "horario": "16:40 - 17:30" },
+          { "materia": "Statistics", "aula": "Aula 2", "horario": "17:30 - 18:20" }
+        ]
+      }
+    },
+    {
+      "curso": "Gestão Empresarial",
+      "semestre": "1º Semestre",
+      "dias": {
+        "segunda": [
+          { "materia": "Introdução à Administração", "aula": "Aula 1", "horario": "08:00 - 09:50" },
+          { "materia": "Contabilidade Básica", "aula": "Aula 1", "horario": "10:00 - 11:50" },
+          { "materia": "Marketing", "aula": "Aula 1", "horario": "13:20 - 15:10" },
+          { "materia": "Gestão de Pessoas", "aula": "Aula 1", "horario": "15:20 - 17:10" },
+          { "materia": "Statistics", "aula": "Aula 1", "horario": "16:40 - 17:30" },
+          { "materia": "Statistics", "aula": "Aula 2", "horario": "17:30 - 18:20" }
+        ],
+        "terca": [
+            { "materia": "Introdução à Administração", "aula": "Aula 1", "horario": "08:00 - 09:50" },
+            { "materia": "Contabilidade Básica", "aula": "Aula 1", "horario": "10:00 - 11:50" },
+            { "materia": "Marketing", "aula": "Aula 1", "horario": "13:20 - 15:10" },
+            { "materia": "Gestão de Pessoas", "aula": "Aula 1", "horario": "15:20 - 17:10" },
+            { "materia": "Statistics", "aula": "Aula 1", "horario": "16:40 - 17:30" },
+            { "materia": "Statistics", "aula": "Aula 2", "horario": "17:30 - 18:20" }
+          ]
+      }
+    }
+  ]
+  

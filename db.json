@@ -80,7 +80,7 @@
     {
       "id": "c4c0",
       "name": "sdfghjk",
-      "disciplina": "Inteligência Artificial",
+      "discipline": "Inteligência Artificial",
       "emailI": "sdfghjhg@gmail.com",
       "passwd": "J50LS980",
       "emailP": "juliana.santos@silva.com",
@@ -103,6 +103,15 @@
       "passwd": "7sWDBE^[",
       "emailP": "juliana.santos@silva.com",
       "tel": "12345434444"
+    },
+    {
+      "id": "f19e",
+      "name": "Sapo",
+      "curso": "Ecologia e Conservação",
+      "emailI": "sapo@sapo.com",
+      "passwd": "tw!?O?pC",
+      "emailP": "",
+      "tel": "32424534"
     }
   ],
   "reservas": [
@@ -241,7 +250,7 @@
       "availability": "Indisponível"
     }
   ],
-  "disciplinas": [
+  "disciplines": [
     {
       "disciplineName": "Engenharia de Software",
       "description": "Texto",
@@ -277,6 +286,14 @@
       "objective": "Texto",
       "syllabus": "Texto",
       "id": "4"
+    },
+    {
+      "id": "5274",
+      "disciplineName": "dadad",
+      "description": "dadaa",
+      "hour": "213",
+      "objective": "d",
+      "syllabus": "d"
     }
   ],
   "cursos": [
@@ -327,7 +344,7 @@
       "nameCourse": "fdscvfvdsc",
       "semester": "7",
       "period": "manha",
-      "disciplina": "Matemática"
+      "discipline": "Matemática"
     }
   ],
   "turmas": {
