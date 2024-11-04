@@ -1,19 +1,7 @@
-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
-  .text-center {
-    text-align: center;
-  }
-  
+.table {
+  text-align: center; /* Centraliza todos os textos na tabela */
+}
+
+.table th, .table td {
+  vertical-align: middle; /* Alinha verticalmente os textos no centro das células */
+}

@@ -1,81 +1,36 @@
-<div class="container mt-5">
-    <h2>Horários da Semana</h2>
-  
-    <div class="form-group">
-      <label for="cursoSelect">Selecione um Curso:</label>
-      <select class="form-control" id="cursoSelect" [(ngModel)]="cursoSelecionado" (change)="onCursoChange()">
-        <option *ngFor="let curso of cursos" [ngValue]="curso">{{ curso.curso }} - {{ curso.semestre }}</option>
-      </select>
-    </div>
-  
-    <table class="table table-bordered mt-3">
-      <thead>
-        <tr>
-          <th scope="col">Período</th>
-          <th scope="col">Segunda</th>
-          <th scope="col">Terça</th>
-          <th scope="col">Quarta</th>
-          <th scope="col">Quinta</th>
-          <th scope="col">Sexta</th>
-          <th scope="col">Sábado</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>13:20 - 14:10</td>
-          <td class="text-center" *ngIf="periodo[0]">{{ periodo[0].materia }}</td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-        </tr>
-        <tr>
-          <td>14:10 - 15:00</td>
-          <td class="text-center" *ngIf="periodo[1]">{{ periodo[1].materia }}</td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-        </tr>
-        <tr>
-          <td>15:00 - 15:50</td>
-          <td class="text-center" *ngIf="periodo[2]">{{ periodo[2].materia }}</td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-        </tr>
-        <tr>
-          <td>15:50 - 16:40</td>
-          <td class="text-center" *ngIf="periodo[3]">{{ periodo[3].materia }}</td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-        </tr>
-        <tr>
-          <td>16:40 - 17:30</td>
-          <td class="text-center" *ngIf="periodo[4]">{{ periodo[4].materia }}</td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-        </tr>
-        <tr>
-          <td>17:30 - 18:20</td>
-          <td class="text-center" *ngIf="periodo[5]">{{ periodo[5].materia }}</td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-        </tr>
-      </tbody>
-    </table>
+<div class="container mt-4">
+  <h2>Grade de Horário</h2>
+  <div class="mb-3">
+    <label for="cursoSelect" class="form-label">Selecione o Curso:</label>
+    <select id="cursoSelect" class="form-select" (change)="selecionarCurso($event)">
+      <option *ngFor="let curso of cursos; let i = index" [value]="i">
+        {{ curso.curso }} - {{ curso.semestre }}
+      </option>
+    </select>
   </div>
-  
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Horário</th>
+        <th scope="col">Segunda</th>
+        <th scope="col">Terça</th>
+        <th scope="col">Quarta</th>
+        <th scope="col">Quinta</th>
+        <th scope="col">Sexta</th>
+        <th scope="col">Sábado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let horario of ['13:20 - 14:10', '14:10 - 15:00', '15:00 - 15:50', '15:50 - 16:40', '16:40 - 17:30', '17:30 - 18:20']">
+        <td>{{ horario }}</td>
+        <td>{{ getMateriaParaHorario('segunda', horario) }}</td>
+        <td>{{ getMateriaParaHorario('terca', horario) }}</td>
+        <td>{{ getMateriaParaHorario('quarta', horario) }}</td>
+        <td>{{ getMateriaParaHorario('quinta', horario) }}</td>
+        <td>{{ getMateriaParaHorario('sexta', horario) }}</td>
+        <td>{{ getMateriaParaHorario('sabado', horario) }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
