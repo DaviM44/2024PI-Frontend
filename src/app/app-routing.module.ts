@@ -29,6 +29,7 @@ import { VisualizarDisciplinaComponent } from './prof/visualizar-disciplina/visu
 // Guardas de Roteamento
 import { authpGuard } from './guards/authp.guard';
 import { GradeHorarioComponent } from './admin/grade-horario/grade-horario.component';
+import { TelaPerfilProfessorComponent } from './prof/tela-perfil-professor/tela-perfil-professor.component';
 
 const routes: Routes = [
   // Rotas de Login
@@ -36,7 +37,7 @@ const routes: Routes = [
   { path: 'login_adm', component: TelaLoginAdmComponent },
 
   // Rotas do Administrador
-  { path: 'admin', component: TelaInicialAdmComponent },
+  { path: '', component: TelaInicialAdmComponent },
   { path: 'admin/cadastrar_professor', component: CadastrarProfComponent },
   { path: 'admin/cadastrar_sala', component: CadastrarSalaComponent },
   { path: 'admin/cadastrar_disc', component: CadastrarDisciplinasComponent },
@@ -54,7 +55,7 @@ const routes: Routes = [
 
   // Rotas do Professor
   { path: 'home', component: TelaInicialProfComponent },
-  { path: 'perfil', component: PerfilComponent },
+  { path: 'perfil', component: PerfilComponent},
   { path: 'prof/visualizar-disc', component: VisualizarDisciplinaComponent }
 ];
 

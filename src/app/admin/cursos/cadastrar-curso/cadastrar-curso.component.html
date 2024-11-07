@@ -15,9 +15,9 @@
               </div>
             </div>
             <div class="mb-3 mt-3">
-              <label for="discipline" class="form-label">discipline Responsável</label>
+              <label for="discipline" class="form-label">Disciplina Responsável</label>
               <select class="form-control" id="discipline" formControlName="discipline" required>
-                <option value="" disabled selected>Selecione a disciplines responsável</option>
+                <option value="" disabled selected>Selecione a disciplina</option>
                 <option *ngFor="let discipline of disciplines" [value]="discipline.disciplineName">
                   {{ discipline.disciplineName }}
                 </option>
