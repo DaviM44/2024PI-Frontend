@@ -12,7 +12,11 @@ export class TelaLoginAdmComponent {
   loginForm: FormGroup;
   loginError: boolean = false;
 
-  constructor(private fb: FormBuilder, private authaService: AuthaService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private authaService: AuthaService,
+    private router: Router
+  ) {
     this.loginForm = this.fb.group({
       adminEmail: ['', [Validators.required, Validators.email]], // Alterado para adminEmail
       adminPassword: ['', Validators.required] // Alterado para adminPassword
@@ -22,16 +26,27 @@ export class TelaLoginAdmComponent {
   onSubmit(): void {
     if (this.loginForm.valid) {
       const { adminEmail, adminPassword } = this.loginForm.value;
-      this.authaService.login(adminEmail, adminPassword).subscribe({
-        next: (response) => {
-          // Aqui você pode tratar a resposta da autenticação
-          this.router.navigate(['/tela-inicial-adm']); // Redirecionar após login bem-sucedido
+      const payload = JSON.stringify({ adminEmail, adminPassword });
+
+      console.log("Dados enviados:", payload);
+
+      this.authaService.login(payload).subscribe({
+        next: (token) => {
+          console.log("Token recebido:", token);
+
+          // Armazena o token no localStorage (ou sessionStorage) para uso posterior
+          localStorage.setItem('authToken', token);
+
+          // Redireciona para a página inicial do administrador
+          this.router.navigate(['admin']);
         },
         error: (err) => {
           this.loginError = true; // Mostrar erro se a autenticação falhar
-          console.error(err);
+          console.error("Erro de autenticação:", err);
         }
       });
+    } else {
+      console.warn("Formulário inválido");
     }
   }
 }

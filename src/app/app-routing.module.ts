@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'login_adm', component: TelaLoginAdmComponent },
 
   // Rotas do Administrador
-  { path: '', component: TelaInicialAdmComponent },
+  { path: 'admin', component: TelaInicialAdmComponent },
   { path: 'admin/cadastrar_professor', component: CadastrarProfComponent },
   { path: 'admin/cadastrar_sala', component: CadastrarSalaComponent },
   { path: 'admin/cadastrar_disc', component: CadastrarDisciplinasComponent },
