@@ -8,9 +8,9 @@ import { CsalasService } from '../../../serv/admin/csalas.service';
 })
 export class GerenciarSalasComponent implements OnInit {
   sala: any[] = [];
-  salasFiltradas: any[] = []; // Salas filtradas após a pesquisa
-  salasPaginadas: any[] = []; // Salas exibidas na página atual
-  pesquisaTipo: string = ''; // Valor do campo de pesquisa
+  salasFiltradas: any[] = [];
+  salasPaginadas: any[] = [];
+  pesquisaTipo: string = '';
   loading: boolean = false;
   paginaAtual: number = 1;
   totalPaginas: number = 1;
@@ -27,7 +27,7 @@ export class GerenciarSalasComponent implements OnInit {
     this.csalasService.getSalas().subscribe(
       data => {
         this.sala = data;
-        this.salasFiltradas = this.sala; // Inicialmente, todas as salas estão na lista filtrada
+        this.salasFiltradas = this.sala;
         this.calcularPaginas();
         this.atualizarSalasPaginadas();
       },
@@ -58,9 +58,9 @@ export class GerenciarSalasComponent implements OnInit {
   // Função de filtragem por tipo
   filtrarSalas() {
     this.salasFiltradas = this.sala.filter(sala =>
-      sala.type.toLowerCase().includes(this.pesquisaTipo.toLowerCase())
+      sala.roomType.toString().toLowerCase().includes(this.pesquisaTipo.toLowerCase())
     );
-    this.paginaAtual = 1; // Resetar para a primeira página ao filtrar
+    this.paginaAtual = 1;
     this.calcularPaginas();
     this.atualizarSalasPaginadas();
   }
@@ -71,7 +71,7 @@ export class GerenciarSalasComponent implements OnInit {
       this.csalasService.deleteSala(id).subscribe(
         () => {
           this.sala = this.sala.filter(sala => sala.id !== id);
-          this.filtrarSalas(); // Reaplica o filtro após a exclusão
+          this.filtrarSalas();
           this.loading = false;
           alert('Sala excluída com sucesso!');
         },

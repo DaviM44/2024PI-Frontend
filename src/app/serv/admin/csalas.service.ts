@@ -10,51 +10,46 @@ export class CsalasService {
 
   constructor(private http: HttpClient) { }
 
-  // Método para registrar uma nova sala com o Bearer Token
-  registerSala(salaData: any): Observable<any> {
-    const token = localStorage.getItem('authToken'); // Obtém o token do localStorage
+  // Função para obter os headers com o token
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('authToken');
     if (!token) {
       throw new Error('Token de autenticação não encontrado.');
     }
 
-    const headers = new HttpHeaders({
+    return new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}` // Adiciona o token no cabeçalho
+      'Authorization': `Bearer ${token}`
     });
+  }
 
+  // Método para registrar uma nova sala com o Bearer Token
+  registerSala(salaData: any): Observable<any> {
+    const headers = this.getAuthHeaders();
     return this.http.post(this.apiUrl, salaData, { headers });
   }
 
-  // Outros métodos (getSalas, updateSala, etc.)
+  // Método para recuperar as salas com autenticação
   getSalas(): Observable<any[]> {
-    const token = localStorage.getItem('authToken');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
+    const headers = this.getAuthHeaders();
     return this.http.get<any[]>(this.apiUrl, { headers });
   }
 
+  // Método para obter uma sala por ID com autenticação
   getSalaById(id: string): Observable<any> {
-    const token = localStorage.getItem('authToken');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
+    const headers = this.getAuthHeaders();
     return this.http.get<any>(`${this.apiUrl}/${id}`, { headers });
   }
 
+  // Método para atualizar uma sala com autenticação
   updateSala(sala: any): Observable<any> {
-    const token = localStorage.getItem('authToken');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
+    const headers = this.getAuthHeaders();
     return this.http.put<any>(`${this.apiUrl}/${sala.id}`, sala, { headers });
   }
 
+  // Método para excluir uma sala com autenticação
   deleteSala(id: number): Observable<any> {
-    const token = localStorage.getItem('authToken');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
+    const headers = this.getAuthHeaders();
     return this.http.delete(`${this.apiUrl}/${id}`, { headers });
   }
 }

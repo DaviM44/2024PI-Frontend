@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class CcursoService {
   private apiUrl = 'http://localhost:3000/cursos';
-  private disciplinesUrl = 'http://localhost:3000/disciplines'; 
+  private disciplinesUrl = 'http://localhost:3000/disciplines';
 
   constructor(private http: HttpClient) { }
 
@@ -29,12 +29,12 @@ export class CcursoService {
     getCursoById(id: string): Observable<any> {
       return this.http.get<any>(`${this.apiUrl}/${id}`);
     }
-  
+
     updateCurso(curso: any): Observable<any> {
       return this.http.put<any>(`${this.apiUrl}/${curso.id}`, curso);
     }
-  
-  
+
+
     deleteCurso(id: number): Observable<any> {
       return this.http.delete(`${this.apiUrl}/${id}`);
     }
