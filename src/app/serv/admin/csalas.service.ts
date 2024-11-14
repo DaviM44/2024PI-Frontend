@@ -26,7 +26,7 @@ export class CsalasService {
   // Método para registrar uma nova sala com o Bearer Token
   registerSala(salaData: any): Observable<any> {
     const headers = this.getAuthHeaders();
-    return this.http.post(this.apiUrl, salaData, { headers });
+    return this.http.post<any>(this.apiUrl, salaData, { headers });
   }
 
   // Método para recuperar as salas com autenticação
@@ -38,18 +38,22 @@ export class CsalasService {
   // Método para obter uma sala por ID com autenticação
   getSalaById(id: string): Observable<any> {
     const headers = this.getAuthHeaders();
-    return this.http.get<any>(`${this.apiUrl}/${id}`, { headers });
+    // Corrigir a URL para evitar duplicação de barras
+    return this.http.get<any>(`${this.apiUrl}${id}`, { headers });
   }
 
   // Método para atualizar uma sala com autenticação
   updateSala(sala: any): Observable<any> {
     const headers = this.getAuthHeaders();
-    return this.http.put<any>(`${this.apiUrl}/${sala.id}`, sala, { headers });
+
+    // Certifique-se de que o ID é passado corretamente na URL
+    const salaId = sala.id || sala.roomId;  // Ajuste para o nome correto do ID
+    return this.http.put<any>(`${this.apiUrl}${salaId}`, sala, { headers });
   }
 
   // Método para excluir uma sala com autenticação
   deleteSala(id: number): Observable<any> {
     const headers = this.getAuthHeaders();
-    return this.http.delete(`${this.apiUrl}/${id}`, { headers });
+    return this.http.delete<any>(`${this.apiUrl}${id}`, { headers });
   }
 }

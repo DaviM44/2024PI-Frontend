@@ -65,12 +65,13 @@ export class GerenciarSalasComponent implements OnInit {
     this.atualizarSalasPaginadas();
   }
 
-  excluirSalas(id: number) {
+  excluirSalas(roomId: number) {
     if (confirm('Tem certeza que deseja excluir esta sala?')) {
       this.loading = true;
-      this.csalasService.deleteSala(id).subscribe(
+      this.csalasService.deleteSala(roomId).subscribe(
         () => {
-          this.sala = this.sala.filter(sala => sala.id !== id);
+          // Atualiza a lista de salas após exclusão
+          this.sala = this.sala.filter(sala => sala.roomId !== roomId);
           this.filtrarSalas();
           this.loading = false;
           alert('Sala excluída com sucesso!');
@@ -83,4 +84,5 @@ export class GerenciarSalasComponent implements OnInit {
       );
     }
   }
+
 }

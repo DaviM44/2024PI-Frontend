@@ -33,11 +33,15 @@
             <td>{{ sala.roomResources }}</td>
             <td>{{ sala.roomAvailability }}</td>
             <td>
-              <button class="btn btn-primary" [routerLink]="['/admin/editar_sala', sala.id]"
-                aria-label="Editar Salas">
-                <i class="fas fa-pen"></i>
-              </button>
-              <button class="btn btn-danger" [disabled]="loading" (click)="excluirSalas(sala.id)">
+           <!-- Ajuste aqui para garantir que o valor correto está sendo passado como id -->
+<button class="btn btn-primary" [routerLink]="['/admin/editar_sala', sala.roomId]"
+aria-label="Editar Salas">
+<i class="fas fa-pen"></i>
+</button>
+
+
+<button class="btn btn-danger" [disabled]="loading" (click)="excluirSalas(sala.roomId)">
+
                 <i class="fas fa-trash"></i>
               </button>
             </td>
