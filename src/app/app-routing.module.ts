@@ -30,6 +30,7 @@ import { VisualizarDisciplinaComponent } from './prof/visualizar-disciplina/visu
 import { authpGuard } from './guards/authp.guard';
 import { GradeHorarioComponent } from './admin/grade-horario/grade-horario.component';
 import { TelaPerfilProfessorComponent } from './prof/tela-perfil-professor/tela-perfil-professor.component';
+import { GradeFixaComponent } from './admin/grade-fixa/grade-fixa.component';
 
 const routes: Routes = [
   // Rotas de Login
@@ -52,6 +53,7 @@ const routes: Routes = [
   { path: 'admin/editar_sala/:id', component: EditarSalasComponent },
   { path: 'admin/gerenciar_reservas', component: ReservasComponent },
   {path: 'admin/teste', component: GradeHorarioComponent},
+  {path: 'admin/grade-fixa', component: GradeFixaComponent},
 
   // Rotas do Professor
   { path: 'home', component: TelaInicialProfComponent },

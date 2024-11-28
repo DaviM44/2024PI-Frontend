@@ -3,9 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, throwError, tap } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class GhorarioService {
+export class GradeFixaService {
   private apiUrl = 'https://projeto-integrador-1v4i.onrender.com/reservation/';
   private teachersUrl = 'https://projeto-integrador-1v4i.onrender.com/teacher/';
   private subjectsUrl = 'https://projeto-integrador-1v4i.onrender.com/subject/';
@@ -15,61 +15,102 @@ export class GhorarioService {
 
   constructor(private http: HttpClient) {}
 
+  // Método para obter os cabeçalhos de autenticação
   private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('authToken');
     if (!token) {
       throw new Error('Token de autenticação não encontrado.');
     }
-    console.log('Token de autenticação:', token);  // Log para verificação do token
     return new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     });
   }
 
-  // CRUD para reservas
-  createReservation(reservationData: any): Observable<any> {
+  // CRUD para agendamentos
+  createSchedule(scheduleData: any): Observable<any> {
     const headers = this.getAuthHeaders();
-    return this.http.post(this.apiUrl, reservationData, { headers }).pipe(
+    return this.http.post(this.apiUrl, scheduleData, { headers }).pipe(
       catchError((error) => {
-        console.error('Erro ao criar reserva:', error);
-        return throwError(() => new Error('Erro ao criar reserva'));
+        console.error('Erro ao criar agendamento:', error);
+        return throwError(() => new Error('Erro ao criar agendamento'));
       })
     );
   }
 
-  getReservations(): Observable<any[]> {
+  getSchedules(): Observable<any[]> {
     const headers = this.getAuthHeaders();
     return this.http.get<any[]>(this.apiUrl, { headers }).pipe(
-      tap((response) => console.log('Reservas recebidas:', response)),  // Log da resposta
+      tap((response) => console.log('Agendamentos recebidos:', response)),
       catchError((error) => {
-        console.error('Erro ao obter reservas:', error);
-        return throwError(() => new Error('Falha ao obter reservas'));
+        console.error('Erro ao obter agendamentos:', error);
+        return throwError(() => new Error('Falha ao obter agendamentos'));
       })
     );
   }
 
-  updateReservation(reservation: any): Observable<any> {
+  updateSchedule(schedule: any): Observable<any> {
     const headers = this.getAuthHeaders();
-    return this.http.put<any>(`${this.apiUrl}${reservation.reservationId}`, reservation, { headers }).pipe(
+    return this.http.put<any>(`${this.apiUrl}${schedule.scheduleId}`, schedule, { headers }).pipe(
       catchError((error) => {
-        console.error('Erro ao atualizar reserva:', error);
-        return throwError(() => new Error('Erro ao atualizar reserva'));
+        console.error('Erro ao atualizar agendamento:', error);
+        return throwError(() => new Error('Erro ao atualizar agendamento'));
       })
     );
   }
 
-  deleteReservation(id: number): Observable<any> {
+  deleteSchedule(id: number): Observable<any> {
     const headers = this.getAuthHeaders();
     return this.http.delete(`${this.apiUrl}${id}`, { headers }).pipe(
       catchError((error) => {
-        console.error('Erro ao excluir reserva:', error);
-        return throwError(() => new Error('Erro ao excluir reserva'));
+        console.error('Erro ao excluir agendamento:', error);
+        return throwError(() => new Error('Erro ao excluir agendamento'));
       })
     );
   }
 
-  // Métodos adicionais para obter listas dinâmicas
+  // Métodos para cadastrar dados auxiliares
+  createTeacher(teacherData: any): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.post(this.teachersUrl, teacherData, { headers }).pipe(
+      catchError((error) => {
+        console.error('Erro ao criar professor:', error);
+        return throwError(() => new Error('Erro ao criar professor'));
+      })
+    );
+  }
+
+  createSubject(subjectData: any): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.post(this.subjectsUrl, subjectData, { headers }).pipe(
+      catchError((error) => {
+        console.error('Erro ao criar matéria:', error);
+        return throwError(() => new Error('Erro ao criar matéria'));
+      })
+    );
+  }
+
+  createRoom(roomData: any): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.post(this.roomsUrl, roomData, { headers }).pipe(
+      catchError((error) => {
+        console.error('Erro ao criar sala:', error);
+        return throwError(() => new Error('Erro ao criar sala'));
+      })
+    );
+  }
+
+  createCourse(courseData: any): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.post(this.coursesUrl, courseData, { headers }).pipe(
+      catchError((error) => {
+        console.error('Erro ao criar curso:', error);
+        return throwError(() => new Error('Erro ao criar curso'));
+      })
+    );
+  }
+
+  // Métodos para obter dados auxiliares
   getTeachers(): Observable<any[]> {
     const headers = this.getAuthHeaders();
     return this.http.get<any[]>(this.teachersUrl, { headers }).pipe(
