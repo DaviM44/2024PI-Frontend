@@ -30,9 +30,11 @@ import { VisualizarDisciplinaComponent } from './prof/visualizar-disciplina/visu
 import { GradeHorarioComponent } from './admin/grade-horario/grade-horario.component';
 import { TelaPerfilProfessorComponent } from './prof/tela-perfil-professor/tela-perfil-professor.component';
 import { GradeFixaComponent } from './admin/grade-fixa/grade-fixa.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 const routes: Routes = [
   // Rotas de Login
+  { path: '', component: InicioComponent },
   { path: 'login', component: TelaLoginComponent },
   { path: 'login_adm', component: TelaLoginAdmComponent },
 

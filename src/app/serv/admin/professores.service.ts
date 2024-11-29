@@ -39,7 +39,7 @@ export class ProfessoresService {
   // Método para obter um professor específico pelo ID
   getProfessorById(id: string): Observable<any> {
     const headers = this.getAuthHeaders();
-    return this.http.get<any>(`${this.apiUrl}/${id}`, { headers });
+    return this.http.get<any>(`${this.apiUrl}${id}`, { headers });
   }
 
   // Método para atualizar as informações de um professor
