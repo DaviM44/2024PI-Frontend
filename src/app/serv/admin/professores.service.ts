@@ -13,7 +13,7 @@ export class ProfessoresService {
 
   // Função para obter os headers com o token
   private getAuthHeaders(): HttpHeaders {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('adminToken');
     if (!token) {
       throw new Error('Token de autenticação não encontrado.');
     }
@@ -51,7 +51,7 @@ export class ProfessoresService {
 
   deleteProfessor(id: number): Observable<any> {
     const headers = this.getAuthHeaders();
-    return this.http.delete<any>(`${this.apiUrl}/${id}`, { headers });
+    return this.http.delete<any>(`${this.apiUrl}${id}`, { headers });
   }
 
 
