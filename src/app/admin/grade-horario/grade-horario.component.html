@@ -13,7 +13,7 @@
               <label for="teacher" class="form-label"><strong>Professor:</strong></label>
               <select [(ngModel)]="form.teacher" name="teacher" class="form-control" required>
                 <option *ngFor="let teacher of teachers" [value]="teacher.teacherId">
-                  {{ teacher.teacherName }}
+                  {{ teacher.teacherName}}
                 </option>
               </select>
             </div>
@@ -70,7 +70,7 @@
               </button>
             </div>
             <div class="d-grid gap-2 mb-3">
-              <button type="button" class="btn btn-danger" (click)="cancel()">Cancelar</button>
+              <button type="button" class="btn btn-danger" routerLink="/admin/gerenciar_reservas" (click)="cancel()">Cancelar</button>
             </div>
 
           </form>
