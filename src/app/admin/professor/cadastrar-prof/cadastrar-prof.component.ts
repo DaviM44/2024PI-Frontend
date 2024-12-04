@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProfessoresService } from '../../../serv/admin/professores.service'; // Serviço de cadastro de professor
 import { CdisciplinaService } from '../../../serv/admin/cdisciplina.service'; // Serviço de disciplinas
 import { Title } from '@angular/platform-browser';
@@ -14,7 +14,10 @@ export class CadastrarProfComponent implements OnInit {
   registerError: boolean = false;
   registerSuccess: boolean = false;
   disciplinas: any[] = []; // Lista de disciplinas carregadas
-  passwdGerada!: string; // Variável para armazenar a senha gerada
+  disciplinasFiltradas: any[] = []; // Lista filtrada de disciplinas
+  selectedDisciplines: number[] = []; // Array para armazenar as disciplinas selecionadas
+  disciplineSelectionOpen: boolean = false; // Controle de visibilidade do modal de disciplinas
+  pesquisaControl: FormControl = new FormControl(''); // Controle de formulário para o campo de pesquisa
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,6 +30,7 @@ export class CadastrarProfComponent implements OnInit {
     this.carregarDisciplinas();
     this.titleService.setTitle('Cadastro de Professor');
 
+    // Inicializando o formulário
     this.registerForm = this.formBuilder.group({
       teacherName: ['', [Validators.required, Validators.pattern('^[A-Za-zÀ-ÿ\\s]+$')]], // Nome
       teacherArea: ['', [Validators.required]], // Área de ensino
@@ -35,17 +39,22 @@ export class CadastrarProfComponent implements OnInit {
       personalEmail: ['', [Validators.email]], // Email pessoal (opcional)
       personalPhone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]], // Telefone pessoal
       businessPhone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]], // Telefone corporativo
-      teacherPassword: ['', [Validators.required]], // Senha (pode ser gerada automaticamente)
-      teacherSubjects: [null, [Validators.required]] // Agora é um único valor (não um array)
+      teacherSubjects: [[], [Validators.required]], // Agora é um array (não um único valor)
+      teacherPassword: ['', [Validators.required]] // Campo de senha para ser enviado ao backend
+    });
+
+    // Reagindo às mudanças do campo de pesquisa
+    this.pesquisaControl.valueChanges.subscribe(value => {
+      this.filtrarDisciplinas();
     });
   }
 
-  // Função para carregar as disciplinas da API
+  // Função para carregar as disciplinas
   carregarDisciplinas() {
     this.cdisciplinaService.getDisciplines().subscribe(
       (data) => {
-        console.log('Disciplinas carregadas:', data);  // Verifique aqui se as disciplinas estão vindo corretamente
-        this.disciplinas = data; // Armazena as disciplinas carregadas
+        this.disciplinas = data;
+        this.disciplinasFiltradas = [...this.disciplinas]; // Inicializa a lista filtrada com todas as disciplinas
       },
       (error) => {
         console.error('Erro ao carregar disciplinas:', error);
@@ -53,53 +62,27 @@ export class CadastrarProfComponent implements OnInit {
     );
   }
 
-  // Função para acessar os controles do formulário
-  get f() { return this.registerForm.controls; }
-
-  // Função para gerar senha aleatória
-  gerarSenhaAleatoria(length: number = 8): string {
-    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?';
-    let senha = '';
-    for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * caracteres.length);
-      senha += caracteres[randomIndex];
-    }
-    return senha;
-  }
-
   // Função chamada quando o formulário é submetido
   onSubmit(): void {
-    console.log('Formulário enviado', this.registerForm.value); // Logando os dados do formulário antes de qualquer validação
+    console.log('Formulário enviado', this.registerForm.value);
 
-    // Gerar senha aleatória
-    const senhaGerada = this.gerarSenhaAleatoria();
-    console.log('Senha gerada:', senhaGerada); // Logando a senha gerada
-
-    // Atualizar o campo de senha no formulário
-    this.registerForm.patchValue({ teacherPassword: senhaGerada });
-    console.log('Dados do formulário após atualização da senha:', this.registerForm.value); // Logando os dados do formulário após atualização
-
-    // Verificando se o formulário está válido
+    // Verificando se o formulário é válido antes de prosseguir
     if (this.registerForm.invalid) {
       this.registerError = true;
-      this.registerForm.markAllAsTouched(); // Marca todos os campos como tocados
-      console.log('Formulário inválido:', this.registerForm.errors); // Logando erros de formulário
+      this.registerForm.markAllAsTouched();
+      console.log('Formulário inválido:', this.registerForm.errors);
       return;
     }
 
-    // Obter os dados do formulário, incluindo a senha gerada
+    // Transforma teacherSubjects em um array de objetos com a propriedade subjectId
     const dadosFormulario = this.registerForm.value;
 
-    // Garantir que teacherSubjects seja um array
-    if (!Array.isArray(dadosFormulario.teacherSubjects)) {
-      // Se não for um array (caso de uma única disciplina), converte em um array
-      dadosFormulario.teacherSubjects = [Number(dadosFormulario.teacherSubjects)];
-    } else {
-      // Caso já seja um array, converte os IDs de disciplinas para números
-      dadosFormulario.teacherSubjects = dadosFormulario.teacherSubjects.map((subjectId: any) => Number(subjectId));
+    if (Array.isArray(dadosFormulario.teacherSubjects)) {
+      // Aqui estamos dizendo que o subjectId é do tipo 'number'
+      dadosFormulario.teacherSubjects = dadosFormulario.teacherSubjects.map((subjectId: number) => ({ subjectId }));
     }
 
-    console.log('Dados do formulário para envio:', dadosFormulario); // Logando os dados a serem enviados para a API
+    console.log('Dados do formulário após correção do campo teacherSubjects:', dadosFormulario);
 
     // Enviar os dados para o serviço
     this.professoresService.registerProfessor(dadosFormulario).subscribe(
@@ -113,15 +96,6 @@ export class CadastrarProfComponent implements OnInit {
       error => {
         console.error('Erro ao registrar professor:', error);
         this.registerError = true;
-        if (error.status === 400) {
-          console.error('Erro 400: Dados inválidos ou incompletos.');
-        } else if (error.status === 401) {
-          console.error('Erro 401: Não autorizado (Token inválido ou expirada).');
-        } else if (error.status === 500) {
-          console.error('Erro 500: Erro interno do servidor.');
-        } else {
-          console.error(`Erro desconhecido: ${error.status} - ${error.message}`);
-        }
       }
     );
   }
@@ -129,5 +103,53 @@ export class CadastrarProfComponent implements OnInit {
   // Função para resetar o formulário
   onReset(): void {
     this.registerForm.reset();
+    this.selectedDisciplines = []; // Limpar as disciplinas selecionadas
   }
+
+  // Função para abrir e fechar o modal de seleção de disciplinas
+  toggleDisciplineSelection() {
+    this.disciplineSelectionOpen = !this.disciplineSelectionOpen;
+  }
+
+  // Função chamada quando uma disciplina é selecionada ou desmarcada
+  onDisciplineChange(event: any): void {
+    const disciplinaId = event.target.value;
+    const index = this.selectedDisciplines.indexOf(disciplinaId);
+
+    // Se a disciplina já foi selecionada, removemos do array, caso contrário, adicionamos
+    if (index === -1) {
+      this.selectedDisciplines.push(disciplinaId);
+    } else {
+      this.selectedDisciplines.splice(index, 1);
+    }
+
+    console.log('Disciplinas selecionadas: ', this.selectedDisciplines);
+  }
+
+  // Função chamada quando o botão "Confirmar" do modal de disciplinas é pressionado
+  confirmDisciplineSelection(): void {
+    // Atualizando o valor do FormControl teacherSubjects
+    this.registerForm.patchValue({
+      teacherSubjects: [...this.selectedDisciplines]  // Atualizando com as disciplinas selecionadas
+    });
+
+    console.log('Disciplinas confirmadas: ', this.selectedDisciplines);
+
+    // Fechar o modal
+    this.toggleDisciplineSelection();
+  }
+
+  // Função para filtrar as disciplinas com base no texto digitado no campo de pesquisa
+  filtrarDisciplinas() {
+    if (this.pesquisaControl.value) {
+      this.disciplinasFiltradas = this.disciplinas.filter(disciplina => 
+        disciplina.subjectName.toLowerCase().includes(this.pesquisaControl.value.toLowerCase())
+      );
+    } else {
+      this.disciplinasFiltradas = [...this.disciplinas];
+    }
+  }
+
+  // Função para acessar os controles do formulário
+  get f() { return this.registerForm.controls; }
 }

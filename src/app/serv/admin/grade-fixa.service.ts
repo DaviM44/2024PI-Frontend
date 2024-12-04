@@ -6,7 +6,7 @@ import { Observable, catchError, throwError, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class GradeFixaService {
-  private apiUrl = 'https://projeto-integrador-1v4i.onrender.com/reservation/';
+  private apiUrl = 'https://projeto-integrador-1v4i.onrender.com/schedule/';
   private teachersUrl = 'https://projeto-integrador-1v4i.onrender.com/teacher/';
   private subjectsUrl = 'https://projeto-integrador-1v4i.onrender.com/subject/';
   private timesUrl = 'https://projeto-integrador-1v4i.onrender.com/time/';
@@ -17,7 +17,7 @@ export class GradeFixaService {
 
   // Método para obter os cabeçalhos de autenticação
   private getAuthHeaders(): HttpHeaders {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('adminToken');
     if (!token) {
       throw new Error('Token de autenticação não encontrado.');
     }
@@ -65,47 +65,6 @@ export class GradeFixaService {
       catchError((error) => {
         console.error('Erro ao excluir agendamento:', error);
         return throwError(() => new Error('Erro ao excluir agendamento'));
-      })
-    );
-  }
-
-  // Métodos para cadastrar dados auxiliares
-  createTeacher(teacherData: any): Observable<any> {
-    const headers = this.getAuthHeaders();
-    return this.http.post(this.teachersUrl, teacherData, { headers }).pipe(
-      catchError((error) => {
-        console.error('Erro ao criar professor:', error);
-        return throwError(() => new Error('Erro ao criar professor'));
-      })
-    );
-  }
-
-  createSubject(subjectData: any): Observable<any> {
-    const headers = this.getAuthHeaders();
-    return this.http.post(this.subjectsUrl, subjectData, { headers }).pipe(
-      catchError((error) => {
-        console.error('Erro ao criar matéria:', error);
-        return throwError(() => new Error('Erro ao criar matéria'));
-      })
-    );
-  }
-
-  createRoom(roomData: any): Observable<any> {
-    const headers = this.getAuthHeaders();
-    return this.http.post(this.roomsUrl, roomData, { headers }).pipe(
-      catchError((error) => {
-        console.error('Erro ao criar sala:', error);
-        return throwError(() => new Error('Erro ao criar sala'));
-      })
-    );
-  }
-
-  createCourse(courseData: any): Observable<any> {
-    const headers = this.getAuthHeaders();
-    return this.http.post(this.coursesUrl, courseData, { headers }).pipe(
-      catchError((error) => {
-        console.error('Erro ao criar curso:', error);
-        return throwError(() => new Error('Erro ao criar curso'));
       })
     );
   }

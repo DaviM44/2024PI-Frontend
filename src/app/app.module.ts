@@ -36,6 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CadastrarProfComponent } from './admin/professor/cadastrar-prof/cadastrar-prof.component';
 import { GradeHorarioComponent } from './admin/grade-horario/grade-horario.component';
 import { GradeFixaComponent } from './admin/grade-fixa/grade-fixa.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { SeminavbarComponent } from './seminavbar/seminavbar.component';
 
 
 
@@ -68,6 +70,8 @@ import { GradeFixaComponent } from './admin/grade-fixa/grade-fixa.component';
     VisualizarDisciplinaComponent,
     GradeHorarioComponent,
     GradeFixaComponent,
+    InicioComponent,
+    SeminavbarComponent,
   ],
   imports: [
     BrowserModule,
