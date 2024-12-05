@@ -17,10 +17,10 @@
               <div class="reservation-name">{{ reservation.teacher }} - {{ reservation.course }}</div>
               <div class="reservation-time">{{ reservation.time }}</div>
             </div>
-               <!-- Botão o qual deve ser mexiado -->
+            <!-- Botão para excluir a reserva -->
             <button type="button" class="btn-delete" (click)="deleteReservation(reservation.reservationId)">Excluir</button>
           </div>
-        </div>   
+        </div>
         
         <!-- Botão para ir à tela de cadastro -->
         <div class="d-flex justify-content-end mt-2 mb-2">
@@ -31,7 +31,6 @@
 
     <!-- Detalhes da reserva -->
     <div class="col-md-6">
-      <!-- Imagem Temporária -->
       <div *ngIf="!selectedReservation" class="reservation-detail text-center">
         <img src="https://th.bing.com/th/id/R.727a9882afde47f14bb4540175c02772?rik=IC6kM8Vq2%2fr9yw&pid=ImgRaw&r=0">
         <p>Selecione uma reserva para ver os detalhes.</p>
@@ -40,13 +39,15 @@
       <!-- Detalhes da reserva -->
       <div *ngIf="isEditing" class="reservation-detail">
         <h4>Detalhes da Reserva</h4>
-        <div>
-          <p><strong>Professor:</strong> {{ form.teacherName }}</p>
-          <p><strong>Curso:</strong> {{ form.courseName }}</p>
-          <p><strong>Horário:</strong> {{ form.timeName }}</p>
-          <p><strong>Sala:</strong> {{ form.roomName }}</p>
-          <p><strong>Data:</strong> {{ form.date }}</p>
-        </div>
+        <p><strong>Professor:</strong> {{ form.teacher }}</p>
+        <p><strong>Curso:</strong> {{ form.course}}</p>
+        <p><strong>Horário:</strong> {{ form.time}}</p>
+        <p><strong>Sala:</strong> {{ form.room}}</p>
+        <p><strong>Data:</strong> {{ form.date }}</p>
+        <p><strong>Capacidade da Sala:</strong> {{ form.roomCapacity }} pessoas</p>
+        <p><strong>Recursos da Sala:</strong> {{ form.roomResources | json }}</p>
+        
+        <!-- Botão para fechar -->
         <div class="action-buttons">
           <button type="button" class="btn-delete" (click)="cancel()">Fechar</button>
         </div>

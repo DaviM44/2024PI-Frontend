@@ -51,6 +51,7 @@ import { CadastrarHoraComponent } from './admin/cadastrar-hora/cadastrar-hora.co
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
