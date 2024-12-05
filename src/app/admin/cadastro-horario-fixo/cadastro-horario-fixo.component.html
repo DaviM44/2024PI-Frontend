@@ -42,7 +42,7 @@
           <select id="room" formControlName="room" class="form-control">
             <option value="" disabled>Selecione uma sala</option>
             <option *ngFor="let room of rooms" [value]="room.roomId">
-              {{ room.roomType }} {{ room.roomFloor }}
+              {{ room.roomType }} {{ room.roomNumber }}
             </option>
           </select>
         </div>
