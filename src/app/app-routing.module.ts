@@ -33,6 +33,10 @@ import { GradeHorarioComponent } from './admin/grade-horario/grade-horario.compo
 import { TelaPerfilProfessorComponent } from './prof/tela-perfil-professor/tela-perfil-professor.component';
 import { GradeFixaComponent } from './admin/grade-fixa/grade-fixa.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { CadastroHorarioFixoComponent } from './admin/cadastro-horario-fixo/cadastro-horario-fixo.component';
+import { GradeFixaProfComponent } from './prof/grade-fixa-prof/grade-fixa-prof.component';
+import { ReservarComponent } from './prof/reservar/reservar.component';
+import { VisualizarReservasComponent } from './prof/visualizar-reservas/visualizar-reservas.component';
 
 const routes: Routes = [
   // Rotas de Login
@@ -121,6 +125,13 @@ const routes: Routes = [
     component: GradeFixaComponent,
     canActivate: [AdminAuthGuard] // Protege com o AdminAuthGuard
   },
+  {
+    path: 'admin/cadastrar_horarios',
+    component: CadastroHorarioFixoComponent,
+    canActivate: [AdminAuthGuard] // Protege com o AdminAuthGuard
+  },
+
+
 
   // Rotas do Professor
   {
@@ -138,6 +149,19 @@ const routes: Routes = [
     component: VisualizarDisciplinaComponent,
     canActivate: [TeacherAuthGuard] // Protege com o TeacherAuthGuard
   },
+  {path: 'professor/visualizar-grade',
+  component: GradeFixaProfComponent,
+  canActivate: [TeacherAuthGuard] // Protege com o TeacherAuthGuard
+},
+{path: 'professor/reservar',
+component: ReservarComponent,
+canActivate: [TeacherAuthGuard] // Protege com o TeacherAuthGuard
+},
+{path: 'professor/visualizar-reservas',
+component: VisualizarReservasComponent,
+canActivate: [TeacherAuthGuard] // Protege com o TeacherAuthGuard
+},
+
 ];
 
 @NgModule({

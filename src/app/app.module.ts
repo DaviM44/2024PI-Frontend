@@ -40,6 +40,10 @@ import { InicioComponent } from './inicio/inicio.component';
 import { SeminavbarComponent } from './seminavbar/seminavbar.component';
 import { TimeFilterPipe } from './pipes/time-filter.pipe';
 import { DayFilterPipe } from './pipes/day-filter.pipe';
+import { CadastroHorarioFixoComponent } from './admin/cadastro-horario-fixo/cadastro-horario-fixo.component';
+import { GradeFixaProfComponent } from './prof/grade-fixa-prof/grade-fixa-prof.component';
+import { ReservarComponent } from './prof/reservar/reservar.component';
+import { VisualizarReservasComponent } from './prof/visualizar-reservas/visualizar-reservas.component';
 
 
 
@@ -76,6 +80,10 @@ import { DayFilterPipe } from './pipes/day-filter.pipe';
     SeminavbarComponent,
     TimeFilterPipe,
     DayFilterPipe,
+    CadastroHorarioFixoComponent,
+    GradeFixaProfComponent,
+    ReservarComponent,
+    VisualizarReservasComponent,
   ],
   imports: [
     BrowserModule,

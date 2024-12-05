@@ -5,7 +5,7 @@ import { Observable, catchError, throwError, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class GhorarioService {
+export class ReservarService {
   private apiUrl = 'https://projeto-integrador-1v4i.onrender.com/reservation/'; // Endpoint para reservas
   private scheduleUrl = 'https://projeto-integrador-1v4i.onrender.com/schedule/'; // Novo endpoint para agendamentos
   private teachersUrl = 'https://projeto-integrador-1v4i.onrender.com/teacher/';
@@ -18,7 +18,7 @@ export class GhorarioService {
 
   // Método para obter os headers de autenticação (Token)
   private getAuthHeaders(): HttpHeaders {
-    const token = localStorage.getItem('adminToken');
+    const token = localStorage.getItem('teacherToken');
     if (!token) {
       throw new Error('Token de autenticação não encontrado.');
     }

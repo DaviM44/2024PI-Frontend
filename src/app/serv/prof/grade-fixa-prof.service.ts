@@ -3,20 +3,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, throwError, tap } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class GhorarioService {
-  private apiUrl = 'https://projeto-integrador-1v4i.onrender.com/reservation/'; // Endpoint para reservas
-  private scheduleUrl = 'https://projeto-integrador-1v4i.onrender.com/schedule/'; // Novo endpoint para agendamentos
+export class GradeFixaProfService {
+  private apiUrl = 'https://projeto-integrador-1v4i.onrender.com/schedule/';
   private teachersUrl = 'https://projeto-integrador-1v4i.onrender.com/teacher/';
   private subjectsUrl = 'https://projeto-integrador-1v4i.onrender.com/subject/';
+  private jsonUrl = 'https://projeto-integrador-1v4i.onrender.com/reservation/'; 
+  private weekDaysUrl = 'https://projeto-integrador-1v4i.onrender.com/weekDays/';
   private timesUrl = 'https://projeto-integrador-1v4i.onrender.com/time/';
   private roomsUrl = 'https://projeto-integrador-1v4i.onrender.com/rooms/';
   private coursesUrl = 'https://projeto-integrador-1v4i.onrender.com/course/';
 
   constructor(private http: HttpClient) {}
 
-  // Método para obter os headers de autenticação (Token)
+  // Método para obter os cabeçalhos de autenticação
   private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('adminToken');
     if (!token) {
@@ -28,53 +29,10 @@ export class GhorarioService {
     });
   }
 
-  // CRUD para reservas
-
-  createReservation(reservationData: any): Observable<any> {
-    const headers = this.getAuthHeaders();
-    return this.http.post(this.apiUrl, reservationData, { headers }).pipe(
-      catchError((error) => {
-        console.error('Erro ao criar reserva:', error);
-        return throwError(() => new Error('Erro ao criar reserva'));
-      })
-    );
-  }
-
-  getReservations(): Observable<any[]> {
-    const headers = this.getAuthHeaders();
-    return this.http.get<any[]>(this.apiUrl, { headers }).pipe(
-      tap((response) => console.log('Reservas recebidas:', response)),
-      catchError((error) => {
-        console.error('Erro ao obter reservas:', error);
-        return throwError(() => new Error('Falha ao obter reservas'));
-      })
-    );
-  }
-
-  updateReservation(reservation: any): Observable<any> {
-    const headers = this.getAuthHeaders();
-    return this.http.put<any>(`${this.apiUrl}${reservation.reservationId}`, reservation, { headers }).pipe(
-      catchError((error) => {
-        console.error('Erro ao atualizar reserva:', error);
-        return throwError(() => new Error('Erro ao atualizar reserva'));
-      })
-    );
-  }
-
-  deleteReservation(id: number): Observable<any> {
-    const headers = this.getAuthHeaders();
-    return this.http.delete(`${this.apiUrl}${id}`, { headers }).pipe(
-      catchError((error) => {
-        console.error('Erro ao excluir reserva:', error);
-        return throwError(() => new Error('Erro ao excluir reserva'));
-      })
-    );
-  }
-
-  // Método para criar um agendamento
+  // CRUD para agendamentos
   createSchedule(scheduleData: any): Observable<any> {
     const headers = this.getAuthHeaders();
-    return this.http.post(this.scheduleUrl, scheduleData, { headers }).pipe(
+    return this.http.post(this.apiUrl, scheduleData, { headers }).pipe(
       catchError((error) => {
         console.error('Erro ao criar agendamento:', error);
         return throwError(() => new Error('Erro ao criar agendamento'));
@@ -82,14 +40,54 @@ export class GhorarioService {
     );
   }
 
-  // Métodos adicionais para obter listas dinâmicas
+  getSchedules(): Observable<any[]> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<any[]>(this.apiUrl, { headers }).pipe(
+      tap((response) => console.log('Agendamentos recebidos:', response)),
+      catchError((error) => {
+        console.error('Erro ao obter agendamentos:', error);
+        return throwError(() => new Error('Falha ao obter agendamentos'));
+      })
+    );
+  }
 
+  updateSchedule(schedule: any): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.put<any>(`${this.apiUrl}${schedule.scheduleId}`, schedule, { headers }).pipe(
+      catchError((error) => {
+        console.error('Erro ao atualizar agendamento:', error);
+        return throwError(() => new Error('Erro ao atualizar agendamento'));
+      })
+    );
+  }
+
+  deleteSchedule(id: number): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.delete(`${this.apiUrl}${id}`, { headers }).pipe(
+      catchError((error) => {
+        console.error('Erro ao excluir agendamento:', error);
+        return throwError(() => new Error('Erro ao excluir agendamento'));
+      })
+    );
+  }
+
+  // Métodos para obter dados auxiliares
   getTeachers(): Observable<any[]> {
     const headers = this.getAuthHeaders();
     return this.http.get<any[]>(this.teachersUrl, { headers }).pipe(
       catchError((error) => {
         console.error('Erro ao obter professores:', error);
         return throwError(() => new Error('Erro ao obter professores'));
+      })
+    );
+  }
+
+  getWeekDays(): Observable<any[]> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<any[]>(this.weekDaysUrl, { headers }).pipe(
+      catchError((error) => {
+        console.error('Erro ao obter dias da semana:', error);
+        return throwError(() => new Error('Erro ao obter dias da semana'));
       })
     );
   }
@@ -133,6 +131,4 @@ export class GhorarioService {
       })
     );
   }
-
-  
 }
