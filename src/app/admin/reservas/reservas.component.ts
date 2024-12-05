@@ -23,6 +23,7 @@ export class ReservasComponent implements OnInit {
   reservations: any[] = [];
   teachers: any[] = [];
   subjects: any[] = [];
+  selectedReservation: any = null; // Controla a reserva selecionada
   times: any[] = [];
   rooms: any[] = [];
   courses: any[] = [];
@@ -59,6 +60,51 @@ export class ReservasComponent implements OnInit {
     );
   }
 
+  editReservation(reservation: any): void {
+    this.selectedReservation = reservation; // Atribui a reserva selecionada
+    this.isEditing = true;
+
+    // Mapeamento para obter detalhes completos
+    const teacher = this.teachers.find((t) => t.id === reservation.teacher) || {};
+    const course = this.courses.find((c) => c.id === reservation.course) || {};
+    const time = this.times.find((t) => t.id === reservation.time) || {};
+    const room = this.rooms.find((r) => r.id === reservation.room) || {};
+
+    this.form = {
+      teacher: reservation.teacher,
+      subject: reservation.subject,
+      time: reservation.time,
+      date: reservation.date,
+      room: reservation.room,
+      course: reservation.course,
+      teacherName: teacher.name || 'Não encontrado',
+      courseName: course.name || 'Não encontrado',
+      timeName: time.name || 'Não encontrado',
+      roomName: room.name || 'Não encontrado',
+    };
+  }
+
+  cancel(): void {
+    this.isEditing = false;
+    this.selectedReservation = null; // Define como null para exibir a imagem novamente
+    this.form = { teacher: null, subject: null, time: null, date: '', room: null, course: null };
+  }
+
+  deleteReservation(id: number): void {
+    if (confirm('Tem certeza de que deseja excluir esta reserva?')) {
+      this.ghorarioService.deleteReservation(id).subscribe({
+        next: () => {
+          alert('Reserva excluída com sucesso!');
+          this.loadReservations();  // Recarregar as reservas após a exclusão
+        },
+        error: (err) => {
+          console.error('Erro ao excluir reserva:', err);
+          alert('Erro ao excluir reserva');
+        }
+      });
+    }
+  }
+
   loadAuxiliaryData(): void {
     this.ghorarioService.getTeachers().subscribe((data) => (this.teachers = data));
     this.ghorarioService.getSubjects().subscribe((data) => (this.subjects = data));
@@ -66,49 +112,4 @@ export class ReservasComponent implements OnInit {
     this.ghorarioService.getRooms().subscribe((data) => (this.rooms = data));
     this.ghorarioService.getCourses().subscribe((data) => (this.courses = data));
   }
-
-  editReservation(reservation: any): void {
-  this.isEditing = true;
-
-  // Mapeamento para obter detalhes completos
-  const teacher = this.teachers.find((t) => t.id === reservation.teacher) || {};
-  const course = this.courses.find((c) => c.id === reservation.course) || {};
-  const time = this.times.find((t) => t.id === reservation.time) || {};
-  const room = this.rooms.find((r) => r.id === reservation.room) || {};
-
-  this.form = {
-    teacher: reservation.teacher,
-    subject: reservation.subject,
-    time: reservation.time,
-    date: reservation.date,
-    room: reservation.room,
-    course: reservation.course,
-    teacherName: teacher.name || 'Não encontrado',
-    courseName: course.name || 'Não encontrado',
-    timeName: time.name || 'Não encontrado',
-    roomName: room.name || 'Não encontrado',
-  };
-}
-
-
-  cancel(): void {
-    this.isEditing = false;
-    this.form = { teacher: null, subject: null, time: null, date: '', room: null, course: null };
-  }
- deleteReservation(id: number): void {
-  if (confirm('Tem certeza de que deseja excluir esta reserva?')) {
-    this.ghorarioService.deleteReservation(id).subscribe({
-      next: () => {
-        alert('Reserva excluída com sucesso!');
-        this.loadReservations();  // Recarregar as reservas após a exclusão
-      },
-      error: (err) => {
-        console.error('Erro ao excluir reserva:', err);
-        alert('Erro ao excluir reserva');
-      }
-    });
-  }
-}
-
-  
 }
