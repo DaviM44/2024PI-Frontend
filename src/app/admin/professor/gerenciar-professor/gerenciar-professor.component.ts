@@ -30,9 +30,8 @@ export class GerenciarProfessorComponent implements OnInit {
         this.professores = data.map(professor => ({
           id: professor.teacherId, // Usar teacherId em vez de id
           name: professor.teacherName, // Usar teacherName
-          curso: professor.subjects.length > 0 ? professor.subjects[0] : 'Sem curso', // Usar o primeiro item de subjects
           emailI: professor.institutionalEmail, // Usar institutionalEmail
-          tel: professor.personalPhone // Usar personalPhone
+          tel: professor.businessPhone // Usar personalPhone
         }));
 
         this.professoresFiltrados = this.professores; // Inicialmente, todos os professores estão na lista filtrada
