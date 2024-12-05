@@ -24,7 +24,7 @@ interface Reservation {
 @Component({
   selector: 'app-reservar',
   templateUrl: './reservar.component.html',
-  styleUrl: './reservar.component.css'
+  styleUrls: ['./reservar.component.css']
 })
 export class ReservarComponent implements OnInit {
   reservations: Reservation[] = [];
@@ -50,7 +50,7 @@ export class ReservarComponent implements OnInit {
     this.loading = true;
     this.reservarService.getReservations().subscribe({
       next: (data) => {
-        this.reservations = data;
+        this.reservations = Array.isArray(data) ? data : [];
         this.loading = false;
       },
       error: (err) => {
@@ -64,23 +64,24 @@ export class ReservarComponent implements OnInit {
   loadAuxiliaryData(): void {
     this.reservarService.getTeachers().subscribe(data => {
       console.log('Teachers:', data);
-      this.teachers = data;
+      // Verifica se a resposta é um objeto (não um array) e transforma em array
+      this.teachers = Array.isArray(data) ? data : [data]; // Aqui tratamos o valor como array
     });
     this.reservarService.getSubjects().subscribe(data => {
       console.log('Subjects:', data);
-      this.subjects = data;
+      this.subjects = Array.isArray(data) ? data : [];
     });
     this.reservarService.getTimes().subscribe(data => {
       console.log('Times:', data);
-      this.times = data;
+      this.times = Array.isArray(data) ? data : [];
     });
     this.reservarService.getRooms().subscribe(data => {
       console.log('Rooms:', data);
-      this.rooms = data;
+      this.rooms = Array.isArray(data) ? data : [];
     });
     this.reservarService.getCourses().subscribe(data => {
       console.log('Courses:', data);
-      this.courses = data;
+      this.courses = Array.isArray(data) ? data : [];
     });
   }
 

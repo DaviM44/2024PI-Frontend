@@ -17,7 +17,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>ID</th>
+            <th>Número</th>
             <th>Tipo</th>
             <th>Capacidade Máxima</th>
             <th>Andar</th>
@@ -28,7 +28,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let sala of salasPaginadas">
-            <td>{{ sala.roomId }}</td>
+            <td>{{ sala.roomNumber }}</td>
             <td>{{ sala.roomType }}</td>
             <td>{{ sala.roomCapacity }}</td>
             <td>{{ sala.roomFloor }}</td>
