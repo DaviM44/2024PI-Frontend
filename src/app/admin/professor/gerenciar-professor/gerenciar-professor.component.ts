@@ -73,21 +73,22 @@ export class GerenciarProfessorComponent implements OnInit {
   }
 
   excluirProfessor(id: number) {
-    if (confirm('Tem certeza que deseja excluir este professor?')) {
-      this.loading = true;
-      this.professoresService.deleteProfessor(id).subscribe(
-        () => {
-          this.professores = this.professores.filter(professor => professor.id !== id);
-          this.filtrarProfessores(); // Reaplica o filtro após a exclusão
-          this.loading = false;
-          alert('Professor excluído com sucesso!');
-        },
-        error => {
-          console.error('Erro ao excluir professor: ', error);
-          this.loading = false;
-          alert('Ocorreu um erro ao excluir o professor.');
-        }
-      );
-    }
+    this.loading = true;
+    this.professoresService.deleteProfessor(id).subscribe(
+      () => {
+        // Remover o professor da lista diretamente
+        this.professores = this.professores.filter(professor => professor.id !== id);
+        this.filtrarProfessores(); // Reaplica o filtro após a exclusão
+        this.loading = false;
+        // Mensagem de sucesso
+        alert('Professor excluído com sucesso!');
+      },
+      error => {
+        console.error('Erro ao excluir professor: ', error);
+        this.loading = false;
+        alert('Ocorreu um erro ao excluir o professor.');
+      }
+    );
   }
+
 }

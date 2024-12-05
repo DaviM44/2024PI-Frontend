@@ -44,6 +44,8 @@ import { CadastroHorarioFixoComponent } from './admin/cadastro-horario-fixo/cada
 import { GradeFixaProfComponent } from './prof/grade-fixa-prof/grade-fixa-prof.component';
 import { ReservarComponent } from './prof/reservar/reservar.component';
 import { VisualizarReservasComponent } from './prof/visualizar-reservas/visualizar-reservas.component';
+import { CadastrarHoraComponent } from './admin/cadastrar-hora/cadastrar-hora.component';
+
 
 
 
@@ -84,6 +86,8 @@ import { VisualizarReservasComponent } from './prof/visualizar-reservas/visualiz
     GradeFixaProfComponent,
     ReservarComponent,
     VisualizarReservasComponent,
+    CadastrarHoraComponent,
+   
   ],
   imports: [
     BrowserModule,
