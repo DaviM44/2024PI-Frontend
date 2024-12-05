@@ -53,7 +53,7 @@
                 <h5 class="text-center">Selecione as Disciplinas</h5>
                 <div *ngFor="let discipline of disciplines">
                   <label>
-                    <input type="checkbox" [value]="discipline.subjectId" (change)="onDisciplineChange($event)" 
+                    <input type="checkbox" [value]="discipline.subjectId" (change)="onDisciplineChange($event)"
                       [checked]="selectedDisciplines.includes(discipline.subjectId)">
                     {{ discipline.subjectName }}
                   </label>

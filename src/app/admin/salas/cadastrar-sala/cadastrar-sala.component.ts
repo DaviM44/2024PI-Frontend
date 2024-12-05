@@ -62,7 +62,7 @@ export class CadastrarSalaComponent implements OnInit {
       roomNumber: this.registerForm.value.roomNumber.padStart(2, '0'), // Garante que o número da sala tenha 2 dígitos
       roomFloor: this.registerForm.value.roomFloor.toString(), // Andar da sala (convertido para string)
       roomResources: this.resources.controls.map((control: any) => control.value).join(', '), // Recursos como string
-      roomAvailability: this.registerForm.value.roomAvailability === 'L' ? 'Livre' : 'Indisponível', // Disponibilidade formatada
+      roomAvailability: this.registerForm.value.roomAvailability === 'Livre' ? 'Livre' : 'Indisponível',
       roomType: {
         roomTypeId: this.registerForm.value.roomType // Tipo da sala com chave 'roomTypeId'
       }

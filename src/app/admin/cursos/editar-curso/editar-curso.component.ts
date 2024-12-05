@@ -53,7 +53,7 @@ export class EditarCursoComponent implements OnInit {
             courseSemester: data.courseSemester,
             coursePeriod: data.coursePeriod,
           });
-  
+
           // Aqui estamos mapeando corretamente as disciplinas
           this.selectedDisciplines = data.subjects.map((subject: string) => subject); // Assumindo que 'subjects' é um array de strings.
           console.log('Disciplinas selecionadas carregadas:', this.selectedDisciplines);
@@ -64,7 +64,6 @@ export class EditarCursoComponent implements OnInit {
       );
     }
   }
-  
 
   carregarDisciplinas() {
     console.log('Carregando lista de disciplinas...');
@@ -101,21 +100,37 @@ export class EditarCursoComponent implements OnInit {
 
   salvar() {
     console.log('Tentando salvar curso...');
+    
+    // Verificando se o formulário é inválido ou se não há disciplinas selecionadas
     if (this.cursoForm.invalid || this.selectedDisciplines.length === 0) {
       console.warn('Formulário inválido ou disciplinas não selecionadas:', this.cursoForm.value, this.selectedDisciplines);
       this.cursoForm.markAllAsTouched();
       return;
     }
 
+    // Recuperando o ID do curso da rota
+    const id = this.route.snapshot.paramMap.get('id');
+    if (!id) {
+      console.error('ID do curso não encontrado');
+      return;
+    }
+
+    // Ajustando a estrutura das disciplinas para o formato esperado pelo backend
+    const courseSubjects = this.selectedDisciplines.map(disciplineId => ({
+      subjectId: disciplineId
+    }));
+
+    // Criando o objeto que será enviado ao backend
     const cursoAtualizado = {
-      courseName: this.cursoForm.value.courseName,
-      courseSemester: this.cursoForm.value.courseSemester,
-      coursePeriod: this.cursoForm.value.coursePeriod,
-      courseSubjects: this.selectedDisciplines
+      courseName: this.cursoForm.value.courseName,  // Nome do curso
+      courseSemester: this.cursoForm.value.courseSemester, // Semestre
+      coursePeriod: this.cursoForm.value.coursePeriod,  // Período
+      courseSubjects: courseSubjects  // Disciplinas no formato correto
     };
 
     console.log('Dados do curso a ser enviado:', cursoAtualizado);
 
+    // Enviando os dados para o backend
     this.ccursoService.updateCurso(cursoAtualizado).subscribe(
       () => {
         console.log('Curso atualizado com sucesso.');
@@ -126,7 +141,7 @@ export class EditarCursoComponent implements OnInit {
         }, 3000);
       },
       error => {
-        console.error('Erro ao atualizar curso:', error);
+        console.error('Erro ao astualizar curso:', error);
       }
     );
   }
