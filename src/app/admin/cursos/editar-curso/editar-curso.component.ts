@@ -65,7 +65,6 @@ export class EditarCursoComponent implements OnInit {
     }
   }
 
-
   carregarDisciplinas() {
     console.log('Carregando lista de disciplinas...');
     this.ccursoService.getDisciplines().subscribe(
@@ -101,7 +100,7 @@ export class EditarCursoComponent implements OnInit {
 
   salvar() {
     console.log('Tentando salvar curso...');
-
+    
     // Verificando se o formulário é inválido ou se não há disciplinas selecionadas
     if (this.cursoForm.invalid || this.selectedDisciplines.length === 0) {
       console.warn('Formulário inválido ou disciplinas não selecionadas:', this.cursoForm.value, this.selectedDisciplines);
@@ -142,10 +141,8 @@ export class EditarCursoComponent implements OnInit {
         }, 3000);
       },
       error => {
-        console.error('Erro ao atualizar curso:', error);
+        console.error('Erro ao astualizar curso:', error);
       }
     );
   }
-
-
 }
