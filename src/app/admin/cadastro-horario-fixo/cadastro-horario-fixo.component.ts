@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Importando Validators para adicionar validações se necessário
 import { GhorarioService } from '../../serv/admin/ghorario.service';
 
 @Component({
@@ -17,12 +17,12 @@ export class CadastroHorarioFixoComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private ghorarioService: GhorarioService) {
     this.cadastroForm = this.fb.group({
-      teacher: [null],
-      subject: [null],
-      time: [null],
-      room: [null],
-      course: [null],
-      weekDay: [''],
+      teacher: [null, Validators.required], // Adicionando validação
+      subject: [null, Validators.required],
+      time: [null, Validators.required],
+      room: [null, Validators.required],
+      course: [null, Validators.required],
+      weekDay: ['', Validators.required],
     });
   }
 
@@ -91,6 +91,11 @@ export class CadastroHorarioFixoComponent implements OnInit {
 
   // Método onSubmit para enviar os dados
   onSubmit(): void {
+    if (this.cadastroForm.invalid) {
+      console.error('Formulário inválido');
+      return;
+    }
+
     const formData = {
       teacher: {
         teacherId: this.cadastroForm.value.teacher
@@ -124,6 +129,4 @@ export class CadastroHorarioFixoComponent implements OnInit {
       }
     });
   }
-
-  
 }

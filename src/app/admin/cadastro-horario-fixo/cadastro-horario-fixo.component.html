@@ -7,7 +7,7 @@
         <div class="mb-3">
           <label for="teacher" class="form-label">Professor</label>
           <select id="teacher" formControlName="teacher" class="form-control">
-            <option value="" disabled selected>Selecione um professor</option>
+            <option value="" disabled>Selecione um professor</option>
             <option *ngFor="let teacher of teachers" [value]="teacher.teacherId">
               {{ teacher.teacherName }}
             </option>
@@ -18,7 +18,7 @@
         <div class="mb-3">
           <label for="subject" class="form-label">Disciplina</label>
           <select id="subject" formControlName="subject" class="form-control">
-            <option value="" disabled selected>Selecione uma disciplina</option>
+            <option value="" disabled>Selecione uma disciplina</option>
             <option *ngFor="let subject of subjects" [value]="subject.subjectId">
               {{ subject.subjectName }}
             </option>
@@ -29,7 +29,7 @@
         <div class="mb-3">
           <label for="time" class="form-label">Horário</label>
           <select id="time" formControlName="time" class="form-control">
-            <option value="" disabled selected>Selecione um horário</option>
+            <option value="" disabled>Selecione um horário</option>
             <option *ngFor="let time of times" [value]="time.timeId">
               {{ time.startTime }} - {{ time.endTime }}
             </option>
@@ -40,7 +40,7 @@
         <div class="mb-3">
           <label for="room" class="form-label">Sala</label>
           <select id="room" formControlName="room" class="form-control">
-            <option value="" disabled selected>Selecione uma sala</option>
+            <option value="" disabled>Selecione uma sala</option>
             <option *ngFor="let room of rooms" [value]="room.roomId">
               {{ room.roomType }} {{ room.roomFloor }}
             </option>
@@ -51,7 +51,7 @@
         <div class="mb-3">
           <label for="course" class="form-label">Curso</label>
           <select id="course" formControlName="course" class="form-control">
-            <option value="" disabled selected>Selecione um curso</option>
+            <option value="" disabled>Selecione um curso</option>
             <option *ngFor="let course of courses" [value]="course.courseId">
               {{ course.courseName }}
             </option>
@@ -62,7 +62,7 @@
         <div class="mb-3">
           <label for="weekDay" class="form-label">Dia da Semana</label>
           <select id="weekDay" formControlName="weekDay" class="form-control">
-            <option value="" disabled selected>Selecione um dia</option>
+            <option value="" disabled>Selecione um dia</option>
             <option value="Segunda-feira">Segunda-feira</option>
             <option value="Terça-feira">Terça-feira</option>
             <option value="Quarta-feira">Quarta-feira</option>
@@ -73,9 +73,7 @@
         </div>
   
         <!-- Botão de envio -->
-        <button type="submit" routerLink="/admin/grade-fixa" class="btn btn-primary w-100">Enviar</button>
+        <button type="submit" class="btn btn-primary w-100">Enviar</button>
       </form>
     </div>
-    
   </div>
-  
