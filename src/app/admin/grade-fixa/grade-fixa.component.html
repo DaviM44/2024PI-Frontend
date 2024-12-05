@@ -7,7 +7,6 @@
     <label for="courseSelect">Escolha um Curso:</label>
     <select id="courseSelect" [(ngModel)]="searchTerm" class="form-control">
       <option value="">Selecione um curso</option>
-      <!-- Preenche o select com os cursos disponíveis -->
       <option *ngFor="let course of courses" [value]="course.courseName">{{ course.courseName }}</option>
     </select>
   </div>
@@ -23,6 +22,7 @@
           <th>Quarta-feira</th>
           <th>Quinta-feira</th>
           <th>Sexta-feira</th>
+          <th>Ações</th> <!-- Adicionei a coluna para ações -->
         </tr>
       </thead>
       <tbody>
@@ -30,15 +30,22 @@
           <td>{{ time.startTime }} - {{ time.endTime }}</td>
           <td *ngFor="let day of ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira']">
             <div *ngFor="let schedule of schedules | dayFilter:day | timeFilter:{ start: time.startTime, end: time.endTime }">
-              <!-- Exibe o curso, sujeito à seleção -->
-              <p *ngIf="!searchTerm || schedule.course.toLowerCase().includes(searchTerm.toLowerCase())"></p>
-              <strong *ngIf="!searchTerm || schedule.course.toLowerCase().includes(searchTerm.toLowerCase())">{{ schedule.subject }}</strong><br />
-              <span *ngIf="!searchTerm || schedule.course.toLowerCase().includes(searchTerm.toLowerCase())">{{ schedule.teacher }}</span>
-              <p *ngIf="!searchTerm || schedule.course.toLowerCase().includes(searchTerm.toLowerCase())">{{ schedule.room }}</p>
+              <strong>{{ schedule.subject }}</strong><br />
+              <span>{{ schedule.teacher }}</span><br />
+              <p>{{ schedule.room }}</p>
+              <button class="btn btn-danger btn-sm "  (click)="deleteSchedule(schedule.scheduleId)">
+            x
+              </button>
+              
             </div>
+          </td>
+          <td>
+            <!-- Botão para excluir -->
+            
           </td>
         </tr>
       </tbody>
     </table>
+    <button class="btn btn-success col-md-12" routerLink="/admin/cadastrar_horarios">Cadastrar Nova Disciplina</button>
   </div>
 </div>

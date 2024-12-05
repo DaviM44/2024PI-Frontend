@@ -63,6 +63,17 @@ export class GradeFixaComponent implements OnInit {
   }
 
   deleteSchedule(id: number): void {
-    this.gradeFixaService.deleteSchedule(id).subscribe(() => this.fetchData());
+    if (confirm('Tem certeza que deseja excluir este horário?')) {
+      this.gradeFixaService.deleteSchedule(id).subscribe(
+        () => {
+          console.log(`Horário com ID ${id} excluído com sucesso.`);
+          this.fetchData(); // Atualiza os dados após a exclusão
+        },
+        (error) => {
+          console.error('Erro ao excluir o horário:', error);
+        }
+      );
+    }
   }
+  
 }
