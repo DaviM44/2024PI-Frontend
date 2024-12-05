@@ -38,6 +38,8 @@ import { GradeHorarioComponent } from './admin/grade-horario/grade-horario.compo
 import { GradeFixaComponent } from './admin/grade-fixa/grade-fixa.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { SeminavbarComponent } from './seminavbar/seminavbar.component';
+import { TimeFilterPipe } from './pipes/time-filter.pipe';
+import { DayFilterPipe } from './pipes/day-filter.pipe';
 
 
 
@@ -72,6 +74,8 @@ import { SeminavbarComponent } from './seminavbar/seminavbar.component';
     GradeFixaComponent,
     InicioComponent,
     SeminavbarComponent,
+    TimeFilterPipe,
+    DayFilterPipe,
   ],
   imports: [
     BrowserModule,

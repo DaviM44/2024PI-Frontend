@@ -1,13 +1,19 @@
-.vermeio {
-    background-color: #c00c0c;
+
+  .table {
+    border: 1px solid #dee2e6;
+    background-color: #ffffff;
   }
-  
-  .texto-branco {
+
+  .table th {
+    background-color: #343a40;
     color: white;
   }
-  
-  
-  .btn-verde {
-    background-color: #0b9247;
+
+  .schedule-cell {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 0.9rem;
   }
-  
+

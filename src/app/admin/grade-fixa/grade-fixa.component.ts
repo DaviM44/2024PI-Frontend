@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GradeFixaService } from '../../serv/admin/grade-fixa.service'; // Certifique-se de ajustar o caminho do serviço
-import { Schedule, Teacher, Subject, Room, Time, Course } from '../../grade-fixa.types'; // Criação dos tipos
+import { Schedule, Teacher, Subject, Room, Time, Course, WeekDay } from '../../grade-fixa.types'; // Importando o tipo WeekDay
 
 @Component({
   selector: 'app-grade-fixa',
@@ -12,6 +12,7 @@ export class GradeFixaComponent implements OnInit {
   teachers: Teacher[] = [];
   subjects: Subject[] = [];
   times: Time[] = [];
+  weekDay: WeekDay[] = [];  
   rooms: Room[] = [];
   courses: Course[] = [];
   newSchedule: Partial<Schedule> = {};
@@ -23,17 +24,21 @@ export class GradeFixaComponent implements OnInit {
   }
 
   fetchData(): void {
-    this.gradeFixaService.getSchedules().subscribe((data) => (this.schedules = data));
-    this.gradeFixaService.getTeachers().subscribe((data) => (this.teachers = data));
-    this.gradeFixaService.getSubjects().subscribe((data) => (this.subjects = data));
-    this.gradeFixaService.getTimes().subscribe((data) => (this.times = data));
-    this.gradeFixaService.getRooms().subscribe((data) => (this.rooms = data));
-    this.gradeFixaService.getCourses().subscribe((data) => (this.courses = data));
+    this.gradeFixaService.getSchedules().subscribe((data) => {
+      console.log('Schedules recebidos:', data);  // Verifique a estrutura de dados
+      this.schedules = data;
+    });
+    this.gradeFixaService.getTimes().subscribe((data) => {
+      console.log('Times recebidos:', data);
+      this.times = data;
+    });
   }
+  
 
+  
   createSchedule(): void {
     console.log('Tentando criar agendamento com os seguintes dados:', this.newSchedule);
-  
+
     // Enviando o novo agendamento com o campo weekDay
     this.gradeFixaService.createSchedule(this.newSchedule).subscribe(
       () => {
@@ -46,9 +51,9 @@ export class GradeFixaComponent implements OnInit {
       }
     );
   }
-  
 
   deleteSchedule(id: number): void {
     this.gradeFixaService.deleteSchedule(id).subscribe(() => this.fetchData());
   }
+  
 }

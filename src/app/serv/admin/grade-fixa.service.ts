@@ -9,6 +9,8 @@ export class GradeFixaService {
   private apiUrl = 'https://projeto-integrador-1v4i.onrender.com/schedule/';
   private teachersUrl = 'https://projeto-integrador-1v4i.onrender.com/teacher/';
   private subjectsUrl = 'https://projeto-integrador-1v4i.onrender.com/subject/';
+  private jsonUrl = 'https://projeto-integrador-1v4i.onrender.com/reservation/'; 
+  private weekDaysUrl = 'https://projeto-integrador-1v4i.onrender.com/weekDays/';
   private timesUrl = 'https://projeto-integrador-1v4i.onrender.com/time/';
   private roomsUrl = 'https://projeto-integrador-1v4i.onrender.com/rooms/';
   private coursesUrl = 'https://projeto-integrador-1v4i.onrender.com/course/';
@@ -76,6 +78,16 @@ export class GradeFixaService {
       catchError((error) => {
         console.error('Erro ao obter professores:', error);
         return throwError(() => new Error('Erro ao obter professores'));
+      })
+    );
+  }
+
+  getWeekDays(): Observable<any[]> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<any[]>(this.weekDaysUrl, { headers }).pipe(
+      catchError((error) => {
+        console.error('Erro ao obter dias da semana:', error);
+        return throwError(() => new Error('Erro ao obter dias da semana'));
       })
     );
   }

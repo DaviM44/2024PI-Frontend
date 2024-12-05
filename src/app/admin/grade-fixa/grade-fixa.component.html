@@ -1,81 +1,29 @@
 <app-navbar></app-navbar>
-<div class="grade-fixa-container">
-  <h1>Grade Fixa</h1>
-
-  <!-- Formulário para criar novo agendamento -->
-  <form (ngSubmit)="createSchedule()">
-    <div>
-      <label for="teacher">Professor:</label>
-      <select [(ngModel)]="newSchedule.teacher" name="teacher" required>
-        <option *ngFor="let teacher of teachers" [value]="teacher.teacherId">
-          {{ teacher.teacherName }}
-        </option>
-      </select>
-    </div>
-
-    <div>
-      <label for="subject">Matérias:</label>
-      <select [(ngModel)]="newSchedule.subject" name="subject" multiple>
-        <option *ngFor="let subject of subjects" [value]="subject.subjectId">
-          {{ subject.subjectName }}
-        </option>
-      </select>
-    </div>
-
-    <div>
-      <label for="time">Horário:</label>
-      <select [(ngModel)]="newSchedule.time" name="time" required>
-        <option *ngFor="let time of times" [value]="time.timeId">
-          {{ time.startTime }} - {{ time.endTime }}
-        </option>
-      </select>
-    </div>
-
-    <div>
-      <label for="room">Sala:</label>
-      <select [(ngModel)]="newSchedule.room" name="room" required>
-        <option *ngFor="let room of rooms" [value]="room.roomId">
-          {{ room.roomFloor }}
-        </option>
-      </select>
-    </div>
-
-    <div>
-      <label for="course">Curso:</label>
-      <select [(ngModel)]="newSchedule.course" name="course" required>
-        <option *ngFor="let course of courses" [value]="course.courseId">
-          {{ course.courseName }} ({{ course.courseSemester }} - {{ course.coursePeriod }})
-        </option>
-      </select>
-    </div>
-
-    <!-- Adicionando o campo weekday -->
-    <div>
-      <label for="weekday">Dia da Semana:</label>
-      <select [(ngModel)]="newSchedule.weekDay" name="weekday" required>
-        <option value="Segunda-Feira">Segunda-Feira</option>
-        <option value="Terça-Feira">Terça-Feira</option>
-        <option value="Quarta-Feira">Quarta-Feira</option>
-        <option value="Quinta-Feira">Quinta-Feira</option>
-        <option value="Sexta-Feira">Sexta-Feira</option>
-      </select>
-    </div>
-
-    <button type="submit">Criar Agendamento</button>
-  </form>
-
-  <!-- Lista de agendamentos -->
-  <h2>Agendamentos</h2>
-  <ul>
-    <li *ngFor="let schedule of schedules">
-      <strong>ID:</strong> {{ schedule.scheduleId }} |
-      <strong>Professor:</strong> {{ schedule.teacher }} |
-      <strong>Matéria:</strong> {{ schedule.subject }} |
-      <strong>Horário:</strong> {{ schedule.time }} |
-      <strong>Sala:</strong> {{ schedule.room }} |
-      <strong>Curso:</strong> {{ schedule.course }} |
-      <strong>Dia:</strong> {{ schedule.weekDay }}
-      <button (click)="deleteSchedule(schedule.scheduleId)">Excluir</button>
-    </li>
-  </ul>
+<div class="grade-fixa-container container mt-3">
+  <h2 class="text-center mb-4">Horário das Aulas</h2>
+  <table class="table table-bordered text-center">
+    <thead>
+      <tr>
+        <th>Horário</th>
+        <th>Segunda-feira</th>
+        <th>Terça-feira</th>
+        <th>Quarta-feira</th>
+        <th>Quinta-feira</th>
+        <th>Sexta-feira</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let time of times">
+        <td>{{ time.startTime }} - {{ time.endTime }}</td>
+        <td *ngFor="let day of ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira']">
+          <div *ngFor="let schedule of schedules | dayFilter:day | timeFilter:{ start: time.startTime, end: time.endTime }">
+            <strong>{{ schedule.subject }}</strong><br />
+            {{ schedule.teacher }}
+          </div>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
 </div>
+
