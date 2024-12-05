@@ -37,7 +37,7 @@ import { CadastroHorarioFixoComponent } from './admin/cadastro-horario-fixo/cada
 import { GradeFixaProfComponent } from './prof/grade-fixa-prof/grade-fixa-prof.component';
 import { ReservarComponent } from './prof/reservar/reservar.component';
 import { VisualizarReservasComponent } from './prof/visualizar-reservas/visualizar-reservas.component';
-
+import { CadastrarHoraComponent } from './admin/cadastrar-hora/cadastrar-hora.component';
 const routes: Routes = [
   // Rotas de Login
   { path: '', component: InicioComponent },
@@ -58,6 +58,11 @@ const routes: Routes = [
   {
     path: 'admin/cadastrar_sala',
     component: CadastrarSalaComponent,
+    canActivate: [AdminAuthGuard] // Protege com o AdminAuthGuard
+  },
+  {
+  path: 'admin/cadastrar-hora',
+    component: CadastrarHoraComponent,
     canActivate: [AdminAuthGuard] // Protege com o AdminAuthGuard
   },
   {
