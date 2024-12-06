@@ -73,8 +73,8 @@ export class ReservasComponent implements OnInit {
   // Filtragem das reservas com base na pesquisa
   get filteredReservations(): any[] {
     return this.reservations.filter((reservation) =>
-      (reservation.teacherName?.toLowerCase() || '').includes(this.searchTerm.toLowerCase()) ||
-      (reservation.courseName?.toLowerCase() || '').includes(this.searchTerm.toLowerCase())
+      (reservation.teacher?.toLowerCase() || '').includes(this.searchTerm.toLowerCase()) ||
+      (reservation.course?.toLowerCase() || '').includes(this.searchTerm.toLowerCase())
     );
   }
 

@@ -11,16 +11,26 @@
       <div class="outer-square">
         <div class="reservations">
           <div *ngFor="let reservation of filteredReservations" class="reservation-item" (click)="editReservation(reservation)">
-            <span class="reservation-date">{{ reservation.date }}</span>
-            <span class="separator"></span>
-            <div class="reservation-details">
-              <div class="reservation-name">{{ reservation.teacher }} - {{ reservation.course }}</div>
+            <!-- Data e horário -->
+            <div class="reservation-header">
+              <span class="reservation-date">{{ reservation.date }}</span>
               <div class="reservation-time">{{ reservation.time }}</div>
             </div>
+            <span class="separator"></span>
+      
+            <!-- Detalhes: Professor e Curso -->
+            <div class="reservation-details">
+              <div class="reservation-name">
+                <div class="teacher">{{ reservation.teacher }}</div>
+                <div class="course">{{ reservation.course }}</div>
+              </div>
+            </div>
+      
             <!-- Botão para excluir a reserva -->
             <button type="button" class="btn-delete" (click)="deleteReservation(reservation.reservationId)">Excluir</button>
           </div>
         </div>
+      
         
         <!-- Botão para ir à tela de cadastro -->
         <div class="d-flex justify-content-end mt-2 mb-2">

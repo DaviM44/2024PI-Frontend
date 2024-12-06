@@ -10,28 +10,31 @@ export class ChoraService {
 
   constructor(private http: HttpClient) {}
 
-  // Adiciona o token no cabeçalho
+  // Função para obter os headers com o token de autenticação
   private getAuthHeaders(): HttpHeaders {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhZ2FzIiwiZXhwIjoxNzMzNDUzMzU0LCJzdWIiOiIyIiwicm9sZXMiOlsiQURNSU4iXX0.lwMyQ-ie3_TQofzyT1upJFmmpv--HUnEMv5EYOSZTjk'; // Substitua pelo token válido
+    const token = localStorage.getItem('adminToken'); // Obtém o token do localStorage
+    if (!token) {
+      throw new Error('Token de autenticação não encontrado.');
+    }
+
     return new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
   }
 
-  // Obtém todos os horários
+  // Obtém todos os horários com autenticação
   getTimes(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl, { headers: this.getAuthHeaders() });
   }
 
-  // Exclui um horário pelo ID
-deleteTime(timeId: number): Observable<any> {
-  return this.http.delete<any>(`${this.apiUrl}${timeId}`, {
-    headers: this.getAuthHeaders(),
-  });
-}
+  // Exclui um horário pelo ID com autenticação
+  deleteTime(timeId: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}${timeId}`, {
+      headers: this.getAuthHeaders(),
+    });
+  }
 
-
-  // Adiciona um novo horário
+  // Adiciona um novo horário com autenticação
   addTime(newTime: { startTime: string; endTime: string }): Observable<any> {
     return this.http.post<any>(this.apiUrl, newTime, {
       headers: this.getAuthHeaders(),

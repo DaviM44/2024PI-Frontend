@@ -13,7 +13,7 @@ export class EditarCursoComponent implements OnInit {
   cursoForm: FormGroup;
   mensagemSucesso: boolean = false;
   disciplines: any[] = [];
-  selectedDisciplines: number[] = [];
+  selectedDisciplines: number[] = [];  // Aqui garantimos que seja um array de números
   disciplineSelectionOpen: boolean = false;
 
   constructor(
@@ -27,7 +27,7 @@ export class EditarCursoComponent implements OnInit {
       courseName: ['', [Validators.required, Validators.pattern('^[A-Za-zÀ-ÿ\\s]+$')]],
       courseSemester: ['', [Validators.required]],
       coursePeriod: ['', Validators.required],
-      courseSubjects: [''] // Para armazenar disciplinas selecionadas
+      courseSubjects: ['']  // Para armazenar disciplinas selecionadas
     });
   }
 
@@ -53,9 +53,16 @@ export class EditarCursoComponent implements OnInit {
             courseSemester: data.courseSemester,
             coursePeriod: data.coursePeriod,
           });
-
-          // Aqui estamos mapeando corretamente as disciplinas
-          this.selectedDisciplines = data.subjects.map((subject: string) => subject); // Assumindo que 'subjects' é um array de strings.
+  
+          // Agora, vamos garantir que as disciplinas sejam mapeadas para IDs.
+          // A suposição aqui é que você tem um array `disciplines` contendo
+          // os IDs das disciplinas no backend, e precisa fazer o mapeamento
+          // de nome para ID.
+          this.selectedDisciplines = data.subjects.map((subjectName: string) => {
+            const foundDiscipline = this.disciplines.find(d => d.subjectName === subjectName);
+            return foundDiscipline ? foundDiscipline.subjectId : null;
+          }).filter((id: number | null) => id !== null);  // Tipando explicitamente o id como number ou null
+          
           console.log('Disciplinas selecionadas carregadas:', this.selectedDisciplines);
         },
         error => {
@@ -64,13 +71,14 @@ export class EditarCursoComponent implements OnInit {
       );
     }
   }
+  
 
   carregarDisciplinas() {
     console.log('Carregando lista de disciplinas...');
     this.ccursoService.getDisciplines().subscribe(
       (response) => {
         console.log('Disciplinas recebidas:', response);
-        this.disciplines = response;
+        this.disciplines = response;  // A lista de disciplinas com nome e ID
       },
       (error) => {
         console.error('Erro ao carregar disciplinas:', error);
@@ -84,11 +92,11 @@ export class EditarCursoComponent implements OnInit {
   }
 
   onDisciplineChange(event: any): void {
-    const subjectId = event.target.value;
+    const subjectId = Number(event.target.value);  // Garantindo que seja um número
     if (event.target.checked) {
-      this.selectedDisciplines.push(Number(subjectId));
+      this.selectedDisciplines.push(subjectId);
     } else {
-      this.selectedDisciplines = this.selectedDisciplines.filter(id => id !== Number(subjectId));
+      this.selectedDisciplines = this.selectedDisciplines.filter(id => id !== subjectId);
     }
     console.log('Disciplinas selecionadas atualizadas:', this.selectedDisciplines);
   }
@@ -100,8 +108,6 @@ export class EditarCursoComponent implements OnInit {
 
   salvar() {
     console.log('Tentando salvar curso...');
-    
-    // Verificando se o formulário é inválido ou se não há disciplinas selecionadas
     if (this.cursoForm.invalid || this.selectedDisciplines.length === 0) {
       console.warn('Formulário inválido ou disciplinas não selecionadas:', this.cursoForm.value, this.selectedDisciplines);
       this.cursoForm.markAllAsTouched();
@@ -115,13 +121,14 @@ export class EditarCursoComponent implements OnInit {
       return;
     }
 
-    // Ajustando a estrutura das disciplinas para o formato esperado pelo backend
+    // Ajustando a estrutura das disciplinas para o formato correto
     const courseSubjects = this.selectedDisciplines.map(disciplineId => ({
-      subjectId: disciplineId
+      subjectId: Number(disciplineId) // Garantindo que seja um número
     }));
 
-    // Criando o objeto que será enviado ao backend
+    // Criando o objeto que será enviado ao backend, incluindo o courseId
     const cursoAtualizado = {
+      courseId: id,  // Incluindo o ID do curso
       courseName: this.cursoForm.value.courseName,  // Nome do curso
       courseSemester: this.cursoForm.value.courseSemester, // Semestre
       coursePeriod: this.cursoForm.value.coursePeriod,  // Período
@@ -130,7 +137,6 @@ export class EditarCursoComponent implements OnInit {
 
     console.log('Dados do curso a ser enviado:', cursoAtualizado);
 
-    // Enviando os dados para o backend
     this.ccursoService.updateCurso(cursoAtualizado).subscribe(
       () => {
         console.log('Curso atualizado com sucesso.');
@@ -141,8 +147,9 @@ export class EditarCursoComponent implements OnInit {
         }, 3000);
       },
       error => {
-        console.error('Erro ao astualizar curso:', error);
+        console.error('Erro ao atualizar curso:', error);
       }
     );
   }
+
 }

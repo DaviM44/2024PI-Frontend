@@ -22,6 +22,8 @@ html, body {
   overflow: hidden; /* Remove a rolagem interna */
 }
 
+
+
 /* Coluna esquerda */
 .col-md-6.bg-light {
   display: flex;
@@ -319,4 +321,51 @@ html, body {
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
+}
+
+/* Estilo do cabeçalho de data e horário */
+.reservation-header {
+  text-align: left; /* Alinha os elementos à esquerda */
+  margin-bottom: 5px; /* Espaçamento entre o horário e os detalhes */
+}
+
+.reservation-date {
+  display: block; /* Força a data a ocupar uma linha completa */
+  font-weight: bold; /* Destaca a data */
+}
+
+.reservation-time {
+  display: block; /* Força o horário a ocupar uma linha completa */
+  font-size: 0.9rem; /* Reduz levemente o tamanho da fonte */
+  color: #6c757d; /* Cor cinza para menor destaque */
+}
+
+/* Estilo dos detalhes (Professor e Curso) */
+.reservation-name {
+  text-align: left; /* Alinha o conteúdo à esquerda */
+  margin-bottom: 5px; /* Espaçamento entre linhas */
+}
+
+.teacher {
+  font-size: 1rem; /* Tamanho normal */
+  font-weight: bold; /* Deixa o texto mais destacado */
+}
+
+.course {
+  font-size: 0.85rem; /* Fonte menor para o curso */
+  color: #6c757d; /* Cor cinza para suavizar */
+}
+
+/* Botão excluir */
+.btn-delete {
+  background-color: #dc3545; /* Cor vermelha */
+  color: #fff; /* Texto branco */
+  border: none; /* Remove a borda */
+  padding: 5px 10px; /* Ajusta o tamanho */
+  cursor: pointer; /* Muda o cursor ao passar sobre o botão */
+  border-radius: 3px; /* Bordas arredondadas */
+}
+
+.btn-delete:hover {
+  background-color: #c82333; /* Cor mais escura ao passar o mouse */
 }
