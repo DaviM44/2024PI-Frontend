@@ -19,6 +19,7 @@ export class GradeFixaProfComponent implements OnInit {
   
   // Variável para armazenar o termo de pesquisa (agora usado para armazenar o curso selecionado)
   searchTerm: string = '';
+  filteredTimes: Time[] = []; // Lista de horários filtrados
 
   constructor(private gradeFixaServiceProf: GradeFixaProfService) {}
 
@@ -34,11 +35,30 @@ export class GradeFixaProfComponent implements OnInit {
     this.gradeFixaServiceProf.getTimes().subscribe((data) => {
       console.log('Times recebidos:', data);
       this.times = data;
+      this.filteredTimes = data; // Inicialmente, todos os horários são exibidos
     });
     this.gradeFixaServiceProf.getCourses().subscribe((data) => {
       console.log('Cursos recebidos:', data);
       this.courses = data; // Preenche a lista de cursos
     });
+  }
+
+  // Função para exibir os horários de timeId 11 a 16 (Tarde)
+  showTimes11to16(): void {
+    console.log('Mostrando horários de timeId 11 a 16');
+    this.filteredTimes = this.times.filter(time => time.timeId >= 11 && time.timeId <= 16);
+  }
+
+  // Função para exibir os horários de timeId 27 a 32 (Manhã)
+  showTimes27to32(): void {
+    console.log('Mostrando horários de timeId 27 a 32');
+    this.filteredTimes = this.times.filter(time => time.timeId >= 27 && time.timeId <= 32);
+  }
+
+  // Função para exibir os horários de timeId 33 a 38 (Noite)
+  showTimes33to38(): void {
+    console.log('Mostrando horários de timeId 33 a 38');
+    this.filteredTimes = this.times.filter(time => time.timeId >= 33 && time.timeId <= 38);
   }
 
   // Função para limpar o campo de pesquisa
