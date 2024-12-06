@@ -10,6 +10,11 @@
       <!-- Preenche o select com os cursos disponíveis -->
       <option *ngFor="let course of courses" [value]="course.courseName">{{ course.courseName }}</option>
     </select>
+    <div class="d-flex justify-content-end align-items-center mt-1">
+      <button class="btn btn-success ml-3" (click)="showTimes27to32()">Manhã</button>
+      <button class="btn btn-primary ml-3" (click)="showTimes11to16()">Tarde</button>
+      <button class="btn btn-dark ml-3" (click)="showTimes33to38()">Noite</button> <!-- Novo botão -->
+    </div>
   </div>
 
   <!-- A tabela de horários será exibida apenas se searchTerm (curso) não estiver vazio -->
@@ -26,7 +31,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let time of times">
+        <tr *ngFor="let time of filteredTimes">
           <td>{{ time.startTime }} - {{ time.endTime }}</td>
           <td *ngFor="let day of ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira']">
             <div *ngFor="let schedule of schedules | dayFilter:day | timeFilter:{ start: time.startTime, end: time.endTime }">
@@ -40,5 +45,10 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <!-- Caso searchTerm (curso) esteja vazio, a tabela não será exibida -->
+  <div *ngIf="!searchTerm" class="text-center">
+    <p>Selecione um curso para ver o horário das aulas.</p>
   </div>
 </div>
