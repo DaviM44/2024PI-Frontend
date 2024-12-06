@@ -57,8 +57,8 @@ export class VisualizarReservasComponent implements OnInit {
   // Método melhorado para pesquisa com tratamento de undefined e case-insensitive
   get filteredReservations(): any[] {
     return this.reservations.filter((reservation) =>
-      (reservation.teacherName?.toLowerCase() ?? '').includes(this.searchTerm.toLowerCase()) ||
-      (reservation.courseName?.toLowerCase() ?? '').includes(this.searchTerm.toLowerCase())
+      (reservation.teacher?.toLowerCase() ?? '').includes(this.searchTerm.toLowerCase()) ||
+      (reservation.course?.toLowerCase() ?? '').includes(this.searchTerm.toLowerCase())
     );
   }
 
@@ -103,13 +103,13 @@ export class VisualizarReservasComponent implements OnInit {
   editReservation(reservation: any): void {
     this.selectedReservation = reservation;
     this.isEditing = true;
-  
+
     // Verificar se "this.teachers" é um array e se "reservation.teacher" existe
     const teacher = Array.isArray(this.teachers) ? this.teachers.find((t) => t.id === reservation.teacher) : null;
     const course = Array.isArray(this.courses) ? this.courses.find((c) => c.id === reservation.course) : null;
     const time = Array.isArray(this.times) ? this.times.find((t) => t.id === reservation.time) : null;
     const room = Array.isArray(this.rooms) ? this.rooms.find((r) => r.id === reservation.room) : null;
-  
+
     // Atualizando o formulário com os dados completos, com fallback caso não encontre os dados
     this.form = {
       teacher: reservation.teacher,
@@ -124,7 +124,7 @@ export class VisualizarReservasComponent implements OnInit {
       roomName: room ? room.name : 'Não encontrado',
     };
   }
-  
+
 
   cancel(): void {
     this.isEditing = false;

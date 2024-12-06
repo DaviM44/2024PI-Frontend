@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Importando Validators para adicionar validações se necessário
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GhorarioService } from '../../serv/admin/ghorario.service';
 
 @Component({
@@ -14,10 +14,12 @@ export class CadastroHorarioFixoComponent implements OnInit {
   times: any[] = [];
   rooms: any[] = [];
   courses: any[] = [];
+  notificationMessage: string = '';  // Mensagem da notificação
+  showNotification: boolean = false;  // Controla se a notificação será exibida
 
   constructor(private fb: FormBuilder, private ghorarioService: GhorarioService) {
     this.cadastroForm = this.fb.group({
-      teacher: [null, Validators.required], // Adicionando validação
+      teacher: [null, Validators.required],
       subject: [null, Validators.required],
       time: [null, Validators.required],
       room: [null, Validators.required],
@@ -92,7 +94,9 @@ export class CadastroHorarioFixoComponent implements OnInit {
   // Método onSubmit para enviar os dados
   onSubmit(): void {
     if (this.cadastroForm.invalid) {
-      console.error('Formulário inválido');
+      this.showNotification = true;
+      this.notificationMessage = 'Por favor, preencha todos os campos obrigatórios!';
+      setTimeout(() => this.showNotification = false, 3000);  // Ocultar a notificação após 3 segundos
       return;
     }
 
@@ -121,11 +125,15 @@ export class CadastroHorarioFixoComponent implements OnInit {
     this.ghorarioService.createSchedule(formData).subscribe({
       next: (response) => {
         console.log('Agendamento criado com sucesso:', response);
-        // Aqui você pode adicionar algum feedback visual para o usuário, como uma notificação
+        this.showNotification = true;
+        this.notificationMessage = 'Horário cadastrado com sucesso!';
+        setTimeout(() => this.showNotification = false, 3000);  // Ocultar a notificação após 3 segundos
       },
       error: (err) => {
         console.error('Erro ao criar agendamento:', err);
-        // Exibir um erro para o usuário, por exemplo
+        this.showNotification = true;
+        this.notificationMessage = 'Erro ao cadastrar horário! Tente novamente.';
+        setTimeout(() => this.showNotification = false, 3000);  // Ocultar a notificação após 3 segundos
       }
     });
   }
