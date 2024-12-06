@@ -35,15 +35,25 @@
           <td>{{ time.startTime }} - {{ time.endTime }}</td>
           <td *ngFor="let day of ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira']">
             <div *ngFor="let schedule of schedules | dayFilter:day | timeFilter:{ start: time.startTime, end: time.endTime }">
-              <!-- Exibe o curso, sujeito à seleção -->
-              <p *ngIf="!searchTerm || schedule.course.toLowerCase().includes(searchTerm.toLowerCase())"></p>
-              <strong *ngIf="!searchTerm || schedule.course.toLowerCase().includes(searchTerm.toLowerCase())">{{ schedule.subject }}</strong><br />
-              <span *ngIf="!searchTerm || schedule.course.toLowerCase().includes(searchTerm.toLowerCase())">{{ schedule.teacher }}</span>
-              <p *ngIf="!searchTerm || schedule.course.toLowerCase().includes(searchTerm.toLowerCase())">{{ schedule.room }}</p>
+              <div
+                class="schedule-cell"
+                (click)="toggleDeleteButton(schedule.scheduleId)"
+                [ngClass]="{'highlight': isHovered(schedule.scheduleId)}"
+              >
+                <!-- Exibe o curso, sujeito à seleção -->
+                <strong *ngIf="!searchTerm || schedule.course.toLowerCase().includes(searchTerm.toLowerCase())">{{ schedule.subject }}</strong><br />
+                <span *ngIf="!searchTerm || schedule.course.toLowerCase().includes(searchTerm.toLowerCase())">{{ schedule.teacher }}</span>
+                <p *ngIf="!searchTerm || schedule.course.toLowerCase().includes(searchTerm.toLowerCase())">{{ schedule.room }}</p>
+                
+                <!-- Botão de excluir, aparece se a célula for clicada -->
+                <button *ngIf="scheduleIdToDelete === schedule.scheduleId" class="btn btn-danger" (click)="deleteSchedule(schedule.scheduleId, $event)">Excluir</button>
+              </div>
             </div>
           </td>
         </tr>
       </tbody>
+      
+      
     </table>
   </div>
 

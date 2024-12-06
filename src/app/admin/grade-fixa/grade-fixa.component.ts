@@ -11,8 +11,9 @@ export class GradeFixaComponent implements OnInit {
   schedules: Schedule[] = [];
   times: Time[] = [];
   courses: Course[] = [];
-  filteredTimes: Time[] = []; // Variável para armazenar os horários filtrados
-  searchTerm: string = ''; // Variável para armazenar o termo de pesquisa (curso selecionado)
+  filteredTimes: Time[] = [];
+  searchTerm: string = '';
+  scheduleIdToDelete: number | null = null; // Variável para armazenar o ID do agendamento que será excluído
 
   constructor(private gradeFixaService: GradeFixaService) {}
 
@@ -21,6 +22,7 @@ export class GradeFixaComponent implements OnInit {
   }
 
   fetchData(): void {
+    // Carrega os dados de agendamentos, horários e cursos
     this.gradeFixaService.getSchedules().subscribe((data) => {
       console.log('Schedules recebidos:', data);
       this.schedules = data;
@@ -52,5 +54,38 @@ export class GradeFixaComponent implements OnInit {
   showTimes33to38(): void {
     console.log('Mostrando horários de timeId 33 a 38');
     this.filteredTimes = this.times.filter(time => time.timeId >= 33 && time.timeId <= 38);
+  }
+
+  // Função para alternar a visibilidade do botão de apagar
+  toggleDeleteButton(scheduleId: number): void {
+    if (this.scheduleIdToDelete === scheduleId) {
+      this.scheduleIdToDelete = null; // Se o mesmo agendamento for clicado novamente, oculta o botão
+    } else {
+      this.scheduleIdToDelete = scheduleId; // Exibe o botão de excluir para o agendamento clicado
+    }
+  }
+
+  // Função para deletar o agendamento
+  deleteSchedule(scheduleId: number, event: Event): void {
+    event.stopPropagation(); // Impede que o clique no botão acione o clique na célula
+
+    if (confirm('Tem certeza de que deseja excluir este agendamento?')) {
+      this.gradeFixaService.deleteSchedule(scheduleId).subscribe(
+        () => {
+          // Após a exclusão, atualiza a lista de agendamentos
+          this.fetchData();
+          alert('Agendamento excluído com sucesso!');
+        },
+        (error) => {
+          console.error('Erro ao excluir o agendamento:', error);
+          alert('Houve um erro ao excluir o agendamento. Tente novamente mais tarde.');
+        }
+      );
+    }
+  }
+
+  // Função para verificar se a célula está sendo destacada (hover)
+  isHovered(scheduleId: number): boolean {
+    return this.scheduleIdToDelete === scheduleId; // Se o ID do agendamento for igual ao clicado, aplica o highlight
   }
 }
