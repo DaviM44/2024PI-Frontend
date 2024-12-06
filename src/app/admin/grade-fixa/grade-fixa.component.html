@@ -8,7 +8,7 @@
     <select id="courseSelect" [(ngModel)]="searchTerm" class="form-control">
       <option value="">Selecione um curso</option>
       <!-- Preenche o select com os cursos disponíveis -->
-      <option *ngFor="let course of courses" [value]="course.courseName">{{ course.courseName }}</option>
+      <option *ngFor="let course of courses" [value]="course.courseName">{{ course.courseName }} <p> - Semestre </p>{{ course.courseSemester }}</option>
     </select>
     <div class="d-flex justify-content-end align-items-center mt-1">
       <button class="btn btn-success ml-3" (click)="showTimes27to32()">Manhã</button>
@@ -44,7 +44,7 @@
                 <strong *ngIf="!searchTerm || schedule.course.toLowerCase().includes(searchTerm.toLowerCase())">{{ schedule.subject }}</strong><br />
                 <span *ngIf="!searchTerm || schedule.course.toLowerCase().includes(searchTerm.toLowerCase())">{{ schedule.teacher }}</span>
                 <p *ngIf="!searchTerm || schedule.course.toLowerCase().includes(searchTerm.toLowerCase())">{{ schedule.room }}</p>
-                
+
                 <!-- Botão de excluir, aparece se a célula for clicada -->
                 <button *ngIf="scheduleIdToDelete === schedule.scheduleId" class="btn btn-danger" (click)="deleteSchedule(schedule.scheduleId, $event)">Excluir</button>
               </div>
@@ -52,8 +52,8 @@
           </td>
         </tr>
       </tbody>
-      
-      
+
+
     </table>
   </div>
 

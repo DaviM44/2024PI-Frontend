@@ -52,6 +52,7 @@ import { CadastrarHoraComponent } from './admin/cadastrar-hora/cadastrar-hora.co
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,7 +89,7 @@ import { CadastrarHoraComponent } from './admin/cadastrar-hora/cadastrar-hora.co
     ReservarComponent,
     VisualizarReservasComponent,
     CadastrarHoraComponent,
-   
+
   ],
   imports: [
     BrowserModule,
