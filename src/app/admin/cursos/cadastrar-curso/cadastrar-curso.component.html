@@ -20,7 +20,7 @@
             <div class="mb-3 mt-3">
               <label for="courseSemester" class="form-label">Semestre</label>
               <input type="text" class="form-control" id="courseSemester" formControlName="courseSemester"
-                placeholder="Semestre (Ex: 1° Semestre)">
+                placeholder="Semestre (Número do Semestre)">
               <div *ngIf="f['courseSemester'].touched && f['courseSemester'].invalid" class="text-danger">
                 <small *ngIf="f['courseSemester'].errors?.['required']">Semestre é obrigatório.</small>
               </div>
