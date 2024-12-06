@@ -34,7 +34,7 @@
         
         <!-- Botão para ir à tela de cadastro -->
         <div class="d-flex justify-content-end mt-2 mb-2">
-          <button class="btn btn-primary" routerLink="/admin/teste">Cadastrar Nova Reserva</button>
+          <button class="btn btn-primary" routerLink="/admin/reservar">Cadastrar Nova Reserva</button>
         </div>
       </div>
     </div>
@@ -54,8 +54,6 @@
         <p><strong>Horário:</strong> {{ form.time}}</p>
         <p><strong>Sala:</strong> {{ form.room}}</p>
         <p><strong>Data:</strong> {{ form.date }}</p>
-        <p><strong>Capacidade da Sala:</strong> {{ form.roomCapacity }} pessoas</p>
-        <p><strong>Recursos da Sala:</strong> {{ form.roomResources | json }}</p>
         
         <!-- Botão para fechar -->
         <div class="action-buttons">

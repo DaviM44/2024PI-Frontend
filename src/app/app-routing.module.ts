@@ -121,7 +121,7 @@ const routes: Routes = [
     canActivate: [AdminAuthGuard] // Protege com o AdminAuthGuard
   },
   {
-    path: 'admin/teste',
+    path: 'admin/reservar',
     component: GradeHorarioComponent,
     canActivate: [AdminAuthGuard] // Protege com o AdminAuthGuard
   },
